@@ -38,17 +38,24 @@ function removeTile(el) {
 
 function addTile(index, el) {
   $($(".grid_tile")[index]).addClass(el);
+  var test = $(".grid_tile")[index];
+  setTimeout(function(){
+    $(test).removeClass("redTile");
+  }, 3500);
+  setTimeout(function(){
+    $(test).removeClass("greenTile");
+  }, 1500);
 }
 function start() {
+  $(".js-score").text("Score: " + score);
+  $(".js-time").text("Time: " + time);
   score = 0;
   time = 30;
   removeTile(".grid_tile");
 }
 
 function select(el) {
-  console.log("Score: " + score);
   if ($(el).hasClass("blueTile")) {
-    time++;
     score++;
     removeTile(el);
     addTile(randomTile(), "blueTile");
@@ -59,14 +66,20 @@ function select(el) {
   }
   else if ($(el).hasClass("greenTile")) {
     removeTile(el);
+    score += 5;
     time += 5;
   }
   else {
     time -=2;
   }
+  $(".js-score").text("Score: " + score);
+  $(".js-time").text("Time: " + time);
 }
 
 function randomTile() {
-  return Math.floor(Math.random()*20);
+  var rand =  Math.floor(Math.random()*20);
+  var el = $(".grid_tile")[rand];
+  if($(el).hasClass("redTile") || $(el).hasClass("blueTile") || $(el).hasClass("greenTile"))
+    randomTile();
+  return rand;
 }
-
