@@ -17,25 +17,22 @@ window.setInterval(function(){
 
 window.setInterval(function(){
   var rand = Math.floor(Math.random()*50);
-  if (isGridFull() === false) {
-    if (rand === 13 || rand === 29 || rand === 26) {
-      addTile(randomTile(), "greenTile");
-    }
-    else if (rand < 7){
-      addTile(randomTile(), "redTile");
-    }
-    else
-      addTile(randomTile(), "blueTile");
+  if (rand === 13 || rand === 29 || rand === 26) {
+    addTile(randomTile(), "greenTile");
   }
-  else {
-    gameOver("full");
+  else if (rand < 7){
+    addTile(randomTile(), "redTile");
   }
+  else
+    addTile(randomTile(), "blueTile");
 
 }, 1000);
 
 
 function gameOver(e) {
   time = 0;
+  $(".js-score").text("Score: " + score);
+  $(".js-time").text("Time: " + time);
   alert("Game Over! Your score: " + score + " Reason: " + e);
   start();
 }
@@ -47,28 +44,32 @@ function removeTile(el) {
 }
 
 function addTile(index, el) {
-  $($(".grid_tile")[index]).addClass(el);
-  var test = $(".grid_tile")[index];
-  setTimeout(function(){
-    $(test).removeClass("redTile");
-  }, 3500);
-  setTimeout(function(){
-    $(test).removeClass("greenTile");
-  }, 1500);
+  if (isGridFull() === false) {
+    $($(".grid_tile")[index]).addClass(el);
+    var test = $(".grid_tile")[index];
+    setTimeout(function(){
+      $(test).removeClass("redTile");
+    }, 3500);
+    setTimeout(function(){
+      $(test).removeClass("greenTile");
+    }, 1500);
+  }
+  else
+    gameOver("full");
 }
 function start() {
-  $(".js-score").text("Score: " + score);
-  $(".js-time").text("Time: " + time);
   score = 0;
   time = 30;
+  $(".js-score").text("Score: " + score);
+  $(".js-time").text("Time: " + time);
   removeTile(".grid_tile");
 }
 
 function select(el) {
   if ($(el).hasClass("blueTile")) {
     score++;
-    removeTile(el);
     addTile(randomTile(), "blueTile");
+    removeTile(el);
   }
   else if ($(el).hasClass("redTile")) {
     removeTile(el);
@@ -87,7 +88,7 @@ function select(el) {
 }
 
 function isGridFull() {
-  if ($(".grid_tile:not(.blueTile)").length === 0) {
+  if ($(".grid_tile:not(.blueTile)").length <= 1) {
     return true;
   }
   return false;
@@ -97,6 +98,6 @@ function randomTile() {
   var rand =  Math.floor(Math.random()*20);
   var el = $(".grid_tile")[rand];
   if($(el).hasClass("redTile") || $(el).hasClass("blueTile") || $(el).hasClass("greenTile"))
-    return randomTile();
+    rand = randomTile();
   return rand;
 }
