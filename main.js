@@ -7,28 +7,38 @@ addTile(randomTile(), "blueTile");
 window.setInterval(function(){
   if (time <= 0) {
     $(".js-time").text("Time: " + 0);
-    alert("Game Over! Your score: " + score);
-    start();
+    gameOver("timeout");
   }
   else {
-  time--;
-  $(".js-time").text("Time: " + time);
+    time--;
+    $(".js-time").text("Time: " + time);
   }
 }, 1000);
 
 window.setInterval(function(){
- var rand = Math.floor(Math.random()*50);
- if (rand === 13 || rand === 29 || rand === 26) {
-  addTile(randomTile(), "greenTile");
- }
- else if (rand < 7){
-  addTile(randomTile(), "redTile");
- }
- else
-  addTile(randomTile(), "blueTile");
+  var rand = Math.floor(Math.random()*50);
+  if (isGridFull() === false) {
+    if (rand === 13 || rand === 29 || rand === 26) {
+      addTile(randomTile(), "greenTile");
+    }
+    else if (rand < 7){
+      addTile(randomTile(), "redTile");
+    }
+    else
+      addTile(randomTile(), "blueTile");
+  }
+  else {
+    gameOver("full");
+  }
 
 }, 1000);
 
+
+function gameOver(e) {
+  time = 0;
+  alert("Game Over! Your score: " + score + " Reason: " + e);
+  start();
+}
 
 function removeTile(el) {
   $(el).removeClass("greenTile");
@@ -74,6 +84,13 @@ function select(el) {
   }
   $(".js-score").text("Score: " + score);
   $(".js-time").text("Time: " + time);
+}
+
+function isGridFull() {
+  if ($(".grid_tile:not(.blueTile)").length === 0) {
+    return true;
+  }
+  return false;
 }
 
 function randomTile() {
