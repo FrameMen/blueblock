@@ -1,13 +1,13 @@
 var score = 0;
 var time = 30;
-
+alert("This game is under heavy development! Therefore, there are still some bugs.");
 $(".js-time").text("Time: " + time);
 addTile(randomTile(), "blueTile");
 
 window.setInterval(function(){
   if (time <= 0) {
     $(".js-time").text("Time: " + 0);
-    alert("Game Over! Looooooser!");
+    alert("Game Over! Your score: " + score);
     start();
   }
   else {
