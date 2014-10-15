@@ -69,7 +69,8 @@ function select(el) {
   if ($(el).hasClass("blueTile")) {
     score++;
     addTile(randomTile(), "blueTile");
-    removeTile(el);
+    if (isGridFull() === false)
+      removeTile(el);
   }
   else if ($(el).hasClass("redTile")) {
     removeTile(el);
