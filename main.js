@@ -80,6 +80,6 @@ function randomTile() {
   var rand =  Math.floor(Math.random()*20);
   var el = $(".grid_tile")[rand];
   if($(el).hasClass("redTile") || $(el).hasClass("blueTile") || $(el).hasClass("greenTile"))
-    randomTile();
+    return randomTile();
   return rand;
 }
