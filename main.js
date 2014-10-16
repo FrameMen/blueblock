@@ -206,7 +206,7 @@ function option(){
 }
 
 function showGameOver(){
-
+  
 }
 
 function changeSquareToBlue(el){
