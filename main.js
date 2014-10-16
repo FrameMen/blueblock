@@ -2,25 +2,24 @@
 //for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/15))] * 800))}
 
 var score;
+var mul;
+var mulTimeout;
 var time;
 var tileInterval;
 var timerIndex = 0;
 var intervalTime= [1000,949,901,856,814,775,738,703,671,641,613,586,561,538,517,496,477,460,443,427,413,399,386,374,363,353,343,334,325,317,310,303,296,290,284,279,274,269,265,260,257,253,250,246,243,241,238,236,233,231,229,227,226,224,222,221,220,218,217,216,215];
 
 calcLUT();
-start();
 alert("This game is under heavy development! Therefore, there are still some bugs.");
-$(".js-time").text("Time: " + time);
-addTile(randomTile(), "blueTile");
+start();
 
 window.setInterval(function(){
   if (time <= 0) {
-    $(".js-time").text("Time: " + 0);
     gameOver("timeout");
   }
   else {
+     printStat();
     time--;
-    $(".js-time").text("Time: " + time);
   }
 
   timerIndex++;
@@ -28,13 +27,12 @@ window.setInterval(function(){
     timerIndex = intervalTime.length - 1;
   clearInterval(tileInterval);
   setTileInterval();
-  console.log(intervalTime[timerIndex]);
 }, 1000);
 
 
 function calcLUT() {
 var a = new Array();
-for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 700))}
+for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 750))}
   intervalTime = a;
 }
 
@@ -58,8 +56,7 @@ tileInterval = window.setInterval(function(){
 
 function gameOver(e) {
   time = 0;
-  $(".js-score").text("Score: " + score);
-  $(".js-time").text("Time: " + time);
+  printStat();
   alert("Game Over! Your score: " + score + " Reason: " + e);
   start();
 }
@@ -84,34 +81,53 @@ function addTile(index, el) {
   else
     gameOver("full");
 }
+
 function start() {
   score = 0;
   time = 60;
+  mul = 1;
+  mulTimeout = 1;
   timerIndex = 0;
+  printStat();
+  removeTile(".grid_tile");
+  addTile(randomTile(), "blueTile");
+}
+
+function printStat() {
   $(".js-score").text("Score: " + score);
   $(".js-time").text("Time: " + time);
-  removeTile(".grid_tile");
+  $(".js-mul").text("x" + mul);
 }
 
 function select(el) {
   if ($(el).hasClass("blueTile")) {
-    score++;
+    score += 1*mul;
+    mulTimeout++;
     removeTile(el);
   }
   else if ($(el).hasClass("redTile")) {
+    mulTimeout = 0;
+    mul = 1;
     removeTile(el);
     time -= 10;
   }
   else if ($(el).hasClass("greenTile")) {
     removeTile(el);
-    score += 5;
+    mulTimeout++;
+    score += 5 * mul;
     time += 5;
   }
   else {
+    mulTimeout = 0;
+    mul = 1;
     time -=2;
   }
-  $(".js-score").text("Score: " + score);
-  $(".js-time").text("Time: " + time);
+  printStat();
+  console.log(mulTimeout);
+  if (mulTimeout > 20) {
+    mulTimeout = 0;
+    mul *=2;
+  }
 }
 
 function isGridFull() {
