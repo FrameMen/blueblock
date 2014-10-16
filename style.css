@@ -101,7 +101,30 @@ a:focus {
   margin-top: 10px;
   cursor: pointer;
 }
-
+.view-howTo {
+  max-width: 206px;
+  margin: auto;
+  font-family: "Roboto Condensed", Roboto, "Helvetica Neue", Helvetica, Segoe, Arial, sans-serif;
+}
+.title-howto {
+  font-family: 'RexliaRg-Regular';
+  width: 100%;
+  line-height: 40px;
+  font-size: 30px;
+  border: 4px solid #000;
+  margin-top: 10px;
+}
+.square-howto {
+  width: 50px;
+  border: 2px solid #000;
+  margin-top: 10px;
+}
+.body-howto{
+  font-family: 'RexliaRg-Regular';
+  width: 100%;
+  line-height: 30px;
+  font-size: 20px;
+}
 .credits {
 }
 .blueTile {
