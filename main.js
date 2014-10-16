@@ -231,7 +231,7 @@ function addEvents(){
 }
 
 function backBtn() {
-
+  showStart();
 }
 
 function saveScore() {
