@@ -131,6 +131,14 @@ section{
   border: 4px solid #000;
   margin-top: 10px;
 }
+.subtitle-credits {
+  line-height: 30px;
+  font-size: 20px;
+}
+.body-credits {
+  line-height: 20px;
+  font-size: 15px;
+}
 .blueTile {
   background: blue;
 }
