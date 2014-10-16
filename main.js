@@ -65,7 +65,8 @@ function setTileInterval() {
 function gameOver(e) {
   time = 0;
   printStat();
-  alert("Game Over! Your score: " + score + " Reason: " + e);
+  //alert("Game Over! Your score: " + score + " Reason: " + e);
+  showGameOver();
   start();
 }
 
@@ -165,6 +166,7 @@ function showStart(){
   $(".view-howTo").hide();
   $(".view-option").hide();
   $(".view-credits").hide();
+  $(".view-gameover").hide();
 }
 
 function showGame(){
@@ -173,6 +175,7 @@ function showGame(){
   $(".view-howTo").hide();
   $(".view-option").hide();
   $(".view-credits").hide();
+  $(".view-gameover").hide();
 }
 
 function credits(){
@@ -181,6 +184,7 @@ function credits(){
   $(".view-howTo").hide();
   $(".view-option").hide();
   $(".view-credits").show();
+  $(".view-gameover").hide();
 }
 
 function howTo(){
@@ -189,6 +193,7 @@ function howTo(){
   $(".view-option").hide();
   $(".view-howTo").show();
   $(".view-credits").hide();
+  $(".view-gameover").hide();
 }
 
 function option(){
@@ -197,6 +202,11 @@ function option(){
   $(".view-option").show();
   $(".view-howTo").hide();
   $(".view-credits").hide();
+  $(".view-gameover").hide();
+}
+
+function showGameOver(){
+
 }
 
 function changeSquareToBlue(el){
