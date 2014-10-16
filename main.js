@@ -37,7 +37,7 @@ function addTime() {
 
 function calcLUT() {
   var a = new Array();
-  for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 750))}
+  for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 800))}
   intervalTime = a;
 }
 
