@@ -163,7 +163,7 @@ function showStart(){
   $(".view-start").show();
   $(".view-game").hide();
   $(".view-howTo").hide();
-  $(".view-opiton").hide();
+  $(".view-option").hide();
   $(".view-credits").hide();
 }
 
@@ -171,7 +171,7 @@ function showGame(){
   $(".view-start").hide();
   $(".view-game").show();
   $(".view-howTo").hide();
-  $(".view-opiton").hide();
+  $(".view-option").hide();
   $(".view-credits").hide();
 }
 
@@ -179,14 +179,14 @@ function credits(){
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-howTo").hide();
-  $(".view-opiton").show();
+  $(".view-option").hide();
   $(".view-credits").show();
 }
 
 function howTo(){
   $(".view-start").hide();
   $(".view-game").hide();
-  $(".view-opiton").hide();
+  $(".view-option").hide();
   $(".view-howTo").show();
   $(".view-credits").hide();
 }
@@ -194,7 +194,7 @@ function howTo(){
 function option(){
   $(".view-start").hide();
   $(".view-game").hide();
-  $(".view-opiton").show();
+  $(".view-option").show();
   $(".view-howTo").hide();
   $(".view-credits").hide();
 }
