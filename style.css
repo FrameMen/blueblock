@@ -143,6 +143,10 @@ section{
   line-height: 20px;
   font-size: 15px;
 }
+
+.gameover{
+  
+}
 .blueTile {
   background: blue;
 }
