@@ -5,51 +5,57 @@ var score;
 var mul;
 var mulTimeout;
 var time;
+var timeInterval;
 var tileInterval;
 var timerIndex = 0;
 var intervalTime= [1000,949,901,856,814,775,738,703,671,641,613,586,561,538,517,496,477,460,443,427,413,399,386,374,363,353,343,334,325,317,310,303,296,290,284,279,274,269,265,260,257,253,250,246,243,241,238,236,233,231,229,227,226,224,222,221,220,218,217,216,215];
 
 calcLUT();
+$(".game").hide();
+$(".start").show();
 alert("This game is under heavy development! Therefore, there are still some bugs.");
-start();
 
-window.setInterval(function(){
-  if (time <= 0) {
-    gameOver("timeout");
-  }
-  else {
-     printStat();
-    time--;
-  }
+//start();
 
-  timerIndex++;
-  if (intervalTime[timerIndex] === undefined)
-    timerIndex = intervalTime.length - 1;
-  clearInterval(tileInterval);
-  setTileInterval();
-}, 1000);
+function addTime() {
+  timeInterval = window.setInterval(function(){
+    if (time <= 0) {
+      gameOver("timeout");
+    }
+    else {
+      printStat();
+      time--;
+    }
+
+    timerIndex++;
+    if (intervalTime[timerIndex] === undefined)
+      timerIndex = intervalTime.length - 1;
+    clearInterval(tileInterval);
+    setTileInterval();
+  }, 1000);
+}
 
 
 function calcLUT() {
-var a = new Array();
-for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 750))}
+  var a = new Array();
+  for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 750))}
   intervalTime = a;
 }
 
 function setTileInterval() {
-tileInterval = window.setInterval(function(){
-  var rand = Math.floor(Math.random()*50);
-  if (rand === 13 || rand === 29 || rand === 26) {
-    addTile(randomTile(), "greenTile");
-  }
-  else if (rand < 7){
-    addTile(randomTile(), "redTile");
-  }
-  else{
-    addTile(randomTile(), "blueTile");
-  }
+  tileInterval = window.setInterval(function(){
+    var rand = Math.floor(Math.random()*50);
+    if (rand === 13 || rand === 29 || rand === 26) {
+      addTile(randomTile(), "greenTile");
+    }
+    else if (rand < 7){
+      addTile(randomTile(), "redTile");
+    }
+    else{
+      addTile(randomTile(), "blueTile");
+    }
 
-}, intervalTime[timerIndex]);
+  }, intervalTime[timerIndex]);
 
 }
 
@@ -89,6 +95,10 @@ function start() {
   mulTimeout = 1;
   timerIndex = 0;
   printStat();
+  $(".start").hide();
+  $(".game").show();
+  clearInterval(timeInterval);
+  addTime();
   removeTile(".grid_tile");
   addTile(randomTile(), "blueTile");
 }
@@ -132,11 +142,11 @@ function select(el) {
 
 function isGridFull() {
   if ($(".grid_tile:not(.blueTile)").length <= 1)
-        return true;
-    if ($(".grid_tile:not(.greenTile)").length <= 1)
-        return true;
-      if ($(".grid_tile:not(.blueTile)").length <= 1)
-        return true;
+    return true;
+  if ($(".grid_tile:not(.greenTile)").length <= 1)
+    return true;
+  if ($(".grid_tile:not(.blueTile)").length <= 1)
+    return true;
   return false;
 }
 
