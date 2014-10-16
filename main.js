@@ -1,6 +1,6 @@
 //var a = new Array();
 //for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/15))] * 800))}
-
+//black square &#9632;
 var score;
 var mul;
 var mulTimeout;
@@ -94,8 +94,7 @@ function start() {
   mulTimeout = 1;
   timerIndex = 0;
   printStat();
-  $(".start").hide();
-  $(".game").show();
+  showGame();
   clearInterval(timeInterval);
   addTime();
   removeTile(".grid_tile");
@@ -160,6 +159,14 @@ function randomTile() {
 function showStart(){
   $(".view-start").show();
   $(".view-game").hide();
+  $(".view-howTo").hide();
+  $(".view-opiton").hide();
+  $(".view-credits").hide();
+}
+
+function showGame(){
+  $(".view-start").hide();
+  $(".view-game").show();
   $(".view-howTo").hide();
   $(".view-opiton").hide();
   $(".view-credits").hide();

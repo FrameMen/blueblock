@@ -15,15 +15,18 @@
   </head>
   <body>
     <section class="view-start">
-      <div class="header">blueblock</div>
-      <div class="menu start" onclick="start()"> ■ Play</div>
-      <div class="menu howTo" onclick="howTo()"> ■ How-To</div>
-      <div class="menu option" onclick="option()"> ■ Option</div>
-      <div class="menu credits" onclick="credits()"> ■ Credits</div>
+      <div class="header">
+        <div id="first-line" class="line">Blue</div>
+        <div id="second-line" class="line">Block</div>
+      </div>
+      <div class="menu start" onclick="start()"> &#9633; play</div>
+      <div class="menu howTo" onclick="howTo()"> &#9633; how-to</div>
+      <div class="menu option" onclick="option()"> &#9633; option</div>
+      <div class="menu credits" onclick="credits()"> &#9633; credits</div>
     </section>
 
     <section class="view-game">
-      <div class="header"> 
+      <div>
         <h1 class="js-time">Time:</h1>
       </div>
 
@@ -76,5 +79,4 @@
     <script type="text/javascript" src="jquery-2.1.1.js"></script>
     <script type="text/javascript" src="main.js"></script>
   </body>
-
 </html>
