@@ -113,6 +113,20 @@ section{
   display: inline-block;
   width: 100%;
 }
+.time {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.back-game {
+  margin-right: 50px;
+  margin-bottom: 10px;
+   vertical-align: bottom;
+   display: inline-block;
+   border-top: 15px solid #fff;
+   border-right: 15px solid black;
+   border-bottom: 15px solid #fff;
+}
 
 .back {
    vertical-align: bottom;
