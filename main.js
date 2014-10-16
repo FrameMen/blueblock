@@ -219,3 +219,6 @@ function addEvents(){
     changeSquareToBlue(this)
   });
 }
+
+function saveScore() {
+}

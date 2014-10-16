@@ -16,10 +16,7 @@
 }
 html,
 body {
-	height: 100%;
 	overflow-x: hidden;
-	margin: 0;
-	padding: 0;
 	font-size: 16px;
 	text-align: center;
 	line-height: 1.5;
@@ -34,12 +31,11 @@ a:focus {
 	border-bottom-width: 1.5px;
 	border-bottom-style: solid;
 }
-.container {
+section{
+  width: 206px;
+  margin: auto;
 }
-.title {
-	margin-bottom: 0.5em;
-	font-size: 40px;
-	font-weight: 200;
+.container {
 }
 .grid_row {
   height: 50px;
@@ -70,22 +66,18 @@ a:focus {
   width: 53px;
 }
 .view-start {
-  max-width: 206px;
-  margin: auto;
-  font-family: "Roboto Condensed", Roboto, "Helvetica Neue", Helvetica, Segoe, Arial, sans-serif;
 }
 .header {
-  font-family: 'RexliaRg-Regular';
   width: 100%;
   line-height: 40px;
   border: 4px solid #000;
   margin-top: 10px;
 }
 .line {
-  font-family: 'RexliaRg-Regular';
   width: 100%;
   line-height: 40px;
   font-size: 30px;
+
 }
 #first-line{
   margin-left: -30px;
@@ -94,21 +86,22 @@ a:focus {
   margin-left: 10px;
 }
 .menu {
-  font-family: 'RexliaRg-Regular';
-  width: 100%;
   line-height: 40px;
   border: 4px solid #000;
   margin-top: 10px;
   cursor: pointer;
 }
-.view-howTo {
-  max-width: 206px;
+@media(max-width: 275px) {
+section{
+  width: auto;
   margin: auto;
-  font-family: "Roboto Condensed", Roboto, "Helvetica Neue", Helvetica, Segoe, Arial, sans-serif;
 }
+}
+.js-square {
+  color: blue;
+}
+
 .title-howto {
-  font-family: 'RexliaRg-Regular';
-  width: 100%;
   line-height: 40px;
   font-size: 30px;
   border: 4px solid #000;
@@ -120,7 +113,6 @@ a:focus {
   margin-top: 10px;
 }
 .body-howto{
-  font-family: 'RexliaRg-Regular';
   width: 100%;
   line-height: 30px;
   font-size: 20px;
