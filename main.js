@@ -1,6 +1,7 @@
 //var a = new Array();
 //for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/15))] * 800))}
 //black square &#9632;
+//empty square &#9633;
 var score;
 var mul;
 var mulTimeout;
@@ -10,7 +11,9 @@ var tileInterval;
 var timerIndex = 0;
 var intervalTime= [1000,949,901,856,814,775,738,703,671,641,613,586,561,538,517,496,477,460,443,427,413,399,386,374,363,353,343,334,325,317,310,303,296,290,284,279,274,269,265,260,257,253,250,246,243,241,238,236,233,231,229,227,226,224,222,221,220,218,217,216,215];
 
+
 calcLUT();
+addEvents();
 showStart();
 alert("This game is under heavy development! Therefore, there are still some bugs.");
 
@@ -194,4 +197,25 @@ function option(){
   $(".view-opiton").show();
   $(".view-howTo").hide();
   $(".view-credits").hide();
+}
+
+function changeSquareToBlue(el){
+  //black square &#9632;
+  //empty square &#9633;
+  $(el).find(".js-square").html("&#9632;").css('color', 'blue');
+}
+
+function changeSquareToEmty(el){
+  //black square &#9632;
+  //empty square &#9633;
+  $(el).find(".js-square").html("&#9633;").css('color', 'blue');
+}
+
+function addEvents(){
+  $(".menu").mouseleave(function (el) {
+    changeSquareToEmty(this)
+  });
+  $(".menu").mouseenter(function (el) {
+    changeSquareToBlue(this)
+  });
 }
