@@ -11,8 +11,7 @@ var timerIndex = 0;
 var intervalTime= [1000,949,901,856,814,775,738,703,671,641,613,586,561,538,517,496,477,460,443,427,413,399,386,374,363,353,343,334,325,317,310,303,296,290,284,279,274,269,265,260,257,253,250,246,243,241,238,236,233,231,229,227,226,224,222,221,220,218,217,216,215];
 
 calcLUT();
-$(".game").hide();
-$(".start").show();
+showStart();
 alert("This game is under heavy development! Therefore, there are still some bugs.");
 
 //start();
@@ -157,9 +156,35 @@ function randomTile() {
     rand = randomTile();
   return rand;
 }
-function exit() {
-    if (confirm("Exit Game?")) {
-          window.close();
-            }
+
+function showStart(){
+  $(".view-start").show();
+  $(".view-game").hide();
+  $(".view-howTo").hide();
+  $(".view-opiton").hide();
+  $(".view-credits").hide();
 }
 
+function credits(){
+  $(".view-start").hide();
+  $(".view-game").hide();
+  $(".view-howTo").hide();
+  $(".view-opiton").show();
+  $(".view-credits").show();
+}
+
+function howTo(){
+  $(".view-start").hide();
+  $(".view-game").hide();
+  $(".view-opiton").hide();
+  $(".view-howTo").show();
+  $(".view-credits").hide();
+}
+
+function option(){
+  $(".view-start").hide();
+  $(".view-game").hide();
+  $(".view-opiton").show();
+  $(".view-howTo").hide();
+  $(".view-credits").hide();
+}
