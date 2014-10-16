@@ -157,3 +157,9 @@ function randomTile() {
     rand = randomTile();
   return rand;
 }
+function exit() {
+    if (confirm("Exit Game?")) {
+          window.close();
+            }
+}
+
