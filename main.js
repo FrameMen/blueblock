@@ -220,5 +220,9 @@ function addEvents(){
   });
 }
 
+function backBtn() {
+
+}
+
 function saveScore() {
 }
