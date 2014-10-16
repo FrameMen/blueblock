@@ -119,7 +119,7 @@ section{
    margin-left: -50px;
    display: inline-block;
    border-top: 25px solid #fff;
-   border-right: 25px solid black; 
+   border-right: 25px solid black;
    border-bottom: 25px solid #fff;
 }
 .square-howto {
@@ -154,7 +154,7 @@ section{
 }
 
 .gameover{
-  
+
 }
 .blueTile {
   background: blue;
