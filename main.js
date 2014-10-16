@@ -67,7 +67,7 @@ function gameOver(e) {
   printStat();
   //alert("Game Over! Your score: " + score + " Reason: " + e);
   showGameOver();
-  start();
+  //start();
 }
 
 function removeTile(el) {
@@ -206,7 +206,12 @@ function option(){
 }
 
 function showGameOver(){
-  
+  $(".view-start").hide();
+  $(".view-game").hide();
+  $(".view-option").hide();
+  $(".view-howTo").hide();
+  $(".view-credits").hide();
+  $(".view-gameover").show();
 }
 
 function changeSquareToBlue(el){
