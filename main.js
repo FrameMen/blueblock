@@ -98,7 +98,6 @@ function start() {
   mulTimeout = 1;
   timerIndex = 0;
   printStat();
-  showGame();
   clearInterval(timeInterval);
   addTime();
   removeTile(".grid_tile");
@@ -170,15 +169,18 @@ function showStart(){
 }
 
 function showGame(){
+  falling();
   $(".view-start").hide();
   $(".view-game").show();
   $(".view-howTo").hide();
   $(".view-option").hide();
   $(".view-credits").hide();
   $(".view-gameover").hide();
+  start();
 }
 
 function credits(){
+  falling();
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-howTo").hide();
@@ -188,6 +190,7 @@ function credits(){
 }
 
 function howTo(){
+  falling();
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-option").hide();
@@ -197,6 +200,7 @@ function howTo(){
 }
 
 function option(){
+  falling();
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-option").show();
@@ -240,4 +244,18 @@ function backBtn() {
 }
 
 function saveScore() {
+}
+
+function falling(){
+  //$( ".menu" ).click(function() {
+var el = $( ".menu" );
+while(el.lenght === 0){
+
+$( ".menu" ).animate({
+top:'1000px'
+}, 1500,
+function(){} )
+el=$(el).next();
+//});
+ }
 }

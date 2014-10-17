@@ -13,6 +13,7 @@
 	box-sizing: border-box;
 	font-family: 'RexliaRg-Regular';
 	color: #000;
+  position: relative;
 }
 html,
 body {
