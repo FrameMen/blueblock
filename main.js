@@ -66,6 +66,10 @@ function gameOver(e) {
   time = 0;
   printStat();
   //alert("Game Over! Your score: " + score + " Reason: " + e);
+  var game = {"player" : "julian", "score" : 150}
+  clearInterval(tileInterval);
+  clearInterval(timeInterval);
+  pushNewScore(game);
   showGameOver();
   //start();
 }
@@ -134,7 +138,6 @@ function select(el) {
     time -=2;
   }
   printStat();
-  console.log(mulTimeout);
   if (mulTimeout > 20) {
     mulTimeout = 0;
     mul *=2;
@@ -258,4 +261,25 @@ function(){} )
 el=$(el).next();
 //});
  }
+}
+
+function testScoreList() {
+  var game = {"player" : "julian", "score" : 150}
+  pushNewScore(game);
+}
+
+function initScoreList() {
+  var list = new Array();
+  localStorage.scoreList = JSON.stringify(list);
+}
+
+function pushNewScore(game) {
+  if (localStorage.scoreList === undefined) {
+    initScoreList();
+  }
+  var list = JSON.parse(localStorage.scoreList);
+  console.log(list);
+
+  list[list.length] = game;
+  localStorage.scoreList = JSON.stringify(list);
 }
