@@ -218,7 +218,7 @@ function option(){
 }
 
 function score(){
-  falling()
+  falling();
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-option").hide();
