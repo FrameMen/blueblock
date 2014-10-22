@@ -190,7 +190,6 @@ setTimeout(function(){
 }
 
 function credits(){
-  falling();
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-howTo").hide();
@@ -201,7 +200,6 @@ function credits(){
 }
 
 function howTo(){
-  falling();
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-option").hide();
@@ -212,7 +210,6 @@ function howTo(){
 }
 
 function option(){
-  falling();
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-option").show();
