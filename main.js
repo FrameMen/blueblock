@@ -433,7 +433,7 @@ setTimeout(function(){
 falling(callback, $(el).prev(".menu"));
 
 
-}, 500);
+}, 50); /*delay between elements falling*/
 
 
 }
