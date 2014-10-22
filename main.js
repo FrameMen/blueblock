@@ -218,7 +218,6 @@ function option(){
 }
 
 function score(){
-  falling();
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-option").hide();
