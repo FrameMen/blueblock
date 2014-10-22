@@ -169,6 +169,7 @@ function showStart(){
   $(".view-option").hide();
   $(".view-credits").hide();
   $(".view-gameover").hide();
+  $(".view-score").hide();
 }
 
 function showGame(){
@@ -179,6 +180,7 @@ function showGame(){
   $(".view-option").hide();
   $(".view-credits").hide();
   $(".view-gameover").hide();
+  $(".view-score").hide();
   start();
 }
 
@@ -190,6 +192,7 @@ function credits(){
   $(".view-option").hide();
   $(".view-credits").show();
   $(".view-gameover").hide();
+  $(".view-score").hide();
 }
 
 function howTo(){
@@ -200,6 +203,7 @@ function howTo(){
   $(".view-howTo").show();
   $(".view-credits").hide();
   $(".view-gameover").hide();
+  $(".view-score").hide();
 }
 
 function option(){
@@ -210,6 +214,18 @@ function option(){
   $(".view-howTo").hide();
   $(".view-credits").hide();
   $(".view-gameover").hide();
+  $(".view-score").hide();
+}
+
+function score(){
+  falling()
+  $(".view-start").hide();
+  $(".view-game").hide();
+  $(".view-option").hide();
+  $(".view-howTo").hide();
+  $(".view-credits").hide();
+  $(".view-gameover").hide();
+  $(".view-score").show();
 }
 
 function showGameOver(){
@@ -219,6 +235,7 @@ function showGameOver(){
   $(".view-howTo").hide();
   $(".view-credits").hide();
   $(".view-gameover").show();
+  $(".view-score").hide();
 }
 
 function changeSquareToBlue(el){
