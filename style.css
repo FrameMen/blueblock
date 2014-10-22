@@ -168,18 +168,18 @@ section{
   font-size: 15px;
 }
 
-.title-score{
+.title-score1 {
   line-height: 40px;
   font-size: 30px;
   border: 4px solid #000;
   margin-top: 10px;
 }
 
-.cmd-score{
+.cmd-score1 {
   line-height: 30px;
   font-size: 20px;
 }
-.gameover{
+.gameover {
 
 }
 .blueTile {
