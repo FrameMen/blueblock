@@ -15,6 +15,9 @@ var intervalTime= [1000,949,901,856,814,775,738,703,671,641,613,586,561,538,517,
 calcLUT();
 addEvents();
 showStart();
+nick();
+language();
+violence();
 alert("This game is under heavy development! Therefore, there are still some bugs.");
 
 //start();
@@ -66,10 +69,10 @@ function gameOver(e) {
   time = 0;
   printStat();
   //alert("Game Over! Your score: " + score + " Reason: " + e);
-  var game = {"player" : "julian", "score" : 150}
+  var game = {"player" : "julian", "score" : score}
+  pushNewScore(game);
   clearInterval(tileInterval);
   clearInterval(timeInterval);
-  pushNewScore(game);
   showGameOver();
   //start();
 }
@@ -220,7 +223,6 @@ function option(){
 }
 
 function score(){
-  falling();
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-option").hide();
@@ -231,6 +233,9 @@ function score(){
 }
 
 function showGameOver(){
+  var i = 0;
+  var el = $(".js-rank:first");
+  loadScore(el, i);
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-option").hide();
@@ -238,6 +243,15 @@ function showGameOver(){
   $(".view-credits").hide();
   $(".view-gameover").show();
   $(".view-score").hide();
+}
+
+function loadScore(el, i) {
+  var list = JSON.parse(localStorage.scoreList);
+  $(el).text((i+1) + ". " + list[i].score);
+  if (i + 1 < list.length) {
+  console.log(el);
+    loadScore($(el).next(".js-rank"), i+1);
+  }
 }
 
 function changeSquareToBlue(el){
@@ -266,7 +280,22 @@ function backBtn() {
   showStart();
 }
 
-function saveScore() {
+function calcLUT() {
+  var a = new Array();
+  for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 775))}
+  intervalTime = a;
+}
+function nick() {
+  var a = new Array();
+  a[100];
+}
+
+function language() {
+
+}
+
+function violence() {
+
 }
 
 function falling(callback, el){

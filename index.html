@@ -20,10 +20,12 @@
         <div id="second-line" class="line">Block</div>
       </div>
 
-      <div class="menu start" onclick="falling(showGame);"> <span class="js-square">&#9633;</span> play</div>
-      <div class="menu howTo" onclick="falling(howTo)"> <span class="js-square">&#9633;</span>  how-to</div>
-      <div class="menu option" onclick="falling(option)"> <span class="js-square">&#9633;</span> option</div>
-      <div class="menu credits" onclick="falling(credits)"> <span class="js-square">&#9633;</span> credits</div>
+
+      <div class="menu start" onclick="falling(showGame);"> <span class="js-square">&#9633;</span>play</div>
+      <div class="menu howTo" onclick="falling(howTo)"> <span class="js-square">&#9633;</span>how-to</div>
+      <div class="menu js-menu-score" onclick="score()"> <span class="js-square">&#9633;</span>score</div>
+      <div class="menu option" onclick="falling(option)"> <span class="js-square">&#9633;</span>option</div>
+      <div class="menu credits" onclick="falling(credits)"> <span class="js-square">&#9633;</span>credits</div>
     </section>
 
     <section class="view-game">
@@ -98,8 +100,11 @@
       </div>
       <div class="cmd-option"> </div>
       <div class="cmd-option"> Language:</div>
+      <input class="js-language"> </input>
       <div class="cmd-option"> Violence:</div>
-      <div class="cmd-option"> </div>
+      <input class="js-violence"> </input>
+      <div class="cmd-option"> Nickname:</div>
+      <input class="js-nick"></input>
       <div class="cmd-option"> </div>
     </section>
 
@@ -134,11 +139,11 @@
        <div class="back"></div>
        <h1 class="title">Game Over</h1>
      </div>
-     <div class="js-score score bottom">Score: </div>
-     <div class="js-score score bottom">Score: </div>
-     <div class="js-score score bottom">Score: </div>
-     <div class="js-score score bottom">Score: </div>
-     <div class="js-score score bottom">Score: </div>
+     <div class="js-rank score bottom">Score: </div>
+     <div class="js-rank score bottom">Score: </div>
+     <div class="js-rank score bottom">Score: </div>
+     <div class="js-rank score bottom">Score: </div>
+     <div class="js-rank score bottom">Score: </div>
      <div class="botton-gameover" onclick="start()">Restart</div>
    </section>
 
@@ -147,11 +152,11 @@
        <div class="back"></div>
        <h1 class="title">Score</h1>
      </div>
-     <div class="cmd-score"> 1.</div>
-     <div class="cmd-score"> 2.</div>
-     <div class="cmd-score"> 3.</div>
-     <div class="cmd-score"> 4.</div>
-     <div class="cmd-score"> 5.</div>
+     <div class="cmd-score"> 1. </div>
+     <div class="cmd-score"> 2. </div>
+     <div class="cmd-score"> 3. </div>
+     <div class="cmd-score"> 4. </div>
+     <div class="cmd-score"> 5. </div>
    </section>
 
     <script type="text/javascript" src="jquery-2.1.1.js"></script>
