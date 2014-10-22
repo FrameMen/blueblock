@@ -20,11 +20,12 @@
         <div id="second-line" class="line">Block</div>
       </div>
 
-      <div class="menu start" onclick="showGame()"> <span class="js-square">&#9633;</span><div class="l_play">play</div></div>
-      <div class="menu howTo" onclick="howTo()"> <span class="js-square">&#9633;</span><div class="l_howTo">how-to</div></div>
-      <div class="menu js-menu-score" onclick="score()"> <span class="js-square">&#9633;</span><div class="l_score">score</div></div>
-      <div class="menu option" onclick="option()"> <span class="js-square">&#9633;</span><div class="l_option">option</div></div>
-      <div class="menu credits" onclick="credits()"> <span class="js-square">&#9633;</span><div class="l_credits">credits</div></div>
+      <div class="menu start" onclick="falling(showGame)"> <span class="js-square">&#9633;</span><div class="l_play">play</div></div>
+      <div class="menu howTo" onclick="falling(howTo)"> <span class="js-square">&#9633;</span><div class="l_howTo">how-to</div></div>
+      <div class="menu js-menu-score" onclick="falling(score)"> <span class="js-square">&#9633;</span><div class="l_score">score</div></div>
+      <div class="menu option" onclick="falling(option)"> <span class="js-square">&#9633;</span><div class="l_option">option</div></div>
+      <div class="menu credits" onclick="falling(credits)"> <span class="js-square">&#9633;</span><div class="l_credits">credits</div></div>
+
     </section>
 
     <section class="view-game">

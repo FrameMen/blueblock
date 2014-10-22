@@ -176,7 +176,9 @@ function showStart(){
 }
 
 function showGame(){
-  falling();
+
+setTimeout(function(){
+}, 50000);
   $(".view-start").hide();
   $(".view-game").show();
   $(".view-howTo").hide();
@@ -188,7 +190,6 @@ function showGame(){
 }
 
 function credits(){
-  falling();
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-howTo").hide();
@@ -199,7 +200,6 @@ function credits(){
 }
 
 function howTo(){
-  falling();
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-option").hide();
@@ -210,7 +210,6 @@ function howTo(){
 }
 
 function option(){
-  falling();
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-option").show();
@@ -220,7 +219,7 @@ function option(){
   $(".view-score").hide();
 }
 
-function score(){
+function showScore(){
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-option").hide();
@@ -274,6 +273,7 @@ function addEvents(){
 }
 
 function backBtn() {
+
   showStart();
 }
 
@@ -407,19 +407,40 @@ function violence() {
 
 }
 
-function falling(){
-  //$( ".menu" ).click(function() {
-var el = $( ".menu" );
-while(el.lenght === 0){
+function falling(callback, el){
+if(el=== undefined)
+var el = $( ".menu:last" );
+console.log(el);
 
-$( ".menu" ).animate({
-top:'1000px'
-}, 1500,
-function(){} )
-el=$(el).next();
-//});
- }
+console.log(el);
+$( el ).animate({
+top:window.innerHeight
+}, 1000,
+function(){
+  //showgame()
+if($(this)[0].className === $(".menu:first")[0].className )
+{
+callback();
+$( ".menu" ).css({
+top:"0px"
 }
+)
+}
+} );
+if($(el).prev(".menu").length > 0){
+setTimeout(function(){
+
+falling(callback, $(el).prev(".menu"));
+
+
+}, 500);
+
+
+}
+
+}
+
+
 
 function testScoreList() {
   var game = {"player" : "julian", "score" : 150}
