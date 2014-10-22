@@ -222,7 +222,7 @@ function option(){
   $(".view-score").hide();
 }
 
-function score(){
+function showScore(){
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-option").hide();
