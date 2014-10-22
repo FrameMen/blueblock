@@ -20,17 +20,17 @@
         <div id="second-line" class="line">Block</div>
       </div>
 
-      <div class="menu start" onclick="showGame()"> <span class="js-square">&#9633;</span>play</div>
-      <div class="menu howTo" onclick="howTo()"> <span class="js-square">&#9633;</span>how-to</div>
-      <div class="menu js-menu-score" onclick="score()"> <span class="js-square">&#9633;</span>score</div>
-      <div class="menu option" onclick="option()"> <span class="js-square">&#9633;</span>option</div>
-      <div class="menu credits" onclick="credits()"> <span class="js-square">&#9633;</span>credits</div>
+      <div class="menu start" onclick="showGame()"> <span class="js-square">&#9633;</span><div class="l_play">play</div></div>
+      <div class="menu howTo" onclick="howTo()"> <span class="js-square">&#9633;</span><div class="l_howTo">how-to</div></div>
+      <div class="menu js-menu-score" onclick="score()"> <span class="js-square">&#9633;</span><div class="l_score">score</div></div>
+      <div class="menu option" onclick="option()"> <span class="js-square">&#9633;</span><div class="l_option">option</div></div>
+      <div class="menu credits" onclick="credits()"> <span class="js-square">&#9633;</span><div class="l_credits">credits</div></div>
     </section>
 
     <section class="view-game">
       <div onclick="backBtn()">
         <div class="back-game"></div>
-        <h1 class="js-time time">Time:</h1>
+        <h1 class="js-time time l_time">Time:</h1>
       </div>
 
       <div class="grid">
@@ -68,7 +68,7 @@
       </div>
 
       <div class="bottom">
-        <h1 class="js-score score bottom">Score:</h1>
+        <h1 class="js-score score bottom l_scor">Score:</h1>
         <h1 class="js-mul mul bottom">x1</h1>
       </div>
     </section>
@@ -76,7 +76,7 @@
     <section class="view-howTo">
       <div onclick="backBtn()">
         <div class="back"></div>
-        <div class="title">How-To</div>
+        <div class="title l_how">How-To</div>
       </div>
       <div class="square-howto grid_row blueTile"> </div>
       <div class="body-howto"> Time: 0</div>
@@ -95,14 +95,14 @@
     <section class="view-option">
       <div onclick="backBtn()">
         <div class="back"></div>
-        <h1 class="title">Option</h1>
+        <h1 class="title l_opt">Option</h1>
       </div>
       <div class="cmd-option"> </div>
-      <div class="cmd-option"> Language:</div>
+      <div class="cmd-option l_language"> Language:</div>
       <input class="js-language"> </input>
-      <div class="cmd-option"> Violence:</div>
+      <div class="cmd-option l_violence"> Violence:</div>
       <input class="js-violence"> </input>
-      <div class="cmd-option"> Nickname:</div>
+      <div class="cmd-option l_nick"> Nickname:</div>
       <input class="js-nick"></input>
       <div class="cmd-option"> </div>
     </section>
@@ -110,33 +110,32 @@
     <section class="view-credits">
       <div onclick="backBtn()">
         <div class="back"></div>
-        <h1 class="title">Credits</h1>
+        <h1 class="title l_cred">Credits</h1>
       </div>
      <marquee behavior="scroll" direction="up" scrollamount="2" scrolldelay="1"
       onmouseover="this.stop()" onmouseout="this.start()"  height="100%" width="100%">
-      <div class="subtitle-credits"> Creatori e Sviluppatori</div>
+      <div class="subtitle-credits l_programmer"> Creators and Developers</div>
       <div class="body-credits"> Davide Corallo</div>
       <div class="body-credits"> Julian Sparver</div>
       <div class="body-credits"> Marco Tamagno</div>
       <p></p>
-      <div class="subtitle-credits"> Linguaggi</div>
+      <div class="subtitle-credits l_langProg"> Languages</div>
       <div class="body-credits"> CSS</div>
       <div class="body-credits"> HTML</div>
       <div class="body-credits"> Javascript</div>
       <p></p>
-      <div class="subtitle-credits"> Ringraziamenti</div>
-      <div class="body-credits"> Un ringraziamento da noi programmatori </div>
-      <div class="body-credits"> del vostro contributo per il download di</div>
-      <div class="body-credits"> BlueBlock, speriamo vivameente che vi sia</div>
-      <div class="body-credits"> piaciuto e vi siate divertiti</div>
-      <div class="body-credits"> </div>
+      <div class="subtitle-credits l_thanks"> Ringraziamenti</div>
+      <div class="body-credits l_bodyThanks"> Un ringraziamento da noi programmatori
+                                 del vostro contributo per il download di
+                                 BlueBlock, speriamo vivameente che vi sia
+                                 piaciuto e vi siate divertiti.</div>
      </marquee>
    </section>
 
    <section class="view-gameover">
       <div onclick="backBtn()">
        <div class="back"></div>
-       <h1 class="title">Game Over</h1>
+       <h1 class="title l_gameOver">Game Over</h1>
      </div>
      <div class="js-rank score bottom">Score: </div>
      <div class="js-rank score bottom">Score: </div>
@@ -149,7 +148,7 @@
    <section class="view-score">
      <div onclick="backBtn()">
        <div class="back"></div>
-       <h1 class="title">Score</h1>
+       <h1 class="title l_sc">Score</h1>
      </div>
      <div class="cmd-score"> 1. </div>
      <div class="cmd-score"> 2. </div>

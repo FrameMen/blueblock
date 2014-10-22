@@ -284,11 +284,123 @@ function calcLUT() {
 }
 function nick() {
   var a = new Array();
-  a[100];
 }
 
 function language() {
+  var l10n = {
+    "l10n_en":[
+     {"class":"l_play", "var":"play"},
+     {"class":"l_howTo", "var":"how-to"},
+     {"class":"l_score", "var":"score"},
+     {"class":"l_option", "var":"option"},
+     {"class":"l_credits", "var":"credits"},
+     {"class":"l_time", "var":"Time"},
+     {"class":"l_scor", "var":"Score"},
+     {"class":"l_how", "var":"How-To"},
+     {"class":"l_opt", "var":"Option"},
+     {"class":"l_language", "var":"Language"},
+     {"class":"l_violence", "var":"Violence"},
+     {"class":"l_nick", "var":"Nickname"},
+     {"class":"l_cred", "var":"Credis"},
+     {"class":"l_programmer", "var":"Creators and Developers"},
+     {"class":"l_langProg", "var":"Languages"},
+     {"class":"l_thanks", "var":""},
+     {"class":"l_bodyThanks", "var":""},
+     {"class":"l_gameOver", "var":"Game Over"},
+     {"class":"l_sc", "var":"Score"}
+    ],
 
+    "l10n_it":[
+     {"class":"l_play", "var":"gioca"},
+     {"class":"l_howTo", "var":"manuale"},
+     {"class":"l_score", "var":"punteggio"},
+     {"class":"l_option", "var":"opzioni"},
+     {"class":"l_credits", "var":"crediti"},
+     {"class":"l_time", "var":"Tempo"},
+     {"class":"l_score", "var":"Punteggio"},
+     {"class":"l_how", "var":"Manuale"},
+     {"class":"l_opt", "var":"Opzioni"},
+     {"class":"l_language", "var":"Lingua"},
+     {"class":"l_violence", "var":"Violenza"},
+     {"class":"l_nick", "var":"Soprannome"},
+     {"class":"l_cred", "var":"Crediti"},
+     {"class":"l_programmer", "var":"Creatori e Sviluppartori"},
+     {"class":"l_langProg", "var":"Linguaggi"},
+     {"class":"l_thanks", "var":"Ringraziamenti"},
+     {"class":"l_bodyThanks", "var":"Un ringraziamento da noi programmatori
+                                     del vostro contributo per il download di
+                                     BlueBlock, speriamo vivameente che vi sia
+                                     piaciuto e vi siate divertiti."},
+     {"class":"l_gameOver", "var":"Game Over"},
+     {"class":"l_sc", "var":"Punteggio"}
+    ],
+
+    "l10n_de":[
+     {"class":"l_play", "var":""},
+     {"class":"l_howTo", "var":""},
+     {"class":"l_score", "var":""},
+     {"class":"l_option", "var":""},
+     {"class":"l_credits", "var":""},
+     {"class":"l_time", "var":""},
+     {"class":"l_score", "var":""},
+     {"class":"l_how", "var":""},
+     {"class":"l_opt", "var":""},
+     {"class":"l_language", "var":""},
+     {"class":"l_violence", "var":""},
+     {"class":"l_nick", "var":""},
+     {"class":"l_cred", "var":""},
+     {"class":"l_programmer", "var":""},
+     {"class":"l_langProg", "var":""},
+     {"class":"l_thanks", "var":""},
+     {"class":"l_bodyThanks", "var":""},
+     {"class":"l_gameOver", "var":"Game Over"},
+     {"class":"l_sc", "var":""}
+    ],
+
+    "l10n_sp":[
+     {"class":"l_play", "var":""},
+     {"class":"l_howTo", "var":""},
+     {"class":"l_score", "var":""},
+     {"class":"l_option", "var":""},
+     {"class":"l_credits", "var":""},
+     {"class":"l_time", "var":""},
+     {"class":"l_score", "var":""},
+     {"class":"l_how", "var":""},
+     {"class":"l_opt", "var":""},
+     {"class":"l_language", "var":""},
+     {"class":"l_violence", "var":""},
+     {"class":"l_nick", "var":""},
+     {"class":"l_cred", "var":""},
+     {"class":"l_programmer", "var":""},
+     {"class":"l_langProg", "var":""},
+     {"class":"l_thanks", "var":""},
+     {"class":"l_bodyThanks", "var":""},
+     {"class":"l_gameOver", "var":"Game Over"},
+     {"class":"l_sc", "var":""}
+    ],
+
+    "l10n_fr":[
+     {"class":"l_play", "var":""},
+     {"class":"l_howTo", "var":""},
+     {"class":"l_score", "var":""},
+     {"class":"l_option", "var":""},
+     {"class":"l_credits", "var":""},
+     {"class":"l_time", "var":""},
+     {"class":"l_score", "var":""},
+     {"class":"l_how", "var":""},
+     {"class":"l_opt", "var":""},
+     {"class":"l_language", "var":""},
+     {"class":"l_violence", "var":""},
+     {"class":"l_nick", "var":""},
+     {"class":"l_cred", "var":""},
+     {"class":"l_programmer", "var":""},
+     {"class":"l_langProg", "var":""},
+     {"class":"l_thanks", "var":""},
+     {"class":"l_bodyThanks", "var":""},
+     {"class":"l_gameOver", "var":"Game Over"},
+     {"class":"l_sc", "var":""}
+    ]
+    }
 }
 
 function violence() {
