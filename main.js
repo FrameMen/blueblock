@@ -415,7 +415,7 @@ console.log(el);
 console.log(el);
 $( el ).animate({
 top:window.innerHeight
-}, 1000,
+}, 500,
 function(){
   //showgame()
 if($(this)[0].className === $(".menu:first")[0].className )
