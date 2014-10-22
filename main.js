@@ -15,6 +15,9 @@ var intervalTime= [1000,949,901,856,814,775,738,703,671,641,613,586,561,538,517,
 calcLUT();
 addEvents();
 showStart();
+nick();
+language();
+violence();
 alert("This game is under heavy development! Therefore, there are still some bugs.");
 
 //start();
@@ -274,6 +277,23 @@ function backBtn() {
   showStart();
 }
 
+function calcLUT() {
+  var a = new Array();
+  for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 775))}
+  intervalTime = a;
+}
+function nick() {
+  var a = new Array();
+  a[100];
+}
+
+function language() {
+
+}
+
+function violence() {
+
+}
 
 function falling(){
   //$( ".menu" ).click(function() {
