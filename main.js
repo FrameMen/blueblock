@@ -66,10 +66,10 @@ function gameOver(e) {
   time = 0;
   printStat();
   //alert("Game Over! Your score: " + score + " Reason: " + e);
-  var game = {"player" : "julian", "score" : 150}
+  var game = {"player" : "julian", "score" : score}
+  pushNewScore(game);
   clearInterval(tileInterval);
   clearInterval(timeInterval);
-  pushNewScore(game);
   showGameOver();
   //start();
 }
@@ -228,6 +228,9 @@ function score(){
 }
 
 function showGameOver(){
+  var i = 0;
+  var el = $(".js-rank:first");
+  loadScore(el, i);
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-option").hide();
@@ -235,6 +238,15 @@ function showGameOver(){
   $(".view-credits").hide();
   $(".view-gameover").show();
   $(".view-score").hide();
+}
+
+function loadScore(el, i) {
+  var list = JSON.parse(localStorage.scoreList);
+  $(el).text((i+1) + ". " + list[i].score);
+  if (i + 1 < list.length) {
+  console.log(el);
+    loadScore($(el).next(".js-rank"), i+1);
+  }
 }
 
 function changeSquareToBlue(el){
@@ -262,8 +274,6 @@ function backBtn() {
   showStart();
 }
 
-function saveScore() {
-}
 
 function falling(){
   //$( ".menu" ).click(function() {
