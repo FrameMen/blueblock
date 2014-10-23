@@ -103,8 +103,6 @@
       <input class="js-language"> </input>
       <div class="cmd-option l_violence"> Violence:</div>
       <input class="js-violence"> </input>
-      <div class="cmd-option l_nick"> Nickname:</div>
-      <input class="js-nick"></input>
       <div class="cmd-option"> </div>
     </section>
 
@@ -134,15 +132,14 @@
    </section>
 
    <section class="view-gameover">
-      <div onclick="backBtn()">
+      <div onclick="backBtnGameOver()">
        <div class="back"></div>
        <h1 class="title l_gameOver">Game Over</h1>
      </div>
 
-      <h1>Nickname</h1><input type="text" class="js-nick" name="fname" id='UserInput'>
+      <h1>Nickname</h1><input type="text" class="js-nick" oninput="setNick()" name="fname">
 
-      <div class="js-nick">Nickname:</div>
-     <div class="js-score bottom">Score: </div>
+     <div class="js-score bottom"></div>
    </section>
 
    <section class="view-score">
@@ -150,11 +147,11 @@
        <div class="back"></div>
        <h1 class="title l_sc">Score</h1>
      </div>
-     <div class="cmd-score"> 1. </div>
-     <div class="cmd-score"> 2. </div>
-     <div class="cmd-score"> 3. </div>
-     <div class="cmd-score"> 4. </div>
-     <div class="cmd-score"> 5. </div>
+     <div class="js-rank"></div>
+     <div class="js-rank"></div>
+     <div class="js-rank"></div>
+     <div class="js-rank"></div>
+     <div class="js-rank"></div>
    </section>
 
     <script type="text/javascript" src="jquery-2.1.1.js"></script>
