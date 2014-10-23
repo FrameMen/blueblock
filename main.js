@@ -15,8 +15,6 @@ var nick;
 calcLUT();
 addEvents();
 showStart();
-language();
-violence();
 alert("This game is under heavy development! Therefore, there are still some bugs.");
 
 //start();
@@ -33,7 +31,7 @@ function addTime() {
 
 			timerIndex++;
 			if (intervalTime[timerIndex] === undefined)
-			timerIndex = intervalTime.length - 1;
+				timerIndex = intervalTime.length - 1;
 			clearInterval(tileInterval);
 			setTileInterval();
 			}, 1000);
@@ -47,6 +45,7 @@ function calcLUT() {
 }
 
 function setTileInterval() {
+	if (time > 0) {
 	tileInterval = window.setInterval(function(){
 			var rand = Math.floor(Math.random()*50);
 			if (rand === 13 || rand === 29 || rand === 26) {
@@ -60,19 +59,17 @@ function setTileInterval() {
 			}
 
 			}, intervalTime[timerIndex]);
-
+}
 }
 
 
 function gameOver(e) {
 	time = 0;
 	printStat();
-	//alert("Game Over! Your score: " + score + " Reason: " + e);
 	var game = {"player" : localStorage.nick, "score" : score}
-	clearInterval(tileInterval);
 	clearInterval(timeInterval);
+	clearInterval(tileInterval);
 	showGameOver();
-	//start();
 }
 
 function removeTile(el) {
@@ -103,13 +100,14 @@ function start() {
 	mulTimeout = 1;
 	timerIndex = 0;
 	printStat();
-	clearInterval(timeInterval);
 	addTime();
 	removeTile(".grid_tile");
 	addTile(randomTile(), "blueTile");
 }
 
 function printStat() {
+	if ( time < 0 )
+		time = 0;
 	$(".js-score").text("Score: " + score);
 	$(".js-time").text("Time: " + time);
 	$(".js-mul").text("x" + mul);
@@ -241,7 +239,6 @@ function loadScore(el, i) {
 	var list = JSON.parse(localStorage.scoreList);
 	$(el).text(list[i].player + ": " + list[i].score);
 	if (i + 1 < list.length) {
-		console.log(el);
 		loadScore($(el).next(".js-rank"), i+1);
 	}
 }
@@ -406,9 +403,6 @@ function violence() {
 function falling(callback, el){
 	if(el=== undefined)
 		var el = $( ".menu:last" );
-	console.log(el);
-
-	console.log(el);
 	$( el ).animate({
 top:window.innerHeight
 }, 500,
@@ -438,7 +432,6 @@ if($(el).prev(".menu").length > 0){
 
 function setNick() {
 	localStorage.nick = $(".js-nick").val();
-	console.log("Nick: " + localStorage.nick);
 }
 
 function initScoreList() {
@@ -451,7 +444,6 @@ function pushNewScore(game) {
 		initScoreList();
 	}
 	var list = JSON.parse(localStorage.scoreList);
-	console.log(list);
 	var i = 0;
 	while (i < list.length && game.score < list[i].score) {
 		i++;
