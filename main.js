@@ -144,13 +144,10 @@ function select(el) {
 }
 
 function isGridFull() {
-	if ($(".grid_tile:not(.blueTile)").length <= 1)
+	if ($(".grid_tile:not(.blueTile):not(.greenTile):not(.redTile)").length <= 1)
 		return true;
-	if ($(".grid_tile:not(.greenTile)").length <= 1)
-		return true;
-	if ($(".grid_tile:not(.blueTile)").length <= 1)
-		return true;
-	return false;
+	else
+		return false;
 }
 
 function randomTile() {
