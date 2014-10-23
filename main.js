@@ -10,7 +10,7 @@ var timeInterval;
 var tileInterval;
 var timerIndex = 0;
 var intervalTime= [1000,949,901,856,814,775,738,703,671,641,613,586,561,538,517,496,477,460,443,427,413,399,386,374,363,353,343,334,325,317,310,303,296,290,284,279,274,269,265,260,257,253,250,246,243,241,238,236,233,231,229,227,226,224,222,221,220,218,217,216,215];
-
+var nick;
 
 calcLUT();
 addEvents();
@@ -67,9 +67,10 @@ function setTileInterval() {
 
 function gameOver(e) {
   time = 0;
+  nick = document.getElementById('UserInput').value;
   printStat();
   //alert("Game Over! Your score: " + score + " Reason: " + e);
-  var game = {"player" : "julian", "score" : score}
+  var game = {"player" : nick, "score" : score}
   pushNewScore(game);
   clearInterval(tileInterval);
   clearInterval(timeInterval);
@@ -102,6 +103,7 @@ function start() {
   score = 0;
   time = 60;
   mul = 1;
+  nick = document.getElementById('UserInput').value;
   mulTimeout = 1;
   timerIndex = 0;
   printStat();
@@ -114,6 +116,7 @@ function start() {
 function printStat() {
   $(".js-score").text("Score: " + score);
   $(".js-time").text("Time: " + time);
+  $(".js-nick").text("Nickname: " + nick);
   $(".js-mul").text("x" + mul);
 }
 
@@ -232,6 +235,7 @@ function showScore(){
 function showGameOver(){
   var i = 0;
   var el = $(".js-rank:first");
+  var nickname = $(".js-nick");
   loadScore(el, i);
   $(".view-start").hide();
   $(".view-game").hide();
@@ -244,7 +248,7 @@ function showGameOver(){
 
 function loadScore(el, i) {
   var list = JSON.parse(localStorage.scoreList);
-  $(el).text((i+1) + ". " + list[i].score);
+  $(el).text((i+1) + "." + list[i].score);
   if (i + 1 < list.length) {
   console.log(el);
     loadScore($(el).next(".js-rank"), i+1);
