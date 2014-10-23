@@ -70,7 +70,6 @@ function gameOver(e) {
   printStat();
   //alert("Game Over! Your score: " + score + " Reason: " + e);
   var game = {"player" : "julian", "score" : score}
-  pushNewScore(game);
   clearInterval(tileInterval);
   clearInterval(timeInterval);
   showGameOver();
@@ -458,7 +457,10 @@ function pushNewScore(game) {
   }
   var list = JSON.parse(localStorage.scoreList);
   console.log(list);
-
-  list[list.length] = game;
+  var i = 0;
+  while (game.score < list[i].score && i < list.length) {
+  i++;
+  }
+  list.splice(2, 0, game);
   localStorage.scoreList = JSON.stringify(list);
 }
