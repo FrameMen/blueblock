@@ -47,6 +47,20 @@ function calcLUT() {
 	intervalTime = a;
 }
 
+// easy
+//function calcLUT() {
+//	var a = new Array();
+//	for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 675))}
+//	intervalTime = a;
+//}
+
+// hard
+//function calcLUT() {
+//	var a = new Array();
+//	for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 875))}
+//	intervalTime = a;
+//}
+
 function setTileInterval() {
 	if (time > 0) {
 	tileInterval = window.setInterval(function(){
