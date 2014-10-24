@@ -109,8 +109,6 @@ function start() {
 }
 
 function printStat() {
-	if ( time < 0 )
-		time = 0;
 	$(".js-score").text("Score: " + score);
 	$(".js-time").text("Time: " + time);
 	$(".js-mul").text("x" + mul);
@@ -139,6 +137,8 @@ function select(el) {
 		mul = 1;
 		time -=2;
 	}
+	if ( time < 0 )
+		time = 0;
 	printStat();
 	if (mulTimeout > 20) {
 		mulTimeout = 0;
