@@ -22,6 +22,7 @@ alert("This game is under heavy development! Therefore, there are still some bug
 function addTime() {
 	if (time > 0) {
 	timeInterval = window.setInterval(function(){
+    console.log("Add Interval: " + timeInterval);
 			if (time <= 0) {
 			clearInterval(timeInterval);
 			gameOver("timeout");
@@ -70,6 +71,7 @@ function gameOver(e) {
 	time = 0;
 	printStat();
 	var game = {"player" : localStorage.nick, "score" : score}
+  console.log("Remeov Interval: " + timeInterval);
 	clearInterval(timeInterval);
 	clearInterval(tileInterval);
 	showGameOver();
@@ -265,6 +267,8 @@ function addEvents(){
 }
 
 function backBtn() {
+	clearInterval(timeInterval);
+	clearInterval(tileInterval);
 	showStart();
 }
 function backBtnGameOver() {
