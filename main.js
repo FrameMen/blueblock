@@ -154,7 +154,7 @@ function select(el) {
 	if ( time < 0 )
 		time = 0;
 	printStat();
-	if (mulTimeout > 20) {
+	if (mul < 8 && mulTimeout > 20) {
 		mulTimeout = 0;
 		mul *=2;
 	}

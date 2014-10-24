@@ -172,19 +172,8 @@ section{
   font-size: 15px;
 }
 
-.title-score1 {
-  line-height: 40px;
-  font-size: 30px;
-  border: 4px solid #000;
+.rank {
   margin-top: 10px;
-}
-
-.cmd-score1 {
-  line-height: 30px;
-  font-size: 20px;
-}
-.gameover {
-
 }
 .blueTile {
   background: blue;
