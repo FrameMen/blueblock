@@ -15,31 +15,21 @@
 	color: #000;
   position: relative;
 }
-html,
+
 body {
 	font-size: 16px;
-  overflow-x:hidden;
+	margin: auto;
+	margin: 20px;
 	text-align: center;
 	line-height: 1.5;
-	height:100%;
-  overflow-y:hidden;
   color: #000;
 }
-a {
-	color: #fd3301;
-	text-decoration: none;
-}
-a:hover,
-a:focus {
-	border-bottom-width: 1.5px;
-	border-bottom-style: solid;
-}
+
 section{
-  width: 216px;
+  width: 300px;
   margin: auto;
 }
-.container {
-}
+
 .grid_row {
   height: 50px;
   margin-bottom: 4px;
@@ -66,14 +56,13 @@ section{
   text-align:right;
   width: 53px;
 }
-.view-start {
-}
+
 .header {
   width: 100%;
   line-height: 40px;
   border: 4px solid #000;
-  margin-top: 10px;
 }
+
 .line {
   width: 100%;
   line-height: 40px;
@@ -83,26 +72,30 @@ section{
 #first-line{
   margin-left: -30px;
 }
+
 #second-line{
   margin-left: 10px;
 }
+
 .menu {
   line-height: 40px;
+	font-size: 20px;
   border: 4px solid #000;
-  margin-top: 10px;
+  margin-top: 20px;
   cursor: pointer;
 }
 
-@media(max-width: 275px) {
+@media(max-width: 350px) {
+	section{
+  	width: auto;
+  	margin: auto;
+	}
+}
 
-section{
-  width: auto;
-  margin: auto;
-}
-}
 .js-square {
   color: blue;
 }
+
 .title {
 	display: inline-block;
 	width: 180px;
@@ -122,19 +115,19 @@ section{
 .back-game {
   margin-right: 50px;
   margin-bottom: 10px;
-   vertical-align: bottom;
-   display: inline-block;
-   border-top: 15px solid #fff;
-   border-right: 15px solid black;
-   border-bottom: 15px solid #fff;
+  vertical-align: bottom;
+  display: inline-block;
+  border-top: 15px solid #fff;
+  border-right: 15px solid black;
+  border-bottom: 15px solid #fff;
 }
 
 .back {
-   vertical-align: bottom;
-	 display: inline-block;
-   border-top: 25px solid #fff;
-   border-right: 25px solid black;
-   border-bottom: 25px solid #fff;
+  vertical-align: bottom;
+  display: inline-block;
+  border-top: 25px solid #fff;
+  border-right: 25px solid black;
+  border-bottom: 25px solid #fff;
 }
 
 .howTo-square {
@@ -144,6 +137,7 @@ section{
   margin-top: 10px;
 	display: inline-block;
 }
+
 .discription {
 	width: 105px;
 	margin-left: 30px;
@@ -175,9 +169,12 @@ section{
 .rank {
   margin-top: 10px;
 }
+
+/* Tile colors */
 .blueTile {
   background: blue;
 }
+
 .redTile {
   background: red;
 }
