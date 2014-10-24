@@ -270,6 +270,7 @@ function backBtn() {
 function backBtnGameOver() {
 	var game = {"player" : localStorage.nick, "score" : score}
 	pushNewScore(game);
+  time = 60;
 	backBtn();
 }
 
