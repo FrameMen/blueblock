@@ -22,9 +22,7 @@ alert("This game is under heavy development! Therefore, there are still some bug
 function addTime() {
 	if (time > 0) {
 	timeInterval = window.setInterval(function(){
-    console.log("Add Interval: " + timeInterval);
 			if (time <= 0) {
-			clearInterval(timeInterval);
 			gameOver("timeout");
 			}
 			else {
@@ -38,6 +36,7 @@ function addTime() {
 			clearInterval(tileInterval);
 			setTileInterval();
 			}, 1000);
+    console.log("Add Interval: " + timeInterval);
 	}
 }
 
