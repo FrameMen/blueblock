@@ -250,11 +250,13 @@ function showGameOver(){
 }
 
 function loadScore(el, i) {
+  if (localStorage.scoreList != undefined) {
 	var list = JSON.parse(localStorage.scoreList);
-	$(el).text(list[i].player + ": " + list[i].score);
+	$(el).text((i+1) + ". " + list[i].player + ": " + list[i].score);
 	if (i + 1 < list.length) {
 		loadScore($(el).next(".js-rank"), i+1);
 	}
+  }
 }
 
 function changeSquareToBlue(el){
