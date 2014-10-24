@@ -83,7 +83,7 @@ function setTileInterval() {
 function gameOver(e) {
 	printStat();
 	var game = {"player" : localStorage.nick, "score" : score}
-  console.log("Remeov Interval: " + timeInterval);
+  console.log("Remove Interval: " + timeInterval);
 	clearInterval(timeInterval);
 	clearInterval(tileInterval);
 	showGameOver();
