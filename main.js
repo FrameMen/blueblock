@@ -311,11 +311,11 @@ function setLanguage() {
 	var lang = ["l10n_en","l10n_it","l10n_de","l10n_sp","l10n_fr"];
 	var l10n = {
 		"l10n_en":[
-		{"class":"l_play", "var":"play"},
-		{"class":"l_howTo", "var":"how-to"},
-		{"class":"l_score", "var":"score"},
-		{"class":"l_option", "var":"option"},
-		{"class":"l_credits", "var":"credits"},
+		{"class":"l_play", "var":"Play"},
+		{"class":"l_howTo", "var":"How-to"},
+		{"class":"l_score", "var":"Score"},
+		{"class":"l_option", "var":"Option"},
+		{"class":"l_credits", "var":"Credits"},
 		{"class":"l_time", "var":"Time"},
 		{"class":"l_scor", "var":"Score"},
 		{"class":"l_how", "var":"How-To"},
@@ -333,11 +333,11 @@ function setLanguage() {
 		],
 
 			"l10n_it":[
-			{"class":"l_play", "var":"gioca"},
-			{"class":"l_howTo", "var":"manuale"},
-			{"class":"l_score", "var":"punteggio"},
-			{"class":"l_option", "var":"opzioni"},
-			{"class":"l_credits", "var":"crediti"},
+			{"class":"l_play", "var":"Gioca"},
+			{"class":"l_howTo", "var":"Manuale"},
+			{"class":"l_score", "var":"Punteggio"},
+			{"class":"l_option", "var":"Opzioni"},
+			{"class":"l_credits", "var":"Crediti"},
 			{"class":"l_time", "var":"Tempo"},
 			{"class":"l_score", "var":"Punteggio"},
 			{"class":"l_how", "var":"Manuale"},
@@ -380,11 +380,11 @@ function setLanguage() {
 			],
 
 				"l10n_sp":[
-				{"class":"l_play", "var":"jugar"},
-				{"class":"l_howTo", "var":"cómo-a"},
-				{"class":"l_score", "var":"puntuación"},
-				{"class":"l_option", "var":"opción"},
-				{"class":"l_credits", "var":"créditos"},
+				{"class":"l_play", "var":"Jugar"},
+				{"class":"l_howTo", "var":"Cómo-a"},
+				{"class":"l_score", "var":"Puntuación"},
+				{"class":"l_option", "var":"Opción"},
+				{"class":"l_credits", "var":"Créditos"},
 				{"class":"l_time", "var":"Tiempo"},
 				{"class":"l_score", "var":"Puntuación"},
 				{"class":"l_how", "var":"Cómo-a"},
@@ -402,11 +402,11 @@ function setLanguage() {
 				],
 
 					"l10n_fr":[
-					{"class":"l_play", "var":"jouer"},
-					{"class":"l_howTo", "var":"comment faire"},
+					{"class":"l_play", "var":"Jouer"},
+					{"class":"l_howTo", "var":"Comment faire"},
 					{"class":"l_score", "var":"score"},
-					{"class":"l_option", "var":"option"},
-					{"class":"l_credits", "var":"crédits"},
+					{"class":"l_option", "var":"Option"},
+					{"class":"l_credits", "var":"Crédits"},
 					{"class":"l_time", "var":"Temps"},
 					{"class":"l_score", "var":"Score"},
 					{"class":"l_how", "var":"Comment Faire"},
