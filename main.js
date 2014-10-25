@@ -11,6 +11,8 @@ var tileInterval;
 var timerIndex = 0;
 var intervalTime= [1000,949,901,856,814,775,738,703,671,641,613,586,561,538,517,496,477,460,443,427,413,399,386,374,363,353,343,334,325,317,310,303,296,290,284,279,274,269,265,260,257,253,250,246,243,241,238,236,233,231,229,227,226,224,222,221,220,218,217,216,215];
 var nick;
+var lan= ["English","Italiano","Deutsch","Français","Español"];
+var x = 0;
 
 calcLUT();
 addEvents();
@@ -217,6 +219,7 @@ function howTo(){
 }
 
 function option(){
+	setLanguage();
 	$(".view-start").hide();
 	$(".view-game").hide();
 	$(".view-option").show();
@@ -248,6 +251,9 @@ function showGameOver(){
 	$(".view-gameover").show();
 	$(".view-score").hide();
 }
+
+
+
 
 function loadScore(el, i) {
   if (localStorage.scoreList != undefined) {
@@ -298,7 +304,11 @@ function calcLUT() {
 	intervalTime = a;
 }
 
-function language() {
+function setLanguage() {
+
+	document.querySelector('#lan').innerHTML = lan[x];
+	var i=0;
+	var lang = ["l10n_en","l10n_it","l10n_de","l10n_sp","l10n_fr"];
 	var l10n = {
 		"l10n_en":[
 		{"class":"l_play", "var":"play"},
@@ -413,6 +423,10 @@ function language() {
 					{"class":"l_sc", "var":"Score"}
 					]
 	}
+
+	for(var i=0;i< (l10n[lang[x]].length-1);i++)
+		$("."+l10n.l10n_it[i].class).text(l10n[lang[x]][i].var);
+//window.alert(l10n[lang[x]][i].var.text);
 }
 
 function violence() {
@@ -469,4 +483,26 @@ function pushNewScore(game) {
 	}
 	list.splice(i, 0, game);
 	localStorage.scoreList = JSON.stringify(list);
+}
+
+function changelanguageplus(){
+	if(x<4){
+		x++;
+		setLanguage();
+	}
+	else{
+		x=0;
+		setLanguage();
+	}
+}
+
+function changelanguageminus(){
+	if(x>0){
+		x--;
+		setLanguage();
+	}
+	else{
+		x=4;
+		setLanguage();
+	}
 }

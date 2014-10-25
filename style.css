@@ -182,3 +182,23 @@ section{
 .greenTile {
   background: #2EDB2E;
 }
+
+.backforward {
+   vertical-align: bottom;
+   display: inline-block;
+   border-top: 7px solid #fff;
+   border-right: 7px solid black;
+   border-bottom: 7px solid #fff;
+}
+
+.forwardback{
+  vertical-align: bottom;
+  display: inline-block;
+  border-top: 7px solid #fff;
+  border-left: 7px solid black;
+  border-bottom: 7px solid #fff;
+}
+.language{
+
+  display:inline-block;
+}
