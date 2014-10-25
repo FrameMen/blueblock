@@ -12,6 +12,7 @@ var timerIndex = 0;
 var intervalTime= [1000,949,901,856,814,775,738,703,671,641,613,586,561,538,517,496,477,460,443,427,413,399,386,374,363,353,343,334,325,317,310,303,296,290,284,279,274,269,265,260,257,253,250,246,243,241,238,236,233,231,229,227,226,224,222,221,220,218,217,216,215];
 var nick;
 var lan= ["English","Italiano","Deutsch","Français","Español"];
+var violenza= ["Easy","Normal","Hard","Dante must die"];
 var x = 0;
 
 calcLUT();
@@ -504,5 +505,32 @@ function changelanguageminus(){
 	else{
 		x=4;
 		setLanguage();
+	}
+}
+
+function setViolence(){
+	document.querySelector('#vio').innerHTML = violenza[violence];
+}
+
+
+function changeviolenceplus(){
+	if(violence<3){
+		violence++;
+		setViolence();
+	}
+	else{
+		violence=0;
+		setViolence();
+	}
+}
+
+function changeviolenceminus(){
+	if(violence>0){
+		violence--;
+		setViolence();
+	}
+	else{
+		violence=3;
+		setViolence();
 	}
 }
