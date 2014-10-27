@@ -1,189 +1,199 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://gmpg.org/xfn/11" rel="profile">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="http://gmpg.org/xfn/11" rel="profile">
 
-    <title>blueblock</title>
+		<title>blueblock</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch-icon-144-precomposed.png">
-    <link rel="shortcut icon" href="img/favicon.png">
+		<link rel="stylesheet" href="style.css">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/touch-icon-144-precomposed.png">
+		<link rel="shortcut icon" href="img/favicon.png">
 
-  </head>
-  <body>
-    <section class="view-start">
-      <div class="header">
-        <div id="first-line" class="line">Blue</div>
-        <div id="second-line" class="line">Block</div>
-      </div>
-
-      <div class="menu start" onclick="falling(showGame)"> <span class="js-square">&#9633;</span><span class="l_play">play</span></div>
-      <div class="menu howTo" onclick="falling(howTo)"> <span class="js-square">&#9633;</span><span class="l_howTo">how-to</span></div>
-      <div class="menu js-menu-score" onclick="falling(showScore)"> <span class="js-square">&#9633;</span><span class="l_score">score</span></div>
-      <div class="menu option" onclick="falling(option)"> <span class="js-square">&#9633;</span><span class="l_option">option</span></div>
-      <div class="menu credits" onclick="falling(credits)"> <span class="js-square">&#9633;</span><span class="l_credits">credits</span></div>
-
-    </section>
-
-    <section class="view-game">
-      <div onclick="backBtn()">
-        <div class="back-game"></div>
-        <h1 class="js-time time l_time">Time:</h1>
-      </div>
-
-      <div class="grid">
-        <div class="grid_row">
-          <div class="grid_tile" onclick="select(this)"></div>
-          <div class="grid_tile" onclick="select(this)"></div>
-          <div class="grid_tile" onclick="select(this)"></div>
-          <div class="grid_tile" onclick="select(this)"></div>
-        </div>
-        <div class="grid_row">
-          <div class="grid_tile" onclick="select(this)"></div>
-          <div class="grid_tile" onclick="select(this)"></div>
-          <div class="grid_tile" onclick="select(this)"></div>
-          <div class="grid_tile" onclick="select(this)"></div>
-        </div>
-        <div class="grid_row">
-          <div class="grid_tile" onclick="select(this)"></div>
-          <div class="grid_tile" onclick="select(this)"></div>
-          <div class="grid_tile" onclick="select(this)"></div>
-          <div class="grid_tile" onclick="select(this)"></div>
-        </div>
-        <div class="grid_row">
-          <div class="grid_tile" onclick="select(this)"></div>
-          <div class="grid_tile" onclick="select(this)"></div>
-          <div class="grid_tile" onclick="select(this)"></div>
-          <div class="grid_tile" onclick="select(this)"></div>
-        </div>
-        <div class="grid_row">
-          <div class="grid_tile" onclick="select(this)"></div>
-          <div class="grid_tile" onclick="select(this)"></div>
-          <div class="grid_tile" onclick="select(this)"></div>
-          <div class="grid_tile" onclick="select(this)"></div>
-        </div>
-
-      </div>
-
-      <div class="bottom">
-        <h1 class="js-score score bottom l_scor">Score:</h1>
-        <h1 class="js-mul mul bottom">x1</h1>
-      </div>
-    </section>
-
-    <section class="view view-howTo">
-      <div onclick="backBtn()" class="titleHeader">
-        <div class="back"></div>
-        <div class="title l_how">How-To</div>
-      </div>
-			<div>
-      	<div class="howTo-square blueTile"> </div>
-				<div class="discription">
-      		<div> Time: 0</div>
-      		<div> Score: 1</div>
-				</div>
+	</head>
+	<body>
+		<section class="view-start view">
+			<div class="header">
+				<div id="first-line" class="line">Blue</div>
+				<div id="second-line" class="line">Block</div>
 			</div>
-			<div>
-      	<div class="howTo-square redTile"> </div>
-				<div class="discription">
-      		<div> Time: -10</div>
-      		<div> Score: 0</div>
-				</div>
+
+			<div class="menu start" onclick="falling(showGame)"> <span class="js-square">&#9633;</span><span class="l_play">play</span></div>
+			<div class="menu howTo" onclick="falling(howTo)"> <span class="js-square">&#9633;</span><span class="l_howTo">how-to</span></div>
+			<div class="menu js-menu-score" onclick="falling(showScore)"> <span class="js-square">&#9633;</span><span class="l_score">score</span></div>
+			<div class="menu option" onclick="falling(option)"> <span class="js-square">&#9633;</span><span class="l_option">option</span></div>
+			<div class="menu credits" onclick="falling(credits)"> <span class="js-square">&#9633;</span><span class="l_credits">credits</span></div>
+
+		</section>
+
+		<section class="view-game">
+			<div onclick="backBtn()">
+				<div class="back-game"></div>
+				<h1 class="js-time time l_time">Time:</h1>
 			</div>
-			<div>
-      	<div class="howTo-square greenTile"> </div>
-				<div class="discription">
-      		<div> Time: 5</div>
-      		<div> Score: 5</div>
+
+			<div class="grid">
+				<div class="grid_row">
+					<div class="grid_tile" onclick="select(this)"></div>
+					<div class="grid_tile" onclick="select(this)"></div>
+					<div class="grid_tile" onclick="select(this)"></div>
+					<div class="grid_tile" onclick="select(this)"></div>
 				</div>
-			</div>
-			<div>
-      	<div class="howTo-square greyTile"> </div>
-				<div class="discription">
-      		<div> Time: -2</div>
-      		<div> Score: 0</div>
+				<div class="grid_row">
+					<div class="grid_tile" onclick="select(this)"></div>
+					<div class="grid_tile" onclick="select(this)"></div>
+					<div class="grid_tile" onclick="select(this)"></div>
+					<div class="grid_tile" onclick="select(this)"></div>
 				</div>
+				<div class="grid_row">
+					<div class="grid_tile" onclick="select(this)"></div>
+					<div class="grid_tile" onclick="select(this)"></div>
+					<div class="grid_tile" onclick="select(this)"></div>
+					<div class="grid_tile" onclick="select(this)"></div>
+				</div>
+				<div class="grid_row">
+					<div class="grid_tile" onclick="select(this)"></div>
+					<div class="grid_tile" onclick="select(this)"></div>
+					<div class="grid_tile" onclick="select(this)"></div>
+					<div class="grid_tile" onclick="select(this)"></div>
+				</div>
+				<div class="grid_row">
+					<div class="grid_tile" onclick="select(this)"></div>
+					<div class="grid_tile" onclick="select(this)"></div>
+					<div class="grid_tile" onclick="select(this)"></div>
+					<div class="grid_tile" onclick="select(this)"></div>
+				</div>
+
 			</div>
-    </section>
 
-    <section class="view-option">
-      <div onclick="backBtn()" >
-        <div class="back"></div>
-        <h1 class="title l_opt">Option</h1>
-      </div>
-      <p></p>
-      <div class="cmd-option"> </div>
-      <div class="cmd-option l_language"> Language:</div>
-      <div class="backforward" onclick="changelanguageminus()"></div>
-      <div class="language" id="lan"></div>
-      <div class="forwardback" onclick="changelanguageplus()"></div>
-      <p></p>
-      <div class="cmd-option l_violence"> Violence:</div>
-      <div class="backforward" onclick="changeviolenceminus()"></div>
-      <div class="violence" id="vio"></div>
-      <div class="forwardback" onclick="changeviolenceplus()"></div>
-      <div class="cmd-option"> </div>
-    </section>
+			<div class="bottom">
+				<h1 class="js-score score bottom l_scor">Score:</h1>
+				<h1 class="js-mul mul bottom">x1</h1>
+			</div>
+		</section>
 
-    <section class="view-credits">
-      <div onclick="backBtn()">
-        <div class="back"></div>
-        <h1 class="title l_cred">Credits</h1>
-      </div>
-     <marquee behavior="scroll" direction="up" scrollamount="2" scrolldelay="1"
-      onmouseover="this.stop()" onmouseout="this.start()"  height="100%" width="100%">
-      <div class="subtitle-credits l_programmer"> Creators and Developers</div>
-      <div class="body-credits"> Davide Corallo</div>
-      <div class="body-credits"> Julian Sparver</div>
-      <div class="body-credits"> Marco Tamagno</div>
-      <p></p>
-      <div class="subtitle-credits l_langProg"> Languages</div>
-      <div class="body-credits"> CSS</div>
-      <div class="body-credits"> HTML</div>
-      <div class="body-credits"> Javascript</div>
-      <p></p>
-      <div class="subtitle-credits l_thanks"> Ringraziamenti</div>
-      <div class="body-credits l_bodyThanks"> Un ringraziamento da noi programmatori
-                                 del vostro contributo per il download di
-                                 BlueBlock, speriamo vivameente che vi sia
-                                 piaciuto e vi siate divertiti.</div>
-     </marquee>
-   </section>
+		<section class="view view-howTo">
+			<div onclick="backBtn()" class="viewTitle">
+				<div class="back"></div>
+				<div class="title l_how">How-To</div>
+			</div>
+			<section class="content">
+				<div>
+					<div class="howTo-square blueTile"> </div>
+					<div class="discription">
+						<div> Time: 0</div>
+						<div> Score: 1</div>
+					</div>
+				</div>
+				<div>
+					<div class="howTo-square redTile"> </div>
+					<div class="discription">
+						<div> Time: -10</div>
+						<div> Score: 0</div>
+					</div>
+				</div>
+				<div>
+					<div class="howTo-square greenTile"> </div>
+					<div class="discription">
+						<div> Time: 5</div>
+						<div> Score: 5</div>
+					</div>
+				</div>
+				<div>
+					<div class="howTo-square greyTile"> </div>
+					<div class="discription">
+						<div> Time: -2</div>
+						<div> Score: 0</div>
+					</div>
+				</div>
+			</section> <!-- close contend-->
+		</section>
 
-   <section class="view-gameover">
-      <div onclick="backBtnGameOver()">
-       <div class="back"></div>
-       <h1 class="title l_gameOver">Game Over</h1>
-     </div>
+		<section class="view-option view">
+			<div onclick="backBtn()" class="viewTitle">
+				<div class="back"></div>
+				<h1 class="title l_opt">Option</h1>
+			</div>
+			<section class="content">
+				<p></p>
+				<div class="cmd-option"> </div>
+				<div class="cmd-option l_language"> Language:</div>
+				<div class="backforward" onclick="changelanguageminus()"></div>
+				<div class="language" id="lan"></div>
+				<div class="forwardback" onclick="changelanguageplus()"></div>
+				<p></p>
+				<div class="cmd-option l_violence"> Violence:</div>
+				<div class="backforward" onclick="changeviolenceminus()"></div>
+				<div class="violence" id="vio"></div>
+				<div class="forwardback" onclick="changeviolenceplus()"></div>
+				<div class="cmd-option"> </div>
+			</section>
+		</section>
 
-      <h1>Nickname</h1><input type="text" class="js-nick" oninput="setNick()" name="fname">
+		<section class="view-credits view">
+			<div onclick="backBtn()" class="viewTitle">
+				<div class="back"></div>
+				<h1 class="title l_cred">Credits</h1>
+			</div>
+			<section class="content">
+				<marquee behavior="scroll" direction="up" scrollamount="2" scrolldelay="1"
+																															 onmouseover="this.stop()" onmouseout="this.start()"  height="100%" width="100%">
+				<div class="subtitle-credits l_programmer"> Creators and Developers</div>
+				<div class="body-credits"> Davide Corallo</div>
+				<div class="body-credits"> Julian Sparver</div>
+				<div class="body-credits"> Marco Tamagno</div>
+				<p></p>
+				<div class="subtitle-credits l_langProg"> Languages</div>
+				<div class="body-credits"> CSS</div>
+				<div class="body-credits"> HTML</div>
+				<div class="body-credits"> Javascript</div>
+				<p></p>
+				<div class="subtitle-credits l_thanks"> Ringraziamenti</div>
+				<div class="body-credits l_bodyThanks"> Un ringraziamento da noi programmatori
+					del vostro contributo per il download di
+					BlueBlock, speriamo vivameente che vi sia
+					piaciuto e vi siate divertiti.</div>
+				</marquee>
+			</section>
+		</section>
 
-     <div class="js-score bottom"></div>
-     <p></p>
-     <div class="restart" onclick="falling(showGame)">Restart</div>
-   </section>
+		<section class="view-gameover view">
+			<div onclick="backBtn()" class="viewTitle">
+				<div class="back"></div>
+				<h1 class="title l_gameOver">Game Over</h1>
+			</div>
 
-   <section class="view-score">
-     <div onclick="backBtn()">
-       <div class="back"></div>
-       <h1 class="title l_sc">Score</h1>
-     </div>
-     <div class="js-rank rank"></div>
-     <div class="js-rank rank"></div>
-     <div class="js-rank rank"></div>
-     <div class="js-rank rank"></div>
-     <div class="js-rank rank"></div>
-     <div class="js-rank rank"></div>
-     <div class="js-rank rank"></div>
-     <div class="js-rank rank"></div>
-     <div class="js-rank rank"></div>
-     <div class="js-rank rank"></div>
-   </section>
+			<section class="content">
+				<h1>Nickname</h1><input type="text" class="js-nick" oninput="setNick()" name="fname">
 
-    <script type="text/javascript" src="jquery-2.1.1.js"></script>
-    <script type="text/javascript" src="main.js"></script>
-  </body>
+				<div class="js-score bottom"></div>
+				<p></p>
+				<div class="restart" onclick="falling(showGame)">Restart</div>
+			</section>
+		</section>
+
+		<section class="view-score view">
+			<div onclick="backBtn()" class="viewTitle">
+				<div class="back"></div>
+				<h1 class="title l_sc">Score</h1>
+			</div>
+			<section class="content">
+				<div class="js-rank rank"></div>
+				<div class="js-rank rank"></div>
+				<div class="js-rank rank"></div>
+				<div class="js-rank rank"></div>
+				<div class="js-rank rank"></div>
+				<div class="js-rank rank"></div>
+				<div class="js-rank rank"></div>
+				<div class="js-rank rank"></div>
+				<div class="js-rank rank"></div>
+				<div class="js-rank rank"></div>
+			</section>
+		</section>
+
+		<script type="text/javascript" src="jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+	</body>
 </html>
