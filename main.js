@@ -485,6 +485,11 @@ function pushNewScore(game) {
 	list.splice(i, 0, game);
 	localStorage.scoreList = JSON.stringify(list);
 }
+function restartGame() {
+	var game = {"player" : localStorage.nick, "score" : score}
+	pushNewScore(game);
+	showGame();
+}
 
 function changelanguageplus(){
 	if(x<4){

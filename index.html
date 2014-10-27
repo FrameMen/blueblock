@@ -163,17 +163,18 @@
 		</section>
 
 		<section class="view-gameover view">
-			<div onclick="backBtn()" class="viewTitle">
+			<div onclick="backBtnGameOver()" class="viewTitle">
 				<div class="back"></div>
 				<h1 class="title l_gameOver">Game Over</h1>
 			</div>
 
 			<section class="content">
-				<h1>Nickname</h1><input type="text" class="js-nick" oninput="setNick()" name="fname">
+				<h1>Nickname</h1>
+				<input type="text" class="js-nick" oninput="setNick()" name="fname">
 
 				<div class="js-score bottom"></div>
 				<p></p>
-				<div class="restart" onclick="falling(showGame)">Restart</div>
+				<div class="restart" onclick="restartGame()">Restart</div>
 			</section>
 		</section>
 
