@@ -134,6 +134,7 @@ body {
 
 .back {
 	display: table-cell;
+	width: 0px;
   vertical-align: bottom;
   border-top: 25px solid #fff;
   border-right: 25px solid black;
