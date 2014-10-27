@@ -24,13 +24,13 @@ alert("This game is under heavy development! Therefore, there are still some bug
 
 function addTime() {
 	if (time > 0) {
-	timeInterval = window.setInterval(function(){
+		timeInterval = window.setInterval(function(){
 			if (time <= 0) {
-			gameOver("timeout");
+				gameOver("timeout");
 			}
 			else {
-			printStat();
-			time--;
+				printStat();
+				time--;
 			}
 
 			timerIndex++;
@@ -38,8 +38,8 @@ function addTime() {
 				timerIndex = intervalTime.length - 1;
 			clearInterval(tileInterval);
 			setTileInterval();
-			}, 1000);
-    console.log("Add Interval: " + timeInterval);
+		}, 1000);
+		console.log("Add Interval: " + timeInterval);
 	}
 }
 
@@ -66,27 +66,27 @@ function calcLUT() {
 
 function setTileInterval() {
 	if (time > 0) {
-	tileInterval = window.setInterval(function(){
+		tileInterval = window.setInterval(function(){
 			var rand = Math.floor(Math.random()*50);
 			if (rand === 13 || rand === 29 || rand === 26) {
-			addTile(randomTile(), "greenTile");
+				addTile(randomTile(), "greenTile");
 			}
 			else if (rand < 7){
-			addTile(randomTile(), "redTile");
+				addTile(randomTile(), "redTile");
 			}
 			else{
-			addTile(randomTile(), "blueTile");
+				addTile(randomTile(), "blueTile");
 			}
 
-			}, intervalTime[timerIndex]);
-}
+		}, intervalTime[timerIndex]);
+	}
 }
 
 
 function gameOver(e) {
 	printStat();
 	var game = {"player" : localStorage.nick, "score" : score}
-  console.log("Remove Interval: " + timeInterval);
+	console.log("Remove Interval: " + timeInterval);
 	clearInterval(timeInterval);
 	clearInterval(tileInterval);
 	showGameOver();
@@ -103,11 +103,11 @@ function addTile(index, el) {
 		$($(".grid_tile")[index]).addClass(el);
 		var test = $(".grid_tile")[index];
 		setTimeout(function(){
-				$(test).removeClass("redTile");
-				}, 3500);
+			$(test).removeClass("redTile");
+		}, 3500);
 		setTimeout(function(){
-				$(test).removeClass("greenTile");
-				}, 1500);
+			$(test).removeClass("greenTile");
+		}, 1500);
 	}
 	else
 		gameOver("full");
@@ -257,13 +257,13 @@ function showGameOver(){
 
 
 function loadScore(el, i) {
-  if (localStorage.scoreList != undefined) {
-	var list = JSON.parse(localStorage.scoreList);
-	$(el).text((i+1) + ". " + list[i].player + ": " + list[i].score);
-	if (i + 1 < list.length) {
-		loadScore($(el).next(".js-rank"), i+1);
+	if (localStorage.scoreList != undefined) {
+		var list = JSON.parse(localStorage.scoreList);
+		$(el).text((i+1) + ". " + list[i].player + ": " + list[i].score);
+		if (i + 1 < list.length) {
+			loadScore($(el).next(".js-rank"), i+1);
+		}
 	}
-  }
 }
 
 function changeSquareToBlue(el){
@@ -280,11 +280,11 @@ function changeSquareToEmty(el){
 
 function addEvents(){
 	$(".menu").mouseleave(function (el) {
-			changeSquareToEmty(this)
-			});
+		changeSquareToEmty(this)
+	});
 	$(".menu").mouseenter(function (el) {
-			changeSquareToBlue(this)
-			});
+		changeSquareToBlue(this)
+	});
 }
 
 function backBtn() {
@@ -295,7 +295,7 @@ function backBtn() {
 function backBtnGameOver() {
 	var game = {"player" : localStorage.nick, "score" : score}
 	pushNewScore(game);
-  time = 60;
+	time = 60;
 	backBtn();
 }
 
@@ -315,119 +315,119 @@ function setLanguage() {
 		{"class":"l_play", "var":"play"},
 		{"class":"l_howTo", "var":"how-to"},
 		{"class":"l_score", "var":"score"},
-		{"class":"l_option", "var":"option"},
-		{"class":"l_credits", "var":"credits"},
-		{"class":"l_time", "var":"Time"},
-		{"class":"l_scor", "var":"Score"},
-		{"class":"l_how", "var":"How-To"},
-		{"class":"l_opt", "var":"Option"},
-		{"class":"l_language", "var":"Language"},
-		{"class":"l_violence", "var":"Violence"},
-		{"class":"l_nick", "var":"Nickname"},
-		{"class":"l_cred", "var":"Credis"},
-		{"class":"l_programmer", "var":"Creators and Developers"},
-		{"class":"l_langProg", "var":"Languages"},
-		{"class":"l_thanks", "var":""},
-		{"class":"l_bodyThanks", "var":""},
-		{"class":"l_gameOver", "var":"Game Over"},
-		{"class":"l_sc", "var":"Score"}
-		],
-
-			"l10n_it":[
-			{"class":"l_play", "var":"gioca"},
-			{"class":"l_howTo", "var":"manuale"},
-			{"class":"l_score", "var":"punteggio"},
-			{"class":"l_option", "var":"opzioni"},
-			{"class":"l_credits", "var":"crediti"},
-			{"class":"l_time", "var":"Tempo"},
-			{"class":"l_scor", "var":"Punteggio"},
-			{"class":"l_how", "var":"Manuale"},
-			{"class":"l_opt", "var":"Opzioni"},
-			{"class":"l_language", "var":"Lingua"},
-			{"class":"l_violence", "var":"Violenza"},
-			{"class":"l_nick", "var":"Soprannome"},
-			{"class":"l_cred", "var":"Crediti"},
-			{"class":"l_programmer", "var":"Creatori e Sviluppartori"},
-			{"class":"l_langProg", "var":"Linguaggi"},
-			{"class":"l_thanks", "var":"Ringraziamenti"},
-			{"class":"l_bodyThanks", "var":"Un ringraziamento da noi programmatori "+
-				"del vostro contributo per il download di "+
-					"BlueBlock, speriamo vivameente che vi sia "+
-					"piaciuto e vi siate divertiti."},
-			{"class":"l_gameOver", "var":"Game Over"},
-			{"class":"l_sc", "var":"Punteggio"}
-		],
-
-			"l10n_de":[
-			{"class":"l_play", "var":"spielen"},
-			{"class":"l_howTo", "var":"anleitung"},
-			{"class":"l_score", "var":"punkte"},
 			{"class":"l_option", "var":"option"},
 			{"class":"l_credits", "var":"credits"},
-			{"class":"l_time", "var":"Zeit"},
-			{"class":"l_score", "var":"Punkte"},
-			{"class":"l_how", "var":"Anleitung"},
-			{"class":"l_opt", "var":"Option"},
-			{"class":"l_language", "var":"Sprache"},
-			{"class":"l_violence", "var":"Schwierigkeit"},
-			{"class":"l_nick", "var":"Name"},
-			{"class":"l_cred", "var":"Credits"},
-			{"class":"l_programmer", "var":"Kreative und Entwickler"},
-			{"class":"l_langProg", "var":"Programmier Sprachen"},
-			{"class":"l_thanks", "var":"Danksagungen"},
-			{"class":"l_bodyThanks", "var":""},
-			{"class":"l_gameOver", "var":"Game Over"},
-			{"class":"l_sc", "var":"Punkte"}
-			],
+				{"class":"l_time", "var":"Time"},
+				{"class":"l_scor", "var":"Score"},
+					{"class":"l_how", "var":"How-To"},
+					{"class":"l_opt", "var":"Option"},
+						{"class":"l_language", "var":"Language"},
+						{"class":"l_violence", "var":"Violence"},
+							{"class":"l_nick", "var":"Nickname"},
+							{"class":"l_cred", "var":"Credis"},
+								{"class":"l_programmer", "var":"Creators and Developers"},
+								{"class":"l_langProg", "var":"Languages"},
+									{"class":"l_thanks", "var":""},
+									{"class":"l_bodyThanks", "var":""},
+										{"class":"l_gameOver", "var":"Game Over"},
+										{"class":"l_sc", "var":"Score"}
+		],
 
-				"l10n_sp":[
-				{"class":"l_play", "var":"jugar"},
-				{"class":"l_howTo", "var":"cómo-a"},
-				{"class":"l_score", "var":"puntuación"},
-				{"class":"l_option", "var":"opción"},
-				{"class":"l_credits", "var":"créditos"},
+		"l10n_it":[
+		{"class":"l_play", "var":"gioca"},
+		{"class":"l_howTo", "var":"manuale"},
+		{"class":"l_score", "var":"punteggio"},
+			{"class":"l_option", "var":"opzioni"},
+			{"class":"l_credits", "var":"crediti"},
+				{"class":"l_time", "var":"Tempo"},
+				{"class":"l_scor", "var":"Punteggio"},
+					{"class":"l_how", "var":"Manuale"},
+					{"class":"l_opt", "var":"Opzioni"},
+						{"class":"l_language", "var":"Lingua"},
+						{"class":"l_violence", "var":"Violenza"},
+							{"class":"l_nick", "var":"Soprannome"},
+							{"class":"l_cred", "var":"Crediti"},
+								{"class":"l_programmer", "var":"Creatori e Sviluppartori"},
+								{"class":"l_langProg", "var":"Linguaggi"},
+									{"class":"l_thanks", "var":"Ringraziamenti"},
+									{"class":"l_bodyThanks", "var":"Un ringraziamento da noi programmatori "+
+										"del vostro contributo per il download di "+
+											"BlueBlock, speriamo vivameente che vi sia "+
+											"piaciuto e vi siate divertiti."},
+										{"class":"l_gameOver", "var":"Game Over"},
+										{"class":"l_sc", "var":"Punteggio"}
+		],
+
+		"l10n_de":[
+		{"class":"l_play", "var":"spielen"},
+		{"class":"l_howTo", "var":"anleitung"},
+		{"class":"l_score", "var":"punkte"},
+			{"class":"l_option", "var":"option"},
+			{"class":"l_credits", "var":"credits"},
+				{"class":"l_time", "var":"Zeit"},
+				{"class":"l_score", "var":"Punkte"},
+					{"class":"l_how", "var":"Anleitung"},
+					{"class":"l_opt", "var":"Option"},
+						{"class":"l_language", "var":"Sprache"},
+						{"class":"l_violence", "var":"Schwierigkeit"},
+							{"class":"l_nick", "var":"Name"},
+							{"class":"l_cred", "var":"Credits"},
+								{"class":"l_programmer", "var":"Kreative und Entwickler"},
+								{"class":"l_langProg", "var":"Programmier Sprachen"},
+									{"class":"l_thanks", "var":"Danksagungen"},
+									{"class":"l_bodyThanks", "var":""},
+										{"class":"l_gameOver", "var":"Game Over"},
+										{"class":"l_sc", "var":"Punkte"}
+		],
+
+		"l10n_sp":[
+		{"class":"l_play", "var":"jugar"},
+		{"class":"l_howTo", "var":"cómo-a"},
+		{"class":"l_score", "var":"puntuación"},
+			{"class":"l_option", "var":"opción"},
+			{"class":"l_credits", "var":"créditos"},
 				{"class":"l_time", "var":"Tiempo"},
 				{"class":"l_scor", "var":"Puntuación"},
-				{"class":"l_how", "var":"Cómo-a"},
-				{"class":"l_opt", "var":"Opción"},
-				{"class":"l_language", "var":"Lengua"},
-				{"class":"l_violence", "var":"Violencia"},
-				{"class":"l_nick", "var":"Apodo"},
-				{"class":"l_cred", "var":"Créditos"},
-				{"class":"l_programmer", "var":"Creadores y Promotores"},
-				{"class":"l_langProg", "var":"Lengua"},
-				{"class":"l_thanks", "var":""},
-				{"class":"l_bodyThanks", "var":""},
-				{"class":"l_gameOver", "var":"Game Over"},
-				{"class":"l_sc", "var":"Puntuación"}
-				],
+					{"class":"l_how", "var":"Cómo-a"},
+					{"class":"l_opt", "var":"Opción"},
+						{"class":"l_language", "var":"Lengua"},
+						{"class":"l_violence", "var":"Violencia"},
+							{"class":"l_nick", "var":"Apodo"},
+							{"class":"l_cred", "var":"Créditos"},
+								{"class":"l_programmer", "var":"Creadores y Promotores"},
+								{"class":"l_langProg", "var":"Lengua"},
+									{"class":"l_thanks", "var":""},
+									{"class":"l_bodyThanks", "var":""},
+										{"class":"l_gameOver", "var":"Game Over"},
+										{"class":"l_sc", "var":"Puntuación"}
+		],
 
-					"l10n_fr":[
-					{"class":"l_play", "var":"jouer"},
-					{"class":"l_howTo", "var":"comment faire"},
-					{"class":"l_score", "var":"score"},
-					{"class":"l_option", "var":"option"},
-					{"class":"l_credits", "var":"crédits"},
-					{"class":"l_time", "var":"Temps"},
-					{"class":"l_scor", "var":"Score"},
+		"l10n_fr":[
+		{"class":"l_play", "var":"jouer"},
+		{"class":"l_howTo", "var":"comment faire"},
+		{"class":"l_score", "var":"score"},
+			{"class":"l_option", "var":"option"},
+			{"class":"l_credits", "var":"crédits"},
+				{"class":"l_time", "var":"Temps"},
+				{"class":"l_scor", "var":"Score"},
 					{"class":"l_how", "var":"Comment Faire"},
 					{"class":"l_opt", "var":"Option"},
-					{"class":"l_language", "var":"Langue"},
-					{"class":"l_violence", "var":"Violence"},
-					{"class":"l_nick", "var":"Surnom"},
-					{"class":"l_cred", "var":"Crédits"},
-					{"class":"l_programmer", "var":"Créateurs et Développeurs"},
-					{"class":"l_langProg", "var":"Langue"},
-					{"class":"l_thanks", "var":""},
-					{"class":"l_bodyThanks", "var":""},
-					{"class":"l_gameOver", "var":"Game Over"},
-					{"class":"l_sc", "var":"Score"}
-					]
+						{"class":"l_language", "var":"Langue"},
+						{"class":"l_violence", "var":"Violence"},
+							{"class":"l_nick", "var":"Surnom"},
+							{"class":"l_cred", "var":"Crédits"},
+								{"class":"l_programmer", "var":"Créateurs et Développeurs"},
+								{"class":"l_langProg", "var":"Langue"},
+									{"class":"l_thanks", "var":""},
+									{"class":"l_bodyThanks", "var":""},
+										{"class":"l_gameOver", "var":"Game Over"},
+										{"class":"l_sc", "var":"Score"}
+		]
 	}
 
 	for(var i=0;i< (l10n[lang[x]].length-1);i++)
 		$("."+l10n.l10n_it[i].class).text(l10n[lang[x]][i].var);
-//window.alert(l10n[lang[x]][i].var.text);
+	//window.alert(l10n[lang[x]][i].var.text);
 }
 
 function violence() {
@@ -438,29 +438,29 @@ function falling(callback, el){
 	if(el=== undefined)
 		var el = $( ".menu:last" );
 	$( el ).animate({
-top:window.innerHeight
-}, 500,
-function(){
-//showgame()
-if($(this)[0].className === $(".menu:first")[0].className )
-{
-callback();
-$( ".menu" ).css({
-top:"0px"
-}
-)
-}
-} );
-if($(el).prev(".menu").length > 0){
-	setTimeout(function(){
+		top:window.innerHeight
+	}, 500,
+	function(){
+		//showgame()
+		if($(this)[0].className === $(".menu:first")[0].className )
+		{
+			callback();
+			$( ".menu" ).css({
+				top:"0px"
+			}
+			)
+		}
+	} );
+	if($(el).prev(".menu").length > 0){
+		setTimeout(function(){
 
 			falling(callback, $(el).prev(".menu"));
 
 
-			}, 50); /*delay between elements falling*/
+		}, 50); /*delay between elements falling*/
 
 
-}
+	}
 
 }
 
