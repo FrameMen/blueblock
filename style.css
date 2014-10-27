@@ -25,9 +25,12 @@ body {
   color: #000;
 }
 
-section{
+.view{
   width: 300px;
   margin: auto;
+}
+.contend {
+	text-align: center;
 }
 
 .grid_row {
@@ -36,7 +39,7 @@ section{
   overflow: hidden;
 }
 .grid_tile {
-  background: #DCDCDC;;
+  background: #DCDCDC;
   height: 100%;
   width: 50px;
   border: 2px;
@@ -96,9 +99,15 @@ section{
   color: blue;
 }
 
+.viewTitle {
+	display: table;
+   width: 100%;
+	text-align: left;
+}
+
 .title {
-	display: inline-block;
-	width: 180px;
+	display: table-cell;
+	text-align: center;
   line-height: 40px;
   font-size: 30px;
   border: 4px solid #000;
@@ -106,6 +115,7 @@ section{
   margin-left: 0px;
   margin-bottom: 0px;
 }
+
 .time {
 	width: 139px;
   display: inline-block;
@@ -123,8 +133,8 @@ section{
 }
 
 .back {
+	display: table-cell;
   vertical-align: bottom;
-  display: inline-block;
   border-top: 25px solid #fff;
   border-right: 25px solid black;
   border-bottom: 25px solid #fff;
