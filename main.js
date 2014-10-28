@@ -10,10 +10,14 @@ var lan= ["English","Italiano","Deutsch","Français","Español"];
 var violenza= ["Easy","Normal","Hard","Dante must die"];
 var x = 0;
 
-addEvents();
-showStart();
+init();
 alert("This game is under heavy development! Therefore, there are still some bugs.");
 
+function init() {
+  addEvents();
+  showStart();
+  $(".js-nick").val(localStorage.nick);
+}
 //start();
 
 function addTime() {
@@ -420,7 +424,7 @@ function setLanguage() {
     ]
   }
 
-  for(var i=0;i< (l10n[lang[x]].length-1);i++)
+  for(var i = 0; i < (l10n[lang[x]].length-1); i++)
     $("."+l10n.l10n_it[i].class).text(l10n[lang[x]][i].var);
   //window.alert(l10n[lang[x]][i].var.text);
 }
