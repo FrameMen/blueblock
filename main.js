@@ -6,9 +6,7 @@ var score;
 var mul;
 var mulTimeout;
 var time;
-var lan= ["English","Italiano","Deutsch","Français","Español"];
 var violenza= ["Easy","Normal","Hard","Dante must die"];
-var x = 0;
 
 init();
 alert("This game is under heavy development! Therefore, there are still some bugs.");
@@ -17,6 +15,10 @@ function init() {
   addEvents();
   showStart();
   $(".js-nick").val(localStorage.nick);
+  if (localStorage.l10n == undefined)
+    localStorage.l10n = "English";
+  $("#lan").text(localStorage.l10n);
+  setL10n(0);
 }
 //start();
 
@@ -225,7 +227,6 @@ function howTo(){
 }
 
 function option(){
-  setLanguage();
   $(".view-start").hide();
   $(".view-game").hide();
   $(".view-option").show();
@@ -257,9 +258,6 @@ function showGameOver(){
   $(".view-gameover").show();
   $(".view-score").hide();
 }
-
-
-
 
 function loadScore(el, i) {
   if (localStorage.scoreList != undefined) {
@@ -304,11 +302,18 @@ function backBtnGameOver() {
 }
 
 
-function setLanguage() {
+function setL10n(next) {
 
-  document.querySelector('#lan').innerHTML = lan[x];
-  var i=0;
-  var lang = ["l10n_en","l10n_it","l10n_de","l10n_sp","l10n_fr"];
+  //document.querySelector('#lan').innerHTML = lan[x];
+  //$("#lan").text(localStorage.l10n));
+  var selectL10n;
+  var l10nList= [
+                 {"code": "l10n_en", "name": "English"},
+                 {"code": "l10n_it", "name": "Italiano"},
+                 {"code": "l10n_de", "name": "Deutsch"},
+                 {"code": "l10n_fr", "name": "Français"},
+                 {"code": "l10n_es", "name": "Español"}
+                ];
   var l10n = {
     "l10n_en":[
     {"class":"l_play", "var":"play"},
@@ -318,6 +323,7 @@ function setLanguage() {
       {"class":"l_credits", "var":"credits"},
         {"class":"l_time", "var":"Time"},
         {"class":"l_scor", "var":"Score"},
+        {"class":"l_game", "var":"Game"},
           {"class":"l_how", "var":"How-To"},
           {"class":"l_opt", "var":"Option"},
             {"class":"l_language", "var":"Language"},
@@ -340,6 +346,7 @@ function setLanguage() {
       {"class":"l_credits", "var":"crediti"},
         {"class":"l_time", "var":"Tempo"},
         {"class":"l_scor", "var":"Punteggio"},
+          {"class":"l_game", "var":"Partita"},
           {"class":"l_how", "var":"Manuale"},
           {"class":"l_opt", "var":"Opzioni"},
             {"class":"l_language", "var":"Lingua"},
@@ -364,7 +371,8 @@ function setLanguage() {
       {"class":"l_option", "var":"option"},
       {"class":"l_credits", "var":"credits"},
         {"class":"l_time", "var":"Zeit"},
-        {"class":"l_score", "var":"Punkte"},
+        {"class":"l_scor", "var":"Punkte"},
+          {"class":"l_how", "var":"Spiel"},
           {"class":"l_how", "var":"Anleitung"},
           {"class":"l_opt", "var":"Option"},
             {"class":"l_language", "var":"Sprache"},
@@ -379,7 +387,7 @@ function setLanguage() {
                     {"class":"l_sc", "var":"Punkte"}
     ],
 
-    "l10n_sp":[
+    "l10n_es":[
     {"class":"l_play", "var":"jugar"},
     {"class":"l_howTo", "var":"cómo-a"},
     {"class":"l_score", "var":"puntuación"},
@@ -424,9 +432,23 @@ function setLanguage() {
     ]
   }
 
-  for(var i = 0; i < (l10n[lang[x]].length-1); i++)
-    $("."+l10n.l10n_it[i].class).text(l10n[lang[x]][i].var);
-  //window.alert(l10n[lang[x]][i].var.text);
+  if (localStorage.l10n != undefined) {
+    for (var i = 0; l10nList[i].name != localStorage.l10n && i < l10nList.length; i++);
+    var selectedL10n = l10nList[i+next];
+    if (selectedL10n === undefined && next > 0)
+      selectedL10n = l10nList[0];
+    if (selectedL10n === undefined && next < 0)
+      selectedL10n = l10nList[l10nList.length - 1];
+
+    localStorage.l10n = selectedL10n.name;
+    var l10nString = l10n[selectedL10n.code];
+    console.log(localStorage.l10n);
+    $("#lan").text(localStorage.l10n);
+    for(var i = 0; i < l10nString.length; i++)
+      $("."+l10nString[i].class).text(l10nString[i].var);
+  }
+  else
+    console.log("Lang error");
 }
 
 function violence() {
@@ -488,28 +510,6 @@ function restartGame() {
   var game = {"player" : localStorage.nick, "score" : score}
   pushNewScore(game);
   showGame();
-}
-
-function changelanguageplus(){
-  if(x<4){
-    x++;
-    setLanguage();
-  }
-  else{
-    x=0;
-    setLanguage();
-  }
-}
-
-function changelanguageminus(){
-  if(x>0){
-    x--;
-    setLanguage();
-  }
-  else{
-    x=4;
-    setLanguage();
-  }
 }
 
 function setViolence(){

@@ -33,7 +33,7 @@
     <section class="view-game view">
       <div onclick="backBtn()" class="viewTitle">
         <div class="back"></div>
-        <div class="title l_how">Game</div>
+        <div class="title l_game">Game</div>
       </div>
       <section class="content">
         <h1 class="js-time time l_time">Time:</h1>
@@ -130,9 +130,9 @@
         <p></p>
         <div class="cmd-option"> </div>
         <div class="cmd-option l_language"> Language:</div>
-        <div class="backforward" onclick="changelanguageminus()"></div>
+        <div class="backforward" onclick="setL10n(-1)"></div>
         <div class="language" id="lan"></div>
-        <div class="forwardback" onclick="changelanguageplus()"></div>
+        <div class="forwardback" onclick="setL10n(1)"></div>
         <p></p>
         <div class="cmd-option l_violence"> Violence:</div>
         <div class="backforward" onclick="changeviolenceminus()"></div>
