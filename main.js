@@ -15,13 +15,25 @@ function init() {
   addEvents();
   showStart();
   $(".js-nick").val(localStorage.nick);
-  if (localStorage.l10n == undefined)
-    localStorage.l10n = "English";
+  initL10n();
+}
+
+function initL10n() {
+  //Default must be the last in array
+  var l10nList= [
+                 {"code": "it", "name": "Italiano"},
+                 {"code": "de", "name": "Deutsch"},
+                 {"code": "fr", "name": "Français"},
+                 {"code": "es", "name": "Español"},
+                 {"code": "en", "name": "English"}
+                ];
+  if (localStorage.l10n == undefined || localStorage.l10n == ""){
+    for (var i = 0; l10nList[i].code != navigator.language.slice(0, 2) && i < l10nList.length; i++);
+      localStorage.l10n = l10nList[i].name;
+  }
   $("#lan").text(localStorage.l10n);
   setL10n(0);
 }
-//start();
-
 function addTime() {
   var intervalTime = calcLUT();
   var tileTimer;
