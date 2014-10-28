@@ -6,7 +6,6 @@ var score;
 var mul;
 var mulTimeout;
 var time;
-var violenza= ["Easy","Normal","Hard","Dante must die"];
 
 init();
 alert("This game is under heavy development! Therefore, there are still some bugs.");
@@ -524,29 +523,23 @@ function restartGame() {
   showGame();
 }
 
-function setViolence(){
-  document.querySelector('#vio').innerHTML = violenza[violence];
-}
+function setViolence(next){
+  var vioList = ["Easy","Normal","Hard","Dante must die"];
+  if (localStorage.violence != undefined) {
+    for (var i = 0; l10nList[i].name != localStorage.l10n && i < l10nList.length; i++);
+    var selectedL10n = l10nList[i+next];
+    if (selectedL10n === undefined && next > 0)
+      selectedL10n = l10nList[0];
+    if (selectedL10n === undefined && next < 0)
+      selectedL10n = l10nList[l10nList.length - 1];
 
-
-function changeviolenceplus(){
-  if(violence<3){
-    violence++;
-    setViolence();
+    localStorage.l10n = selectedL10n.name;
+    var l10nString = l10n[selectedL10n.code];
+    console.log(localStorage.l10n);
+    $('.js-violence').text(violenza[violence]);
+    for(var i = 0; i < l10nString.length; i++)
+      $("."+l10nString[i].class).text(l10nString[i].var);
   }
-  else{
-    violence=0;
-    setViolence();
-  }
-}
-
-function changeviolenceminus(){
-  if(violence>0){
-    violence--;
-    setViolence();
-  }
-  else{
-    violence=3;
-    setViolence();
-  }
+  else
+    console.log("Violence error");
 }
