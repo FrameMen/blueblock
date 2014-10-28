@@ -6,13 +6,10 @@ var score;
 var mul;
 var mulTimeout;
 var time;
-var timerIndex = 0;
-var intervalTime= [1000,949,901,856,814,775,738,703,671,641,613,586,561,538,517,496,477,460,443,427,413,399,386,374,363,353,343,334,325,317,310,303,296,290,284,279,274,269,265,260,257,253,250,246,243,241,238,236,233,231,229,227,226,224,222,221,220,218,217,216,215];
 var lan= ["English","Italiano","Deutsch","Français","Español"];
 var violenza= ["Easy","Normal","Hard","Dante must die"];
 var x = 0;
 
-calcLUT();
 addEvents();
 showStart();
 alert("This game is under heavy development! Therefore, there are still some bugs.");
@@ -20,25 +17,29 @@ alert("This game is under heavy development! Therefore, there are still some bug
 //start();
 
 function addTime() {
+  var intervalTime = calcLUT();
+  var tileTimer;
   var timeInterval = window.setInterval(function(){
     if (gameRunning() === true) {
       if (time <= 0) {
         clearInterval(timeInterval);
+        clearInterval(tileTimer);
         gameOver("timeout");
       }
       else {
         printStat();
         time--;
+
+        clearInterval(tileTimer);
+        tileTimer = setTileInterval(intervalTime[0]);
+        if (intervalTime[1] != undefined)
+          intervalTime.splice(0, 1);
       }
-
-      timerIndex++;
-      if (intervalTime[timerIndex] === undefined)
-        timerIndex = intervalTime.length - 1;
-      setTileTimeout(intervalTime[timerIndex]);
     }
-    else
+    else{
+      clearInterval(tileTimer);
       clearInterval(timeInterval);
-
+    }
   }, 1000);
 }
 
@@ -50,8 +51,10 @@ function gameRunning() {
 
 function calcLUT() {
   var a = new Array();
-  for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 775))}
-  intervalTime = a;
+  for (var x = 0; x <=60; x++) {
+    a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 775))
+  }
+  return a;
 }
 
 // easy
@@ -68,8 +71,8 @@ function calcLUT() {
 //	intervalTime = a;
 //}
 
-function setTileTimeout() {
-  window.setTimeout(function(){
+function setTileInterval(timeout) {
+  return window.setInterval(function(){
     var rand = Math.floor(Math.random()*50);
     if (rand === 13 || rand === 29 || rand === 26) {
       addTile(randomTile(), "greenTile");
@@ -81,7 +84,7 @@ function setTileTimeout() {
       addTile(randomTile(), "blueTile");
     }
 
-  }, intervalTime[timerIndex]);
+  }, timeout);
 }
 
 
@@ -117,7 +120,6 @@ function start() {
   time = 60;
   mul = 1;
   mulTimeout = 1;
-  timerIndex = 0;
   printStat();
   addTime();
   removeTile(".grid_tile");
@@ -297,11 +299,6 @@ function backBtnGameOver() {
   backBtn();
 }
 
-function calcLUT() {
-  var a = new Array();
-  for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 775))}
-  intervalTime = a;
-}
 
 function setLanguage() {
 
