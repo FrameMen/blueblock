@@ -616,11 +616,11 @@ function setViolence(next){
             });
 
             // The distance the divs have to travel to reach -1 * totalHeight:
-            difference = totalHeight + parseInt(firstChild.css('margin-top'), 10);
+            difference = totalHeight + parseInt(firstChild.css('margin-top'), 10  );
 
             // The duration of the animation needed to get the correct speed:
-            duration = (difference/pixelsPerSecond) * 1000;
-
+            duration = 8900;
+            //console.log(duration);
             // Animate the first child's margin-top to -1 * totalHeight:
             firstChild.animate(
                 { 'margin-top': -1 * totalHeight },
