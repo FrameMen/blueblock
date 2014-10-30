@@ -14,6 +14,10 @@ function init() {
   addEvents();
   showStart();
   $(".js-nick").val(localStorage.nick);
+  if (localStorage.difficult == undefined) {
+    localStorage.difficult = 1; // 1 = normal
+  }
+  setViolence(0);
   initL10n();
 }
 
@@ -67,26 +71,14 @@ function gameRunning() {
 }
 
 function calcLUT() {
+  var diffValue = [675, 775, 875, 975];
+  var index = diffValue[localStorage.difficult];
   var a = new Array();
   for (var x = 0; x <=60; x++) {
-    a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 775))
+    a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * index))
   }
   return a;
 }
-
-// easy
-//function calcLUT() {
-//	var a = new Array();
-//	for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 675))}
-//	intervalTime = a;
-//}
-
-// hard
-//function calcLUT() {
-//	var a = new Array();
-//	for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * 875))}
-//	intervalTime = a;
-//}
 
 function setTileInterval(timeout) {
   return window.setInterval(function(){
@@ -457,13 +449,10 @@ function setL10n(next) {
     $("#lan").text(localStorage.l10n);
     for(var i = 0; i < l10nString.length; i++)
       $("."+l10nString[i].class).text(l10nString[i].var);
+    setViolence(0);
   }
   else
     console.log("Lang error");
-}
-
-function violence() {
-
 }
 
 function falling(callback, el){
@@ -524,21 +513,41 @@ function restartGame() {
 }
 
 function setViolence(next){
-  var vioList = ["Easy","Normal","Hard","Dante must die"];
-  if (localStorage.violence != undefined) {
-    for (var i = 0; l10nList[i].name != localStorage.l10n && i < l10nList.length; i++);
-    var selectedL10n = l10nList[i+next];
-    if (selectedL10n === undefined && next > 0)
-      selectedL10n = l10nList[0];
-    if (selectedL10n === undefined && next < 0)
-      selectedL10n = l10nList[l10nList.length - 1];
 
-    localStorage.l10n = selectedL10n.name;
-    var l10nString = l10n[selectedL10n.code];
-    console.log(localStorage.l10n);
-    $('.js-violence').text(violenza[violence]);
-    for(var i = 0; i < l10nString.length; i++)
-      $("."+l10nString[i].class).text(l10nString[i].var);
+  var vioL10n = {
+    "l10n_en": ["Easy", "Normal", "Hard", "Dante must die"],
+    "l10n_it": ["Facille", "Normale", "Difficile", "Dante must die"],
+    "l10n_de": ["Einfach", "Normal", "Schwierig", "Dante must die"],
+    "l10n_fr": ["Easy", "Normal", "Hard", "Dante must die"],
+    "l10n_es": ["Easy", "Normal", "Hard", "Dante must die"],
+  };
+
+  var l10nList= [
+    {"code": "l10n_it", "name": "Italiano"},
+    {"code": "l10n_de", "name": "Deutsch"},
+    {"code": "l10n_fr", "name": "Français"},
+    {"code": "l10n_es", "name": "Español"},
+    {"code": "l10n_en", "name": "English"}
+  ];
+  //
+  //lang select
+  var lang = "l10n_en";
+  for (var i = 0; i < l10nList.length && l10nList[i].name != localStorage.l10n; i++);
+  lang = l10nList[i].code;
+
+  var diffLength = vioL10n[lang].length;
+  if (localStorage.difficult != undefined) {
+
+
+    var index = parseInt(localStorage.difficult) + next;
+    console.log(index, next);
+    if (index > diffLength - 1)
+      index = 0;
+    else if (index < 0)
+      index = diffLength.length - 1;
+    localStorage.difficult = index;
+
+    $('.js-violence').text(vioL10n[lang][index]);
   }
   else
     console.log("Violence error");
