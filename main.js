@@ -608,13 +608,13 @@ function setViolence(next){
             var marquee = this,
                 pixelsPerSecond = 100,
                 firstChild = this.children(':first'),
-                totalHeight = 700,
+                totalHeight = 690,
                 difference = 0,
                 duration = 0;
 
             // Find the total height of the children by adding each child's height:
             this.children().each(function(index, element) {
-                totalHeight += $(element).innerHeight();
+            //    totalHeight += $(element).innerHeight();
             });
             console.log(totalHeight);
 
