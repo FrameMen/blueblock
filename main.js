@@ -74,7 +74,7 @@ function calcLUT() {
   var diffValue = [675, 775, 875, 975];
   var index = diffValue[localStorage.difficult];
   var a = new Array();
-  for (var x = 0; x <=60; x++) {
+  for (var x = 0; x <=45; x++) {
     a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * index))
   }
   return a;
@@ -126,7 +126,7 @@ function addTile(index, el) {
 
 function start() {
   score = 0;
-  time = 60;
+  time = 45;
   mul = 1;
   mulTimeout = 1;
   printStat();
