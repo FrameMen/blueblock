@@ -273,19 +273,19 @@ function showGameOver(){
 
 function loadScore() {
   if (localStorage.scoreList != undefined) {
-    writeScore(".js-rank-0:first", 0, 0);
-    writeScore(".js-rank-1:first", 0, 1);
-    writeScore(".js-rank-2:first", 0, 2);
-    writeScore(".js-rank-3:first", 0, 3);
+    writeScore(".js-rank-0:first", 0, 0, 1);
+    writeScore(".js-rank-1:first", 0, 1, 1);
+    writeScore(".js-rank-2:first", 0, 2, 1);
+    writeScore(".js-rank-3:first", 0, 3, 1);
   }
 }
-function writeScore(el, i, diff) {
+function writeScore(el, i, diff, rank) {
     var list = JSON.parse(localStorage.scoreList);
     for(i; i < list.length && parseInt(list[i].diff) != diff;  i++); 
     if (i < list.length && parseInt(list[i].diff) === diff) {
-      $(el).text((i+1) + ". " + list[i].player + ": " + list[i].score);
+      $(el).text(rank + ". " + list[i].player + ": " + list[i].score);
     if (i + 1 < list.length && $(el).next(".js-rank-" + diff).length > 0) {
-      writeScore($(el).next(".js-rank-" + diff), i+1, diff);
+      writeScore($(el).next(".js-rank-" + diff), i+1, diff, rank + 1);
     }
     }
 }
