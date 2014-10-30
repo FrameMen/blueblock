@@ -588,3 +588,11 @@ function setViolence(next){
   else
     console.log("Violence error");
 }
+//marquee
+
+function maqueeMouseOut(el){
+  el.start();
+}
+function maqueeMouseIn(el){
+  el.stop();
+}
