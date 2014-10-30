@@ -338,7 +338,11 @@ function setL10n(next) {
                   {"class":"l_thanks", "var":""},
                   {"class":"l_bodyThanks", "var":""},
                     {"class":"l_gameOver", "var":"Game Over"},
-                    {"class":"l_sc", "var":"Score"}
+                    {"class":"l_sc", "var":"Score"},
+                    {"class":"l_easy", "var":"Easy"},
+                    {"class":"l_normal", "var":"Normal"},
+                    {"class":"l_hard", "var":"Hard"},
+                    {"class":"l_dante", "var":"Dante must die"}
     ],
 
     "l10n_it":[
@@ -364,7 +368,11 @@ function setL10n(next) {
                       "BlueBlock, speriamo vivamente che vi sia "+
                       "piaciuto e vi siate divertiti."},
                     {"class":"l_gameOver", "var":"Game Over"},
-                    {"class":"l_sc", "var":"Punteggio"}
+                    {"class":"l_sc", "var":"Punteggio"},
+                    {"class":"l_easy", "var":"Facile"},
+                    {"class":"l_normal", "var":"Normale"},
+                    {"class":"l_hard", "var":"Difficile"},
+                    {"class":"l_dante", "var":"Dante must die"}
     ],
 
     "l10n_de":[
@@ -387,7 +395,11 @@ function setL10n(next) {
                   {"class":"l_thanks", "var":"Danksagungen"},
                   {"class":"l_bodyThanks", "var":""},
                     {"class":"l_gameOver", "var":"Game Over"},
-                    {"class":"l_sc", "var":"Punkte"}
+                    {"class":"l_sc", "var":"Punkte"},
+                    {"class":"l_easy", "var":"Einfach"},
+                    {"class":"l_normal", "var":"Normal"},
+                    {"class":"l_hard", "var":"Schwierig"},
+                    {"class":"l_dante", "var":"Dante must die"}
     ],
 
     "l10n_es":[
@@ -409,7 +421,11 @@ function setL10n(next) {
                   {"class":"l_thanks", "var":""},
                   {"class":"l_bodyThanks", "var":""},
                     {"class":"l_gameOver", "var":"Game Over"},
-                    {"class":"l_sc", "var":"Puntuación"}
+                    {"class":"l_sc", "var":"Puntuación"},
+                    {"class":"l_easy", "var":""},
+                    {"class":"l_normal", "var":""},
+                    {"class":"l_hard", "var":""},
+                    {"class":"l_dante", "var":"Dante must die"}
     ],
 
     "l10n_fr":[
@@ -431,7 +447,11 @@ function setL10n(next) {
                   {"class":"l_thanks", "var":""},
                   {"class":"l_bodyThanks", "var":""},
                     {"class":"l_gameOver", "var":"Game Over"},
-                    {"class":"l_sc", "var":"Score"}
+                    {"class":"l_sc", "var":"Score"},
+                    {"class":"l_easy", "var":""},
+                    {"class":"l_normal", "var":""},
+                    {"class":"l_hard", "var":""},
+                    {"class":"l_dante", "var":"Dante must die"}
     ]
   }
 
