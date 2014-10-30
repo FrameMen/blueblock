@@ -14,7 +14,10 @@ alert("This game is under heavy development! Therefore, there are still some bug
 function init() {
   addEvents();
   showStart();
+
   $(".js-nick").val(localStorage.nick);
+  if(localStorage.nick === undefined)
+    localStorage.nick = " ";
   if (localStorage.difficult == undefined) {
     localStorage.difficult = 1; // 1 = normal
   }
@@ -281,7 +284,7 @@ function loadScore() {
 }
 function writeScore(el, i, diff, rank) {
     var list = JSON.parse(localStorage.scoreList);
-    for(i; i < list.length && parseInt(list[i].diff) != diff;  i++); 
+    for(i; i < list.length && parseInt(list[i].diff) != diff;  i++);
     if (i < list.length && parseInt(list[i].diff) === diff) {
       $(el).text(rank + ". " + list[i].player + ": " + list[i].score);
     if (i + 1 < list.length && $(el).next(".js-rank-" + diff).length > 0) {
@@ -552,11 +555,11 @@ function restartGame() {
 function setViolence(next){
 
   var vioL10n = {
-    "l10n_en": ["Easy", "Normal", "Hard", "Dante must die"],
-    "l10n_it": ["Facille", "Normale", "Difficile", "Dante must die"],
-    "l10n_de": ["Einfach", "Normal", "Schwierig", "Dante must die"],
-    "l10n_fr": ["Easy", "Normal", "Hard", "Dante must die"],
-    "l10n_es": ["Easy", "Normal", "Hard", "Dante must die"],
+    "l10n_en": ["Easy", "Normal", "Hard", localStorage.nick + " " +"must die"],
+    "l10n_it": ["Facile", "Normale", "Difficile", localStorage.nick + " " +"deve morire"],
+    "l10n_de": ["Einfach", "Normal", "Schwierig", localStorage.nick + " " +"must die"],
+    "l10n_fr": ["Easy", "Normal", "Hard", localStorage.nick + " " +"must die"],
+    "l10n_es": ["Easy", "Normal", "Hard", localStorage.nick + " " +"must die"],
   };
 
   var l10nList= [
@@ -580,7 +583,7 @@ function setViolence(next){
     if (index > diffLength - 1)
       index = 0;
     else if (index < 0)
-      index = diffLength.length - 1;
+      index = diffLength - 1;
     localStorage.difficult = index;
 
     $('.js-violence').text(vioL10n[lang][index]);
