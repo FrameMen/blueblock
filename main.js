@@ -17,8 +17,8 @@ function init() {
   if (localStorage.difficult == undefined) {
     localStorage.difficult = 1; // 1 = normal
   }
-  setViolence(0);
   initL10n();
+  setViolence(0);
 }
 
 function initL10n() {
