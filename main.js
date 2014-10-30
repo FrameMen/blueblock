@@ -271,14 +271,23 @@ function showGameOver(){
   $(".view-score").hide();
 }
 
-function loadScore(el, i) {
+function loadScore() {
   if (localStorage.scoreList != undefined) {
-    var list = JSON.parse(localStorage.scoreList);
-    $(el).text((i+1) + ". " + list[i].player + ": " + list[i].score);
-    if (i + 1 < list.length) {
-      loadScore($(el).next(".js-rank"), i+1);
-    }
+    writeScore(".js-rank-0:first", 0, 0);
+    writeScore(".js-rank-1:first", 0, 1);
+    writeScore(".js-rank-2:first", 0, 2);
+    writeScore(".js-rank-3:first", 0, 3);
   }
+}
+function writeScore(el, i, diff) {
+    var list = JSON.parse(localStorage.scoreList);
+    for(i; i < list.length && parseInt(list[i].diff) != diff;  i++); 
+    if (i < list.length && parseInt(list[i].diff) === diff) {
+      $(el).text((i+1) + ". " + list[i].player + ": " + list[i].score);
+    if (i + 1 < list.length && $(el).next(".js-rank-" + diff).length > 0) {
+      writeScore($(el).next(".js-rank-" + diff), i+1, diff);
+    }
+    }
 }
 
 function changeSquareToBlue(el){
@@ -307,7 +316,7 @@ function backBtn() {
   showStart();
 }
 function backBtnGameOver() {
-  var game = {"player" : localStorage.nick, "score" : score}
+  var game = {"player" : localStorage.nick, "score" : score, "diff": localStorage.difficult}
   pushNewScore(game);
   time = 0;
   backBtn();
