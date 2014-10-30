@@ -544,7 +544,7 @@ function pushNewScore(game) {
   localStorage.scoreList = JSON.stringify(list);
 }
 function restartGame() {
-  var game = {"player" : localStorage.nick, "score" : score}
+  var game = {"player" : localStorage.nick, "score" : score, "diff": localStorage.difficult}
   pushNewScore(game);
   showGame();
 }
