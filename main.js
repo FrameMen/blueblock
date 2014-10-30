@@ -369,7 +369,7 @@ function setL10n(next) {
                   {"class":"l_thanks", "var":"Ringraziamenti"},
                   {"class":"l_bodyThanks", "var":"Un ringraziamento da noi programmatori "+
                     "del vostro contributo per il download di "+
-                      "BlueBlock, speriamo vivameente che vi sia "+
+                      "BlueBlock, speriamo vivamente che vi sia "+
                       "piaciuto e vi siate divertiti."},
                     {"class":"l_gameOver", "var":"Game Over"},
                     {"class":"l_sc", "var":"Punteggio"}
