@@ -6,6 +6,7 @@ var score;
 var mul;
 var mulTimeout;
 var time;
+var timeover;
 
 init();
 alert("This game is under heavy development! Therefore, there are still some bugs.");
@@ -24,15 +25,15 @@ function init() {
 function initL10n() {
   //Default must be the last in array
   var l10nList= [
-                 {"code": "it", "name": "Italiano"},
-                 {"code": "de", "name": "Deutsch"},
-                 {"code": "fr", "name": "Français"},
-                 {"code": "es", "name": "Español"},
-                 {"code": "en", "name": "English"}
-                ];
+  {"code": "it", "name": "Italiano"},
+  {"code": "de", "name": "Deutsch"},
+  {"code": "fr", "name": "Français"},
+    {"code": "es", "name": "Español"},
+    {"code": "en", "name": "English"}
+  ];
   if (localStorage.l10n == undefined || localStorage.l10n == ""){
     for (var i = 0; l10nList[i].code != navigator.language.slice(0, 2) && i < l10nList.length; i++);
-      localStorage.l10n = l10nList[i].name;
+    localStorage.l10n = l10nList[i].name;
   }
   $("#lan").text(localStorage.l10n);
   setL10n(0);
@@ -65,7 +66,7 @@ function addTime() {
 }
 
 function gameRunning() {
-  if ($(".view-game").is(":visible"))
+  if ($(".view-game").is(":visible") && timeover === false)
     return true;
   return false;
 }
@@ -82,25 +83,32 @@ function calcLUT() {
 
 function setTileInterval(timeout) {
   return window.setInterval(function(){
-    var rand = Math.floor(Math.random()*50);
-    if (rand === 13 || rand === 29 || rand === 26) {
-      addTile(randomTile(), "greenTile");
+    if (isGridFull() === false) {
+      var rand = Math.floor(Math.random()*50);
+      if (rand === 13 || rand === 29 || rand === 26) {
+        addTile(randomTile(), "greenTile");
+      }
+      else if (rand < 7){
+        addTile(randomTile(), "redTile");
+      }
+      else{
+        addTile(randomTile(), "blueTile");
+      }
     }
-    else if (rand < 7){
-      addTile(randomTile(), "redTile");
+    else {
+      gameOver("full");
+      timeover = true;
     }
-    else{
-      addTile(randomTile(), "blueTile");
-    }
-
   }, timeout);
 }
 
 
 function gameOver(e) {
   printStat();
-  var game = {"player" : localStorage.nick, "score" : score}
-  showGameOver();
+  timeover = true;
+  window.setTimeout(function(){
+    showGameOver();
+  }, 3000);
 }
 
 function removeTile(el) {
@@ -110,22 +118,21 @@ function removeTile(el) {
 }
 
 function addTile(index, el) {
-  if (isGridFull() === false) {
-    $($(".grid_tile")[index]).addClass(el);
-    var test = $(".grid_tile")[index];
-    setTimeout(function(){
+  $($(".grid_tile")[index]).addClass(el);
+  var test = $(".grid_tile")[index];
+  setTimeout(function(){
+    if (gameRunning() == true)
       $(test).removeClass("redTile");
-    }, 3500);
-    setTimeout(function(){
+  }, 3500);
+  setTimeout(function(){
+    if (gameRunning() == true)
       $(test).removeClass("greenTile");
-    }, 1500);
-  }
-  else
-    time = 0;
+  }, 1500);
 }
 
 function start() {
   score = 0;
+  timeover = false;
   time = 45;
   mul = 1;
   mulTimeout = 1;
@@ -142,39 +149,41 @@ function printStat() {
 }
 
 function select(el) {
-  if ($(el).hasClass("blueTile")) {
-    score += 1*mul;
-    mulTimeout++;
-    removeTile(el);
-  }
-  else if ($(el).hasClass("redTile")) {
-    mulTimeout = 0;
-    mul = 1;
-    removeTile(el);
-    time -= 10;
-  }
-  else if ($(el).hasClass("greenTile")) {
-    removeTile(el);
-    mulTimeout++;
-    score += 5 * mul;
-    time += 5;
-  }
-  else {
-    mulTimeout = 0;
-    mul = 1;
-    time -=2;
-  }
-  if ( time < 0 )
-    time = 0;
-  printStat();
-  if (mul < 8 && mulTimeout > 20) {
-    mulTimeout = 0;
-    mul *=2;
+  if (gameRunning() == true) {
+    if ($(el).hasClass("blueTile")) {
+      score += 1*mul;
+      mulTimeout++;
+      removeTile(el);
+    }
+    else if ($(el).hasClass("redTile")) {
+      mulTimeout = 0;
+      mul = 1;
+      removeTile(el);
+      time -= 10;
+    }
+    else if ($(el).hasClass("greenTile")) {
+      removeTile(el);
+      mulTimeout++;
+      score += 5 * mul;
+      time += 5;
+    }
+    else {
+      mulTimeout = 0;
+      mul = 1;
+      time -=2;
+    }
+    if ( time < 0 )
+      time = 0;
+    printStat();
+    if (mul < 8 && mulTimeout > 20) {
+      mulTimeout = 0;
+      mul *=2;
+    }
   }
 }
 
 function isGridFull() {
-  if ($(".grid_tile:not(.blueTile):not(.greenTile):not(.redTile)").length <= 1)
+  if ($(".grid_tile:not(.blueTile):not(.greenTile):not(.redTile)").length < 1)
     return true;
   else
     return false;
@@ -311,12 +320,12 @@ function setL10n(next) {
   //$("#lan").text(localStorage.l10n));
   var selectL10n;
   var l10nList= [
-                 {"code": "l10n_en", "name": "English"},
-                 {"code": "l10n_it", "name": "Italiano"},
-                 {"code": "l10n_de", "name": "Deutsch"},
-                 {"code": "l10n_fr", "name": "Français"},
-                 {"code": "l10n_es", "name": "Español"}
-                ];
+  {"code": "l10n_en", "name": "English"},
+  {"code": "l10n_it", "name": "Italiano"},
+  {"code": "l10n_de", "name": "Deutsch"},
+    {"code": "l10n_fr", "name": "Français"},
+    {"code": "l10n_es", "name": "Español"}
+  ];
   var l10n = {
     "l10n_en":[
     {"class":"l_play", "var":"play"},
@@ -326,23 +335,23 @@ function setL10n(next) {
       {"class":"l_credits", "var":"credits"},
         {"class":"l_time", "var":"Time"},
         {"class":"l_scor", "var":"Score"},
-        {"class":"l_game", "var":"Game"},
+          {"class":"l_game", "var":"Game"},
           {"class":"l_how", "var":"How-To"},
-          {"class":"l_opt", "var":"Option"},
+            {"class":"l_opt", "var":"Option"},
             {"class":"l_language", "var":"Language"},
-            {"class":"l_violence", "var":"Violence"},
+              {"class":"l_violence", "var":"Violence"},
               {"class":"l_nick", "var":"Nickname"},
-              {"class":"l_cred", "var":"Credis"},
+                {"class":"l_cred", "var":"Credis"},
                 {"class":"l_programmer", "var":"Creators and Developers"},
-                {"class":"l_langProg", "var":"Languages"},
+                  {"class":"l_langProg", "var":"Languages"},
                   {"class":"l_thanks", "var":""},
-                  {"class":"l_bodyThanks", "var":""},
+                    {"class":"l_bodyThanks", "var":""},
                     {"class":"l_gameOver", "var":"Game Over"},
-                    {"class":"l_sc", "var":"Score"},
-                    {"class":"l_easy", "var":"Easy"},
-                    {"class":"l_normal", "var":"Normal"},
-                    {"class":"l_hard", "var":"Hard"},
-                    {"class":"l_dante", "var":"Dante must die"}
+                      {"class":"l_sc", "var":"Score"},
+                      {"class":"l_easy", "var":"Easy"},
+                        {"class":"l_normal", "var":"Normal"},
+                        {"class":"l_hard", "var":"Hard"},
+                          {"class":"l_dante", "var":"Dante must die"}
     ],
 
     "l10n_it":[
@@ -355,24 +364,24 @@ function setL10n(next) {
         {"class":"l_scor", "var":"Punteggio"},
           {"class":"l_game", "var":"Partita"},
           {"class":"l_how", "var":"Manuale"},
-          {"class":"l_opt", "var":"Opzioni"},
+            {"class":"l_opt", "var":"Opzioni"},
             {"class":"l_language", "var":"Lingua"},
-            {"class":"l_violence", "var":"Violenza"},
+              {"class":"l_violence", "var":"Violenza"},
               {"class":"l_nick", "var":"Soprannome"},
-              {"class":"l_cred", "var":"Crediti"},
+                {"class":"l_cred", "var":"Crediti"},
                 {"class":"l_programmer", "var":"Creatori e Sviluppartori"},
-                {"class":"l_langProg", "var":"Linguaggi"},
+                  {"class":"l_langProg", "var":"Linguaggi"},
                   {"class":"l_thanks", "var":"Ringraziamenti"},
-                  {"class":"l_bodyThanks", "var":"Un ringraziamento da noi programmatori "+
-                    "del vostro contributo per il download di "+
-                      "BlueBlock, speriamo vivamente che vi sia "+
-                      "piaciuto e vi siate divertiti."},
+                    {"class":"l_bodyThanks", "var":"Un ringraziamento da noi programmatori "+
+                      "del vostro contributo per il download di "+
+                        "BlueBlock, speriamo vivamente che vi sia "+
+                        "piaciuto e vi siate divertiti."},
                     {"class":"l_gameOver", "var":"Game Over"},
-                    {"class":"l_sc", "var":"Punteggio"},
-                    {"class":"l_easy", "var":"Facile"},
-                    {"class":"l_normal", "var":"Normale"},
-                    {"class":"l_hard", "var":"Difficile"},
-                    {"class":"l_dante", "var":"Dante must die"}
+                      {"class":"l_sc", "var":"Punteggio"},
+                      {"class":"l_easy", "var":"Facile"},
+                        {"class":"l_normal", "var":"Normale"},
+                        {"class":"l_hard", "var":"Difficile"},
+                          {"class":"l_dante", "var":"Dante must die"}
     ],
 
     "l10n_de":[
@@ -385,21 +394,21 @@ function setL10n(next) {
         {"class":"l_scor", "var":"Punkte"},
           {"class":"l_how", "var":"Spiel"},
           {"class":"l_how", "var":"Anleitung"},
-          {"class":"l_opt", "var":"Option"},
+            {"class":"l_opt", "var":"Option"},
             {"class":"l_language", "var":"Sprache"},
-            {"class":"l_violence", "var":"Schwierigkeit"},
+              {"class":"l_violence", "var":"Schwierigkeit"},
               {"class":"l_nick", "var":"Name"},
-              {"class":"l_cred", "var":"Credits"},
+                {"class":"l_cred", "var":"Credits"},
                 {"class":"l_programmer", "var":"Kreative und Entwickler"},
-                {"class":"l_langProg", "var":"Programmier Sprachen"},
+                  {"class":"l_langProg", "var":"Programmier Sprachen"},
                   {"class":"l_thanks", "var":"Danksagungen"},
-                  {"class":"l_bodyThanks", "var":""},
+                    {"class":"l_bodyThanks", "var":""},
                     {"class":"l_gameOver", "var":"Game Over"},
-                    {"class":"l_sc", "var":"Punkte"},
-                    {"class":"l_easy", "var":"Einfach"},
-                    {"class":"l_normal", "var":"Normal"},
-                    {"class":"l_hard", "var":"Schwierig"},
-                    {"class":"l_dante", "var":"Dante must die"}
+                      {"class":"l_sc", "var":"Punkte"},
+                      {"class":"l_easy", "var":"Einfach"},
+                        {"class":"l_normal", "var":"Normal"},
+                        {"class":"l_hard", "var":"Schwierig"},
+                          {"class":"l_dante", "var":"Dante must die"}
     ],
 
     "l10n_es":[
@@ -422,10 +431,10 @@ function setL10n(next) {
                   {"class":"l_bodyThanks", "var":""},
                     {"class":"l_gameOver", "var":"Game Over"},
                     {"class":"l_sc", "var":"Puntuación"},
-                    {"class":"l_easy", "var":""},
-                    {"class":"l_normal", "var":""},
-                    {"class":"l_hard", "var":""},
-                    {"class":"l_dante", "var":"Dante must die"}
+                      {"class":"l_easy", "var":""},
+                      {"class":"l_normal", "var":""},
+                        {"class":"l_hard", "var":""},
+                        {"class":"l_dante", "var":"Dante must die"}
     ],
 
     "l10n_fr":[
@@ -448,10 +457,10 @@ function setL10n(next) {
                   {"class":"l_bodyThanks", "var":""},
                     {"class":"l_gameOver", "var":"Game Over"},
                     {"class":"l_sc", "var":"Score"},
-                    {"class":"l_easy", "var":""},
-                    {"class":"l_normal", "var":""},
-                    {"class":"l_hard", "var":""},
-                    {"class":"l_dante", "var":"Dante must die"}
+                      {"class":"l_easy", "var":""},
+                      {"class":"l_normal", "var":""},
+                        {"class":"l_hard", "var":""},
+                        {"class":"l_dante", "var":"Dante must die"}
     ]
   }
 
@@ -465,7 +474,6 @@ function setL10n(next) {
 
     localStorage.l10n = selectedL10n.name;
     var l10nString = l10n[selectedL10n.code];
-    console.log(localStorage.l10n);
     $("#lan").text(localStorage.l10n);
     for(var i = 0; i < l10nString.length; i++)
       $("."+l10nString[i].class).text(l10nString[i].var);
@@ -543,9 +551,9 @@ function setViolence(next){
   };
 
   var l10nList= [
-    {"code": "l10n_it", "name": "Italiano"},
-    {"code": "l10n_de", "name": "Deutsch"},
-    {"code": "l10n_fr", "name": "Français"},
+  {"code": "l10n_it", "name": "Italiano"},
+  {"code": "l10n_de", "name": "Deutsch"},
+  {"code": "l10n_fr", "name": "Français"},
     {"code": "l10n_es", "name": "Español"},
     {"code": "l10n_en", "name": "English"}
   ];
@@ -560,7 +568,6 @@ function setViolence(next){
 
 
     var index = parseInt(localStorage.difficult) + next;
-    console.log(index, next);
     if (index > diffLength - 1)
       index = 0;
     else if (index < 0)
