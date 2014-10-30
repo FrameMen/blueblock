@@ -211,3 +211,12 @@ body {
 		margin: auto;
 	}
 }
+
+
+#marquee {
+    height: 200px;
+    overflow: hidden; /* <-- so we can see what happens */
+}
+#marquee > div {
+    padding: 1em;
+}
