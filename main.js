@@ -668,3 +668,8 @@ marquee.hover(function() {
 }, function() {
     marquee.marquee('play');
 });
+
+function reset(){
+  localStorage.clear();
+  location.reload();
+}
