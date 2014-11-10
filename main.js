@@ -34,7 +34,9 @@ function initL10n() {
   {"code": "de", "name": "Deutsch"},
   {"code": "fr", "name": "Français"},
     {"code": "es", "name": "Español"},
-    {"code": "en", "name": "English"}
+    {"code": "en", "name": "English"},
+    {"code": "en", "name": "日本の"}
+
   ];
   if (localStorage.l10n == undefined || localStorage.l10n == ""){
     for (var i = 0; l10nList[i].code != navigator.language.slice(0, 2) && i < l10nList.length; i++);
@@ -338,7 +340,8 @@ function setL10n(next) {
   {"code": "l10n_it", "name": "Italiano"},
   {"code": "l10n_de", "name": "Deutsch"},
     {"code": "l10n_fr", "name": "Français"},
-    {"code": "l10n_es", "name": "Español"}
+    {"code": "l10n_es", "name": "Español"},
+    {"code": "l10n_jp", "name": "日本の"}
   ];
   var l10n = {
     "l10n_en":[
@@ -354,7 +357,7 @@ function setL10n(next) {
             {"class":"l_opt", "var":"Option"},
             {"class":"l_language", "var":"Language"},
               {"class":"l_violence", "var":"Violence"},
-              {"class":"l_nick", "var":"Nickname"},
+              {"class":"l_nick", "var":"Nickname:"},
                 {"class":"l_cred", "var":"Credis"},
                 {"class":"l_programmer", "var":"Creators and Developers"},
                   {"class":"l_langProg", "var":"Languages"},
@@ -381,7 +384,7 @@ function setL10n(next) {
             {"class":"l_opt", "var":"Opzioni"},
             {"class":"l_language", "var":"Lingua"},
               {"class":"l_violence", "var":"Violenza"},
-              {"class":"l_nick", "var":"Soprannome"},
+              {"class":"l_nick", "var":"Soprannome:"},
                 {"class":"l_cred", "var":"Crediti"},
                 {"class":"l_programmer", "var":"Creatori e Sviluppartori"},
                   {"class":"l_langProg", "var":"Linguaggi"},
@@ -411,7 +414,7 @@ function setL10n(next) {
             {"class":"l_opt", "var":"Option"},
             {"class":"l_language", "var":"Sprache"},
               {"class":"l_violence", "var":"Schwierigkeit"},
-              {"class":"l_nick", "var":"Name"},
+              {"class":"l_nick", "var":"Name:"},
                 {"class":"l_cred", "var":"Credits"},
                 {"class":"l_programmer", "var":"Kreative und Entwickler"},
                   {"class":"l_langProg", "var":"Programmier Sprachen"},
@@ -437,7 +440,7 @@ function setL10n(next) {
           {"class":"l_opt", "var":"Opción"},
             {"class":"l_language", "var":"Lengua"},
             {"class":"l_violence", "var":"Violencia"},
-              {"class":"l_nick", "var":"Apodo"},
+              {"class":"l_nick", "var":"Apodo:"},
               {"class":"l_cred", "var":"Créditos"},
                 {"class":"l_programmer", "var":"Creadores y Promotores"},
                 {"class":"l_langProg", "var":"Lengua"},
@@ -463,7 +466,7 @@ function setL10n(next) {
           {"class":"l_opt", "var":"Option"},
             {"class":"l_language", "var":"Langue"},
             {"class":"l_violence", "var":"Violence"},
-              {"class":"l_nick", "var":"Surnom"},
+              {"class":"l_nick", "var":"Surnom:"},
               {"class":"l_cred", "var":"Crédits"},
                 {"class":"l_programmer", "var":"Créateurs et Développeurs"},
                 {"class":"l_langProg", "var":"Langue"},
@@ -475,8 +478,37 @@ function setL10n(next) {
                       {"class":"l_normal", "var":""},
                         {"class":"l_hard", "var":""},
                         {"class":"l_dante", "var":"Dante must die"}
-    ]
+    ],
+  "l10n_jp":[
+     {"class":"l_play", "var":" プレー"},
+    {"class":"l_howTo", "var":"マニュアル"},
+    {"class":"l_score", "var":"スコア"},
+      {"class":"l_option", "var":"オプション"},
+      {"class":"l_credits", "var":"クレジットタイトル"},
+        {"class":"l_time", "var":"時間"},
+        {"class":"l_scor", "var":"スコア"},
+          {"class":"l_game", "var":"ゲーム"},
+          {"class":"l_how", "var":"マニュアル"},
+            {"class":"l_opt", "var":"オプション"},　　
+            {"class":"l_language", "var":"言語"},　　　　
+              {"class":"l_violence", "var":"暴力"},　　　
+              {"class":"l_nick", "var":"渾名:"},　　　　
+                {"class":"l_cred", "var":"クレジットタイトル"},　　　　
+                {"class":"l_programmer", "var":"アプリケーションかいはつしゃ"},
+                  {"class":"l_langProg", "var":"Linguaggi"},
+                  {"class":"l_thanks", "var":"お礼"},
+                    {"class":"l_bodyThanks", "var":"BlueBlock をダウンロードしたので、ありがとうございました。 "+
+                      "楽しんでいただけましたら幸いです。 "},
+                    {"class":"l_gameOver", "var":"ゲームセット"},
+                      {"class":"l_sc", "var":"Punteggio"},　
+                      {"class":"l_easy", "var":"やさしい"},
+                        {"class":"l_normal", "var":"正常"},
+                        {"class":"l_hard", "var":" 難しい"},
+                          {"class":"l_dante", "var":"ダンテは死ななければならない"}　　
+
+  ]
   }
+
 
   if (localStorage.l10n != undefined) {
     for (var i = 0; l10nList[i].name != localStorage.l10n && i < l10nList.length; i++);
@@ -562,6 +594,7 @@ function setViolence(next){
     "l10n_de": ["Einfach", "Normal", "Schwierig", localStorage.nick + " " +"must die"],
     "l10n_fr": ["Easy", "Normal", "Hard", localStorage.nick + " " +"must die"],
     "l10n_es": ["Easy", "Normal", "Hard", localStorage.nick + " " +"must die"],
+    "l10n_jp": ["簡単に", "ノーマル", "ハード", localStorage.nick + " " +"死ぬ"]
   };
 
   var l10nList= [
@@ -569,7 +602,8 @@ function setViolence(next){
   {"code": "l10n_de", "name": "Deutsch"},
   {"code": "l10n_fr", "name": "Français"},
     {"code": "l10n_es", "name": "Español"},
-    {"code": "l10n_en", "name": "English"}
+    {"code": "l10n_en", "name": "English"},
+    {"code": "l10n_jp", "name": "日本の"}
   ];
   //
   //lang select
