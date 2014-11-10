@@ -113,7 +113,7 @@ function gameOver(e) {
   timeover = true;
   window.setTimeout(function(){
     showGameOver();
-  }, 3000);
+  }, 1000);
 }
 
 function removeTile(el) {
