@@ -111,6 +111,7 @@ function setTileInterval(timeout) {
 function gameOver(e) {
   printStat();
   timeover = true;
+  $(".js-OverScore").text("Your score: " + score);
   window.setTimeout(function(){
     showGameOver();
   }, 1000);
