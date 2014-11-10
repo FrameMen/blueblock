@@ -224,6 +224,7 @@ h1 {
 }
 
 .marquee {
+  margin-top: 1000px;
 	overflow: hidden; /* <-- so we can see what happens */
 }
 .marquee > div {

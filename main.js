@@ -643,49 +643,43 @@ el.hover(function() {
     var methods = {
 
         init: function(options) {
-            this.children(':first').stop();
             this.marquee('play');
         },
 
         play: function() {
-            var marquee = this,
-                pixelsPerSecond = 100,
-                firstChild = this.children(':first'),
+                var pixelsPerSecond = 100,
                 totalHeight = this.height(),
                 difference = 0,
                 duration = 0;
 
-            // Find the total height of the children by adding each child's height:
-            this.children().each(function(index, element) {
-            //    totalHeight += $(element).innerHeight();
-            });
-
             // The distance the divs have to travel to reach -1 * totalHeight:
-            difference = totalHeight + parseInt(firstChild.css('margin-top'), 10  );
+            difference = totalHeight;
 
             // The duration of the animation needed to get the correct speed:
+
             duration = (difference/pixelsPerSecond) * 1000;
+            duration = 10000;
 
             // Animate the first child's margin-top to -1 * totalHeight:
-            firstChild.animate(
-                { 'margin-top': -1 * totalHeight },
+            this.animate(
+                { 'margin-top': 10 },
                 duration,
                 'linear',
                 function() {
                     // Move the first child back down (below the container):
-                    firstChild.css('margin-top', marquee.innerHeight());
+                    //this.css('margin-top', marquee.innerHeight());
                     // Restart whole process... :)
                     marquee.marquee('play');
+                    console.log("Over");
                 }
             );
         },
         pause: function() {
-            this.children(':first').stop();
+            this.stop();
         }
     };
 
     $.fn.marquee = function(method) {
-
         // Method calling logic
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
