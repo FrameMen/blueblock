@@ -208,19 +208,19 @@ h1 {
 
 
 
-#marquee {
-	height: 200px;
+.marquee {
+	height: 100%;
 	overflow: hidden; /* <-- so we can see what happens */
 }
-#marquee > div {
+.marquee > div {
 	padding: 1em;
 }
 
-@media(max-width: 350px) { 	
-	.view{ 	
-		width: auto; 	
-		margin: auto; 	
-	} 	
+@media(max-width: 350px) {
+	.view{
+		width: auto;
+		margin: auto;
+	}
 }
 
 @media(max-height: 500px) {

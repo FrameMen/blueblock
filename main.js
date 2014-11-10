@@ -35,7 +35,7 @@ function initL10n() {
   {"code": "fr", "name": "Français"},
     {"code": "es", "name": "Español"},
     {"code": "en", "name": "English"},
-    {"code": "en", "name": "日本の"}
+    {"code": "js", "name": "日本の"}
 
   ];
   if (localStorage.l10n == undefined || localStorage.l10n == ""){
@@ -358,7 +358,7 @@ function setL10n(next) {
             {"class":"l_language", "var":"Language"},
               {"class":"l_violence", "var":"Violence"},
               {"class":"l_nick", "var":"Nickname:"},
-                {"class":"l_cred", "var":"Credis"},
+                {"class":"l_cred", "var":"Credits"},
                 {"class":"l_programmer", "var":"Creators and Developers"},
                   {"class":"l_langProg", "var":"Languages"},
                   {"class":"l_thanks", "var":""},
@@ -693,7 +693,7 @@ function setViolence(next){
 
 })(jQuery);
 
-var marquee = $('#marquee');
+var marquee = $('.marquee');
 
 marquee.marquee();
 
