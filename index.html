@@ -178,14 +178,12 @@
         <div class="back"></div>
         <h1 class="title l_gameOver">Game Over</h1>
       </div>
-
       <section class="content">
-        <h1 class="js-OverScore l_OverScore"></h1>
-        <div class="l_nick">Nickname:</div>
-        <input placeholder="Insert your name" type="text" class="js-nick" oninput="setNick()" name="fname">
-
-        <p></p>
-        <div class="l_restart menuEl" onclick="restartGame()">Restart</div>
+        <div class="l_OverScore titleStats">Your Score:</div>
+        <div class="js-OverScore overStats"></div>
+        <div class="l_nick titleStats">Nickname:</div>
+        <input placeholder="Insert your name" maxlength="20" type="text" class="js-nick overNick" oninput="setNick()" name="fname">
+        <div class="l_restart menuEl restart" onclick="restartGame()">Restart</div>
       </section>
     </section>
 

@@ -9,9 +9,9 @@ var time;
 var timeover;
 
 init();
-alert("This game is under heavy development! Therefore, there are still some bugs.");
 
 function init() {
+  centerContent();
   addEvents();
   showStart();
 
@@ -111,7 +111,7 @@ function setTileInterval(timeout) {
 function gameOver(e) {
   printStat();
   timeover = true;
-  $(".js-OverScore").text("Your score: " + score);
+  $(".js-OverScore").text(score);
   window.setTimeout(function(){
     showGameOver();
   }, 1000);
@@ -204,77 +204,49 @@ function randomTile() {
 }
 
 function showStart(){
+  $(".view").hide();
   $(".view-start").show();
-  $(".view-game").hide();
-  $(".view-howTo").hide();
-  $(".view-option").hide();
-  $(".view-credits").hide();
-  $(".view-gameover").hide();
-  $(".view-score").hide();
+  centerContent();
 }
 
 function showGame(){
-  $(".view-start").hide();
+  $(".view").hide();
   $(".view-game").show();
-  $(".view-howTo").hide();
-  $(".view-option").hide();
-  $(".view-credits").hide();
-  $(".view-gameover").hide();
-  $(".view-score").hide();
+  centerContent();
   start();
 }
 
 function credits(){
-  $(".view-start").hide();
-  $(".view-game").hide();
-  $(".view-howTo").hide();
-  $(".view-option").hide();
+  $(".view").hide();
   $(".view-credits").show();
-  $(".view-gameover").hide();
-  $(".view-score").hide();
+  centerContent();
 }
 
 function howTo(){
-  $(".view-start").hide();
-  $(".view-game").hide();
-  $(".view-option").hide();
+  $(".view").hide();
   $(".view-howTo").show();
-  $(".view-credits").hide();
-  $(".view-gameover").hide();
-  $(".view-score").hide();
+  centerContent();
 }
 
 function option(){
-  $(".view-start").hide();
-  $(".view-game").hide();
+  $(".view").hide();
   $(".view-option").show();
-  $(".view-howTo").hide();
-  $(".view-credits").hide();
-  $(".view-gameover").hide();
-  $(".view-score").hide();
+  centerContent();
 }
 
 function showScore(){
   var el = $(".js-rank:first");
   loadScore(el, 0);
-  $(".view-start").hide();
-  $(".view-game").hide();
-  $(".view-option").hide();
-  $(".view-howTo").hide();
-  $(".view-credits").hide();
-  $(".view-gameover").hide();
+  $(".view").hide();
   $(".view-score").show();
+  centerContent();
 }
 
 function showGameOver(){
   var i = 0;
-  $(".view-start").hide();
-  $(".view-game").hide();
-  $(".view-option").hide();
-  $(".view-howTo").hide();
-  $(".view-credits").hide();
+  $(".view").hide();
   $(".view-gameover").show();
-  $(".view-score").hide();
+  centerContent();
 }
 
 function loadScore() {
@@ -617,15 +589,12 @@ function setViolence(next){
             this.children().each(function(index, element) {
             //    totalHeight += $(element).innerHeight();
             });
-            console.log(totalHeight);
 
             // The distance the divs have to travel to reach -1 * totalHeight:
             difference = totalHeight + parseInt(firstChild.css('margin-top'), 10  );
-            console.log(difference);
 
             // The duration of the animation needed to get the correct speed:
             duration = (difference/pixelsPerSecond) * 1000;
-            console.log(duration);
 
             // Animate the first child's margin-top to -1 * totalHeight:
             firstChild.animate(
@@ -674,3 +643,15 @@ function reset(){
   localStorage.clear();
   location.reload();
 }
+
+function centerContent() {
+  var head = ($(".header").height() > 0) ? $(".header").height() : $(".viewTitle:visible").height(); 
+  var space =  $(window).height() - head - 20;
+  var top = (space - $(".content:visible").height()) / 2;
+  if (top < 10)
+    top = 10;
+  $(".content:visible").css({'margin-top': top + "px"})
+}
+
+//center conntent
+$( window ).resize(function() {centerContent();});
