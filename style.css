@@ -223,10 +223,7 @@ h1 {
 	display:inline-block;
 }
 
-
-
 .marquee {
-	height: 100%;
 	overflow: hidden; /* <-- so we can see what happens */
 }
 .marquee > div {

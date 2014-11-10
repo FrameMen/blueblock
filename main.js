@@ -8,9 +8,12 @@ var mulTimeout;
 var time;
 var timeover;
 
+
 init();
 
 function init() {
+  //center conntent
+  $( window ).resize(function() {centerContent();});
   centerContent();
   addEvents();
   showStart();
@@ -602,6 +605,39 @@ function setViolence(next){
 }
 
 
+
+function reset(){
+  localStorage.clear();
+  location.reload();
+}
+
+function centerContent() {
+  var head = ($(".header").height() > 0) ? $(".header").height() : $(".viewTitle:visible").height(); 
+  var space =  $(window).height() - head - 20;
+  maxMarquee(space);
+  var top = (space - $(".content:visible").height()) / 2;
+  if (top < 20)
+    top = 20;
+  $(".content:visible").css({'margin-top': top + "px"});
+}
+
+
+function maxMarquee(space) {
+  $(".marquee:visible").css({'height': space + "px"})
+}
+
+
+function addMarquee (el) {
+
+el.marquee();
+
+el.hover(function() {
+    el.marquee('pause');
+}, function() {
+    el.marquee('play');
+});
+}
+
 (function($) {
 
     var methods = {
@@ -615,7 +651,7 @@ function setViolence(next){
             var marquee = this,
                 pixelsPerSecond = 100,
                 firstChild = this.children(':first'),
-                totalHeight = 690,
+                totalHeight = this.height(),
                 difference = 0,
                 duration = 0;
 
@@ -663,29 +699,7 @@ function setViolence(next){
 
 })(jQuery);
 
-var marquee = $('.marquee');
-
-marquee.marquee();
-
-marquee.hover(function() {
-    marquee.marquee('pause');
-}, function() {
-    marquee.marquee('play');
-});
-
-function reset(){
-  localStorage.clear();
-  location.reload();
-}
-
-function centerContent() {
-  var head = ($(".header").height() > 0) ? $(".header").height() : $(".viewTitle:visible").height(); 
-  var space =  $(window).height() - head - 20;
-  var top = (space - $(".content:visible").height()) / 2;
-  if (top < 10)
-    top = 10;
-  $(".content:visible").css({'margin-top': top + "px"})
-}
-
-//center conntent
-$( window ).resize(function() {centerContent();});
+var marquee = $('.marquee:first');
+addMarquee(marquee);
+var marquee = $('.marquee:last');
+addMarquee(marquee);
