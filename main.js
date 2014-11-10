@@ -225,6 +225,7 @@ function credits(){
   $(".view").hide();
   $(".view-credits").show();
   centerContent();
+	addMarquee(".marqueeCredits");
 }
 
 function howTo(){
@@ -245,6 +246,7 @@ function showScore(){
   $(".view").hide();
   $(".view-score").show();
   centerContent();
+	addMarquee(".marqueeScore");
 }
 
 function showGameOver(){
@@ -296,6 +298,7 @@ function addEvents(){
 
 function backBtn() {
   time = 0;
+	removeMarquee(".marquee");
   showStart();
 }
 function backBtnGameOver() {
@@ -623,63 +626,67 @@ function centerContent() {
 
 
 function maxMarquee(space) {
-  $(".marquee:visible").css({'height': space + "px"})
+	space -= 20;
+  	$(".marquee:visible").css({'height': space + "px"})
 }
 
 
 function addMarquee (el) {
+	el = $(el);
+	el.marquee("init");
 
-el.marquee();
 
-el.hover(function() {
-    el.marquee('pause');
-}, function() {
-    el.marquee('play');
-});
+	el.hover(function() {
+		el.marquee('stop');
+	}, function() {
+		el.marquee('start');
+	});
+}
+
+function removeMarquee (el) {
+	$(el).unbind('mouseenter mouseleave');
+	$(".marquee:eq(0)").marquee("stop");
+	$(".marquee:eq(1)").marquee("stop");
 }
 
 (function($) {
 
-    var methods = {
+	var methods = {
 
-        init: function(options) {
-            this.marquee('play');
-        },
+		init: function() {
+			$(".marquee").css('margin-top', 20);
+			this.children(":first").css('margin-top', this.height());
+			this.marquee('start');
+		},
 
-        play: function() {
-                var pixelsPerSecond = 100,
-                totalHeight = this.height(),
-                difference = 0,
-                duration = 0;
+		start: function() {
+			var el = this;
+			var pixelsPerSecond = 100;
+			var firstChild = this.children(':first');
+			var contentHeight = $(".content:visible").height();
+			var marqueeHeight = this.height();// - firstChild.css("margin-top");
+			var currentPoint = parseFloat(firstChild.css("margin-top"), 10);
 
-            // The distance the divs have to travel to reach -1 * totalHeight:
-            difference = totalHeight;
+			// The duration of the animation needed to get the correct speed:
+			var duration = ((contentHeight + currentPoint) / pixelsPerSecond) * 1000;
 
-            // The duration of the animation needed to get the correct speed:
+			// Animate the first child's margin-top to -1 * totalHeight:
+			firstChild.animate(
+					{ 'margin-top': -1 * contentHeight },
+					duration,
+					'linear',
+					function() {
+						// Restart whole process... :)
+						el.marquee('init');
+					}
+			);
+		},
+		stop: function() {
+			this.children(':first').stop();
+		}
+	};
 
-            duration = (difference/pixelsPerSecond) * 1000;
-            duration = 10000;
-
-            // Animate the first child's margin-top to -1 * totalHeight:
-            this.animate(
-                { 'margin-top': 10 },
-                duration,
-                'linear',
-                function() {
-                    // Move the first child back down (below the container):
-                    //this.css('margin-top', marquee.innerHeight());
-                    // Restart whole process... :)
-                    marquee.marquee('play');
-                    console.log("Over");
-                }
-            );
-        },
-        pause: function() {
-            this.stop();
-        }
-    };
-
-    $.fn.marquee = function(method) {
+	$.fn.marquee = function(method) {
         // Method calling logic
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
@@ -693,7 +700,3 @@ el.hover(function() {
 
 })(jQuery);
 
-var marquee = $('.marquee:first');
-addMarquee(marquee);
-var marquee = $('.marquee:last');
-addMarquee(marquee);
