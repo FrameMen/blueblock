@@ -636,16 +636,19 @@ function maxMarquee(space) {
 function addMarquee (el) {
 	el = $(el);
 	el.marquee("init");
+  el.on("click", function() {stopClickMarquee(el)});
+}
 
+function stopClickMarquee(el) {
+	$(el).unbind('click');
+  el.marquee('stop');
+  el.on("click", function() {startClickMarquee(el)});
+}
 
-  console.log(el);
-  el.onclick(alert("Hello"));//function el.marquee('stop'));
-
-	//el.hover(function() {
-//		el.marquee('stop');
-//	}, function() {
-//		el.marquee('start');
-//	});
+function startClickMarquee(el) {
+	$(el).unbind('click');
+  el.marquee('start');
+  el.on("click", function() {stopClickMarquee(el)});
 }
 
 function removeMarquee (el) {
