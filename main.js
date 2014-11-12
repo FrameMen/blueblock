@@ -9,6 +9,7 @@ var time;
 var timeover;
 
 
+addFnMarquee();
 init();
 
 function init() {
@@ -649,8 +650,8 @@ function removeMarquee (el) {
 	$(".marquee:eq(1)").marquee("stop");
 }
 
-(function($) {
-
+//add marquee function to jquery
+function addFnMarquee() {
 	var methods = {
 
 		init: function() {
@@ -697,6 +698,4 @@ function removeMarquee (el) {
         }
 
     };
-
-})(jQuery);
-
+}
