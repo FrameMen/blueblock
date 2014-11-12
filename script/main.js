@@ -10,6 +10,7 @@ var timeover;
 
 
 addFnMarquee();
+removeClickDelay();
 init();
 
 function init() {
@@ -637,11 +638,14 @@ function addMarquee (el) {
 	el.marquee("init");
 
 
-	el.hover(function() {
-		el.marquee('stop');
-	}, function() {
-		el.marquee('start');
-	});
+  console.log(el);
+  el.onclick(alert("Hello"));//function el.marquee('stop'));
+
+	//el.hover(function() {
+//		el.marquee('stop');
+//	}, function() {
+//		el.marquee('start');
+//	});
 }
 
 function removeMarquee (el) {
@@ -698,4 +702,10 @@ function addFnMarquee() {
         }
 
     };
+}
+//Eliminates 300ms click delay on mobile 
+function removeClickDelay() {
+  window.addEventListener('load', function() {
+    new FastClick(document.body);
+  }, false);
 }
