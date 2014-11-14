@@ -450,7 +450,7 @@ function setL10n(next) {
                 {"class":"l_programmer", "var":"Créateurs et Développeurs"},
                 {"class":"l_langProg", "var":"Langue"},
                   {"class":"l_thanks", "var":""},
-                  {"class":"l_bodyThanks", "var":""},
+                  {"class":"l_bodyThanks", "var":"Merci de part de nous progammateurs pour votre contribut pour le downolad de BlueBlock, nous ésperons vivement que vous l'avez aimé et que vous vous etes amousé beaucoup."},
                     {"class":"l_gameOver", "var":"Game Over"},
                     {"class":"l_sc", "var":"Score"},
                       {"class":"l_easy", "var":""},
@@ -615,7 +615,7 @@ function reset(){
 }
 
 function centerContent() {
-  var head = ($(".header").height() > 0) ? $(".header").height() : $(".viewTitle:visible").height(); 
+  var head = ($(".header").height() > 0) ? $(".header").height() : $(".viewTitle:visible").height();
   var space =  $(window).height() - head - 20;
   maxMarquee(space);
   var top = (space - $(".content:visible").height()) / 2;
@@ -699,4 +699,3 @@ function removeMarquee (el) {
     };
 
 })(jQuery);
-
