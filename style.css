@@ -20,7 +20,7 @@ body {
 	font-size: 16px;
 	margin: auto;
 	overflow: hidden;
-	margin: 20px;
+	margin-top: 20px;
 	text-align: center;
 	color: #000;
 }
@@ -31,7 +31,6 @@ h1 {
 
 .view{
 	width: 300px;
-	height: 100px;
 	margin: auto;
 }
 .content {
@@ -90,7 +89,7 @@ h1 {
 	margin-left: 10px;
 }
 
-.menu {
+.menuEl {
 	line-height: 40px;
 	font-size: 20px;
 	border: 4px solid #000;
@@ -99,12 +98,17 @@ h1 {
 }
 
 
+
 .js-square {
 	color: blue;
+}
+.restart {
+  margin-top: 50px;
 }
 
 .viewTitle {
 	display: table;
+	cursor: pointer;
 	width: 100%;
 	text-align: left;
 	table-layout: fixed;
@@ -166,6 +170,19 @@ h1 {
 	font-size: 15px;
 }
 
+.titleStats {
+  font-size: 20px;
+}
+
+.overStats {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.overNick {
+  text-align: center;
+  margin-top: 10px;
+}
+
 .rank {
 	margin-top: 10px;
 }
@@ -206,32 +223,16 @@ h1 {
 	display:inline-block;
 }
 
-
-
-#marquee {
-	height: 200px;
+.marquee {
 	overflow: hidden; /* <-- so we can see what happens */
 }
-#marquee > div {
+.marquee > div {
 	padding: 1em;
 }
 
-@media(max-width: 350px) { 	
-	.view{ 	
-		width: auto; 	
-		margin: auto; 	
-	} 	
-}
-
-@media(max-height: 500px) {
-	.content{
-		margin-top: 40px;
+@media(max-width: 350px) {
+	.view{
+		width: auto;
+		margin: auto;
 	}
-}
-
-@media(max-height: 470px) {
-	.content{
-		margin-top: 20px;
-	}
-
 }

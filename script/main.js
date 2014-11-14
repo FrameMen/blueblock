@@ -8,10 +8,15 @@ var mulTimeout;
 var time;
 var timeover;
 
+
+addFnMarquee();
+removeClickDelay();
 init();
-alert("This game is under heavy development! Therefore, there are still some bugs.");
 
 function init() {
+  //center conntent
+  $( window ).resize(function() {centerContent();});
+  centerContent();
   addEvents();
   showStart();
 
@@ -34,7 +39,9 @@ function initL10n() {
   {"code": "de", "name": "Deutsch"},
   {"code": "fr", "name": "Français"},
     {"code": "es", "name": "Español"},
-    {"code": "en", "name": "English"}
+    {"code": "en", "name": "English"},
+    {"code": "js", "name": "日本の"}
+
   ];
   if (localStorage.l10n == undefined || localStorage.l10n == ""){
     for (var i = 0; l10nList[i].code != navigator.language.slice(0, 2) && i < l10nList.length; i++);
@@ -111,9 +118,10 @@ function setTileInterval(timeout) {
 function gameOver(e) {
   printStat();
   timeover = true;
+  $(".js-OverScore").text(score);
   window.setTimeout(function(){
     showGameOver();
-  }, 3000);
+  }, 1000);
 }
 
 function removeTile(el) {
@@ -203,77 +211,51 @@ function randomTile() {
 }
 
 function showStart(){
+  $(".view").hide();
   $(".view-start").show();
-  $(".view-game").hide();
-  $(".view-howTo").hide();
-  $(".view-option").hide();
-  $(".view-credits").hide();
-  $(".view-gameover").hide();
-  $(".view-score").hide();
+  centerContent();
 }
 
 function showGame(){
-  $(".view-start").hide();
+  $(".view").hide();
   $(".view-game").show();
-  $(".view-howTo").hide();
-  $(".view-option").hide();
-  $(".view-credits").hide();
-  $(".view-gameover").hide();
-  $(".view-score").hide();
+  centerContent();
   start();
 }
 
 function credits(){
-  $(".view-start").hide();
-  $(".view-game").hide();
-  $(".view-howTo").hide();
-  $(".view-option").hide();
+  $(".view").hide();
   $(".view-credits").show();
-  $(".view-gameover").hide();
-  $(".view-score").hide();
+  centerContent();
+	addMarquee(".marqueeCredits");
 }
 
 function howTo(){
-  $(".view-start").hide();
-  $(".view-game").hide();
-  $(".view-option").hide();
+  $(".view").hide();
   $(".view-howTo").show();
-  $(".view-credits").hide();
-  $(".view-gameover").hide();
-  $(".view-score").hide();
+  centerContent();
 }
 
 function option(){
-  $(".view-start").hide();
-  $(".view-game").hide();
+  $(".view").hide();
   $(".view-option").show();
-  $(".view-howTo").hide();
-  $(".view-credits").hide();
-  $(".view-gameover").hide();
-  $(".view-score").hide();
+  centerContent();
 }
 
 function showScore(){
   var el = $(".js-rank:first");
   loadScore(el, 0);
-  $(".view-start").hide();
-  $(".view-game").hide();
-  $(".view-option").hide();
-  $(".view-howTo").hide();
-  $(".view-credits").hide();
-  $(".view-gameover").hide();
+  $(".view").hide();
   $(".view-score").show();
+  centerContent();
+	addMarquee(".marqueeScore");
 }
 
 function showGameOver(){
   var i = 0;
-  $(".view-start").hide();
-  $(".view-game").hide();
-  $(".view-option").hide();
-  $(".view-howTo").hide();
-  $(".view-credits").hide();
+  $(".view").hide();
   $(".view-gameover").show();
-  $(".view-score").hide();
+  centerContent();
 }
 
 function loadScore() {
@@ -318,6 +300,7 @@ function addEvents(){
 
 function backBtn() {
   time = 0;
+	removeMarquee(".marquee");
   showStart();
 }
 function backBtnGameOver() {
@@ -338,7 +321,8 @@ function setL10n(next) {
   {"code": "l10n_it", "name": "Italiano"},
   {"code": "l10n_de", "name": "Deutsch"},
     {"code": "l10n_fr", "name": "Français"},
-    {"code": "l10n_es", "name": "Español"}
+    {"code": "l10n_es", "name": "Español"},
+    {"code": "l10n_jp", "name": "日本の"}
   ];
   var l10n = {
     "l10n_en":[
@@ -354,8 +338,8 @@ function setL10n(next) {
             {"class":"l_opt", "var":"Option"},
             {"class":"l_language", "var":"Language"},
               {"class":"l_violence", "var":"Violence"},
-              {"class":"l_nick", "var":"Nickname"},
-                {"class":"l_cred", "var":"Credis"},
+              {"class":"l_nick", "var":"Nickname:"},
+                {"class":"l_cred", "var":"Credits"},
                 {"class":"l_programmer", "var":"Creators and Developers"},
                   {"class":"l_langProg", "var":"Languages"},
                   {"class":"l_thanks", "var":""},
@@ -381,7 +365,7 @@ function setL10n(next) {
             {"class":"l_opt", "var":"Opzioni"},
             {"class":"l_language", "var":"Lingua"},
               {"class":"l_violence", "var":"Violenza"},
-              {"class":"l_nick", "var":"Soprannome"},
+              {"class":"l_nick", "var":"Soprannome:"},
                 {"class":"l_cred", "var":"Crediti"},
                 {"class":"l_programmer", "var":"Creatori e Sviluppartori"},
                   {"class":"l_langProg", "var":"Linguaggi"},
@@ -411,7 +395,7 @@ function setL10n(next) {
             {"class":"l_opt", "var":"Option"},
             {"class":"l_language", "var":"Sprache"},
               {"class":"l_violence", "var":"Schwierigkeit"},
-              {"class":"l_nick", "var":"Name"},
+              {"class":"l_nick", "var":"Name:"},
                 {"class":"l_cred", "var":"Credits"},
                 {"class":"l_programmer", "var":"Kreative und Entwickler"},
                   {"class":"l_langProg", "var":"Programmier Sprachen"},
@@ -437,7 +421,7 @@ function setL10n(next) {
           {"class":"l_opt", "var":"Opción"},
             {"class":"l_language", "var":"Lengua"},
             {"class":"l_violence", "var":"Violencia"},
-              {"class":"l_nick", "var":"Apodo"},
+              {"class":"l_nick", "var":"Apodo:"},
               {"class":"l_cred", "var":"Créditos"},
                 {"class":"l_programmer", "var":"Creadores y Promotores"},
                 {"class":"l_langProg", "var":"Lengua"},
@@ -463,20 +447,49 @@ function setL10n(next) {
           {"class":"l_opt", "var":"Option"},
             {"class":"l_language", "var":"Langue"},
             {"class":"l_violence", "var":"Violence"},
-              {"class":"l_nick", "var":"Surnom"},
+              {"class":"l_nick", "var":"Surnom:"},
               {"class":"l_cred", "var":"Crédits"},
                 {"class":"l_programmer", "var":"Créateurs et Développeurs"},
                 {"class":"l_langProg", "var":"Langue"},
                   {"class":"l_thanks", "var":""},
-                  {"class":"l_bodyThanks", "var":""},
+                  {"class":"l_bodyThanks", "var":"Merci de part de nous progammateurs pour votre contribut pour le downolad de BlueBlock, nous ésperons vivement que vous l'avez aimé et que vous vous etes amousé beaucoup."},
                     {"class":"l_gameOver", "var":"Game Over"},
                     {"class":"l_sc", "var":"Score"},
                       {"class":"l_easy", "var":""},
                       {"class":"l_normal", "var":""},
                         {"class":"l_hard", "var":""},
                         {"class":"l_dante", "var":"Dante must die"}
-    ]
+    ],
+  "l10n_jp":[
+     {"class":"l_play", "var":" プレー"},
+    {"class":"l_howTo", "var":"マニュアル"},
+    {"class":"l_score", "var":"スコア"},
+      {"class":"l_option", "var":"オプション"},
+      {"class":"l_credits", "var":"クレジットタイトル"},
+        {"class":"l_time", "var":"時間"},
+        {"class":"l_scor", "var":"スコア"},
+          {"class":"l_game", "var":"ゲーム"},
+          {"class":"l_how", "var":"マニュアル"},
+            {"class":"l_opt", "var":"オプション"},　　
+            {"class":"l_language", "var":"言語"},　　　　
+              {"class":"l_violence", "var":"暴力"},　　　
+              {"class":"l_nick", "var":"渾名:"},　　　　
+                {"class":"l_cred", "var":"クレジットタイトル"},　　　　
+                {"class":"l_programmer", "var":"アプリケーションかいはつしゃ"},
+                  {"class":"l_langProg", "var":"Linguaggi"},
+                  {"class":"l_thanks", "var":"お礼"},
+                    {"class":"l_bodyThanks", "var":"BlueBlock をダウンロードしたので、ありがとうございました。 "+
+                      "楽しんでいただけましたら幸いです。 "},
+                    {"class":"l_gameOver", "var":"ゲームセット"},
+                      {"class":"l_sc", "var":"Punteggio"},　
+                      {"class":"l_easy", "var":"やさしい"},
+                        {"class":"l_normal", "var":"正常"},
+                        {"class":"l_hard", "var":" 難しい"},
+                          {"class":"l_dante", "var":"ダンテは死ななければならない"}　　
+
+  ]
   }
+
 
   if (localStorage.l10n != undefined) {
     for (var i = 0; l10nList[i].name != localStorage.l10n && i < l10nList.length; i++);
@@ -562,6 +575,7 @@ function setViolence(next){
     "l10n_de": ["Einfach", "Normal", "Schwierig", localStorage.nick + " " +"must die"],
     "l10n_fr": ["Easy", "Normal", "Hard", localStorage.nick + " " +"must die"],
     "l10n_es": ["Easy", "Normal", "Hard", localStorage.nick + " " +"must die"],
+    "l10n_jp": ["簡単に", "ノーマル", "ハード", localStorage.nick + " " +"死ぬ"]
   };
 
   var l10nList= [
@@ -569,7 +583,8 @@ function setViolence(next){
   {"code": "l10n_de", "name": "Deutsch"},
   {"code": "l10n_fr", "name": "Français"},
     {"code": "l10n_es", "name": "Español"},
-    {"code": "l10n_en", "name": "English"}
+    {"code": "l10n_en", "name": "English"},
+    {"code": "l10n_jp", "name": "日本の"}
   ];
   //
   //lang select
@@ -595,57 +610,91 @@ function setViolence(next){
 }
 
 
-(function($) {
 
-    var methods = {
+function reset(){
+  localStorage.clear();
+  location.reload();
+}
 
-        init: function(options) {
-            this.children(':first').stop();
-            this.marquee('play');
-        },
+function centerContent() {
+  var head = ($(".header").height() > 0) ? $(".header").height() : $(".viewTitle:visible").height();
+  var space =  $(window).height() - head - 20;
+  maxMarquee(space);
+  var top = (space - $(".content:visible").height()) / 2;
+  if (top < 20)
+    top = 20;
+  $(".content:visible").css({'margin-top': top + "px"});
+}
 
-        play: function() {
-            var marquee = this,
-                pixelsPerSecond = 100,
-                firstChild = this.children(':first'),
-                totalHeight = 690,
-                difference = 0,
-                duration = 0;
 
-            // Find the total height of the children by adding each child's height:
-            this.children().each(function(index, element) {
-            //    totalHeight += $(element).innerHeight();
-            });
-            console.log(totalHeight);
+function maxMarquee(space) {
+	space -= 20;
+  	$(".marquee:visible").css({'height': space + "px"})
+}
 
-            // The distance the divs have to travel to reach -1 * totalHeight:
-            difference = totalHeight + parseInt(firstChild.css('margin-top'), 10  );
-            console.log(difference);
 
-            // The duration of the animation needed to get the correct speed:
-            duration = (difference/pixelsPerSecond) * 1000;
-            console.log(duration);
+function addMarquee (el) {
+	el = $(el);
+	el.marquee("init");
+  el.on("click", function() {stopClickMarquee(el)});
+}
 
-            // Animate the first child's margin-top to -1 * totalHeight:
-            firstChild.animate(
-                { 'margin-top': -1 * totalHeight },
-                duration,
-                'linear',
-                function() {
-                    // Move the first child back down (below the container):
-                    firstChild.css('margin-top', marquee.innerHeight());
-                    // Restart whole process... :)
-                    marquee.marquee('play');
-                }
-            );
-        },
-        pause: function() {
-            this.children(':first').stop();
-        }
-    };
+function stopClickMarquee(el) {
+	$(el).unbind('click');
+  el.marquee('stop');
+  el.on("click", function() {startClickMarquee(el)});
+}
 
-    $.fn.marquee = function(method) {
+function startClickMarquee(el) {
+	$(el).unbind('click');
+  el.marquee('start');
+  el.on("click", function() {stopClickMarquee(el)});
+}
 
+function removeMarquee (el) {
+	$(el).unbind('mouseenter mouseleave');
+	$(".marquee:eq(0)").marquee("stop");
+	$(".marquee:eq(1)").marquee("stop");
+}
+
+//add marquee function to jquery
+function addFnMarquee() {
+	var methods = {
+
+		init: function() {
+			$(".marquee").css('margin-top', 20);
+			this.children(":first").css('margin-top', this.height());
+			this.marquee('start');
+		},
+
+		start: function() {
+			var el = this;
+			var pixelsPerSecond = 100;
+			var firstChild = this.children(':first');
+			var contentHeight = $(".content:visible").height();
+			var marqueeHeight = this.height();// - firstChild.css("margin-top");
+			var currentPoint = parseFloat(firstChild.css("margin-top"), 10);
+
+			// The duration of the animation needed to get the correct speed:
+			var duration = ((contentHeight + currentPoint) / pixelsPerSecond) * 1000;
+
+			// Animate the first child's margin-top to -1 * totalHeight:
+			firstChild.animate(
+					{ 'margin-top': -1 * contentHeight },
+					duration,
+					'linear',
+					function() {
+						// Restart whole process... :)
+						el.marquee('init');
+					}
+			);
+		},
+		stop: function() {
+			this.children(':first').stop();
+		}
+	};
+
+	$.fn.marquee = function(method) {
         // Method calling logic
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
@@ -656,20 +705,11 @@ function setViolence(next){
         }
 
     };
+}
 
-})(jQuery);
-
-var marquee = $('#marquee');
-
-marquee.marquee();
-
-marquee.hover(function() {
-    marquee.marquee('pause');
-}, function() {
-    marquee.marquee('play');
-});
-
-function reset(){
-  localStorage.clear();
-  location.reload();
+//Eliminates 300ms click delay on mobile 
+function removeClickDelay() {
+  window.addEventListener('load', function() {
+    new FastClick(document.body);
+  }, false);
 }

@@ -21,11 +21,11 @@
       </div>
 
       <section class="content">
-        <div class="menu start" onclick="falling(showGame)"> <span class="js-square">&#9633;</span><span class="l_play">play</span></div>
-        <div class="menu howTo" onclick="falling(howTo)"> <span class="js-square">&#9633;</span><span class="l_howTo">how-to</span></div>
-        <div class="menu js-menu-score" onclick="falling(showScore)"> <span class="js-square">&#9633;</span><span class="l_score">score</span></div>
-        <div class="menu option" onclick="falling(option)"> <span class="js-square">&#9633;</span><span class="l_option">option</span></div>
-        <div class="menu credits" onclick="falling(credits)"> <span class="js-square">&#9633;</span><span class="l_credits">credits</span></div>
+        <div class="menu start menuEl" onclick="falling(showGame)"> <span class="js-square">&#9633;</span><span class="l_play">play</span></div>
+        <div class="menu howTo menuEl" onclick="falling(howTo)"> <span class="js-square">&#9633;</span><span class="l_howTo">how-to</span></div>
+        <div class="menu js-menu-score menuEl" onclick="falling(showScore)"> <span class="js-square">&#9633;</span><span class="l_score">score</span></div>
+        <div class="menu option menuEl" onclick="falling(option)"> <span class="js-square">&#9633;</span><span class="l_option">option</span></div>
+        <div class="menu credits menuEl" onclick="falling(credits)"> <span class="js-square">&#9633;</span><span class="l_credits">credits</span></div>
       </section>
 
     </section>
@@ -149,43 +149,35 @@
       <div onclick="backBtn()" class="viewTitle">
         <div class="back"></div>
         <h1 class="title l_cred">Credits</h1>
-      </div>
-      <section class="content">
-        <!--<marquee behavior="scroll" direction="up" scrollamount="2" scrolldelay="1"
-          OnMouseOver="this.setAttribute('scrollamount', 0, 0);" OnMouseOut="this.setAttribute('scrollamount', 2, 1);">-->
-          <section id="marquee">
-          <div class="subtitle-credits l_programmer"> Creators and Developers</div>
-          <div class="body-credits"> Davide Corallo</div>
-          <div class="body-credits"> Julian Sparver</div>
-          <div class="body-credits"> Marco Tamagno</div>
-          <p></p>
-          <div class="subtitle-credits l_langProg"> Languages</div>
-          <div class="body-credits"> CSS</div>
-          <div class="body-credits"> HTML</div>
-          <div class="body-credits"> Javascript</div>
-          <p></p>
-          <div class="subtitle-credits l_thanks"> Ringraziamenti</div>
-          <div class="body-credits l_bodyThanks"> Un ringraziamento da noi programmatori
-            del vostro contributo per il download di
-            BlueBlock, speriamo vivameente che vi sia
-            piaciuto e vi siate divertiti.</div>
-      </section>
-      </section>
-    </section>
+			</div>
+			<section class="marquee marqueeCredits">
+				<section class="content">
+					<div class="subtitle-credits l_programmer"> Creators and Developers</div>
+					<div class="body-credits"> Davide Corallo</div>
+					<div class="body-credits"> Julian Sparver</div>
+					<div class="body-credits"> Marco Tamagno</div>
+					<p></p>
+					<p></p>
+					<div class="subtitle-credits l_thanks"> Ringraziamenti</div>
+					<div class="body-credits l_bodyThanks"> Un ringraziamento da noi programmatori
+						del vostro contributo per il download di
+						BlueBlock, speriamo vivameente che vi sia
+						piaciuto e vi siate divertiti.</div>
+				</section>
+			</section>
+		</section>
 
-    <section class="view-gameover view">
-      <div onclick="backBtnGameOver()" class="viewTitle">
-        <div class="back"></div>
+		<section class="view-gameover view">
+			<div onclick="backBtnGameOver()" class="viewTitle">
+				<div class="back"></div>
         <h1 class="title l_gameOver">Game Over</h1>
       </div>
-
       <section class="content">
-        <h1>Nickname</h1>
-        <input type="text" class="js-nick" oninput="setNick()" name="fname">
-
-        <div class="js-score bottom"></div>
-        <p></p>
-        <div class="restart" onclick="restartGame()">Restart</div>
+        <div class="l_OverScore titleStats">Your Score:</div>
+        <div class="js-OverScore overStats"></div>
+        <div class="l_nick titleStats">Nickname:</div>
+        <input placeholder="Insert your name" maxlength="20" type="text" class="js-nick overNick" oninput="setNick()" name="fname">
+        <div class="l_restart menuEl restart" onclick="restartGame()">Restart</div>
       </section>
     </section>
 
@@ -194,9 +186,9 @@
         <div class="back"></div>
         <h1 class="title l_sc">Score</h1>
       </div>
+
+      <section class="marquee marqueeScore">
       <section class="content">
-        <marquee behavior="scroll" direction="up" scrollamount="2" scrolldelay="1"
-         onmouseover="this.stop()" onmouseout="this.start()"  height="100%" width="100%">
        <div><h1 class="l_easy">Easy</h1>
         <div class="js-rank-0"></div>
         <div class="js-rank-0"></div>
@@ -228,11 +220,12 @@
         <div class="js-rank-3"></div>
         <div class="js-rank-3"></div>
        </div>
-
+        </section>
       </section>
     </section>
 
-    <script type="text/javascript" src="jquery-2.1.1.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="script/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="script/fastclick.min.js"></script>
+    <script type="text/javascript" src="script/main.js"></script>
   </body>
 </html>
