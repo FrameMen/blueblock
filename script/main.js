@@ -342,8 +342,8 @@ function setL10n(next) {
                 {"class":"l_cred", "var":"Credits"},
                 {"class":"l_programmer", "var":"Creators and Developers"},
                   {"class":"l_langProg", "var":"Languages"},
-                  {"class":"l_thanks", "var":""},
-                    {"class":"l_bodyThanks", "var":""},
+                  {"class":"l_thanks", "var":"Thanks to"},
+                    {"class":"l_bodyThanks", "var":"Thank you of we programmers for your help with BlueBlock's download, we really hope you'd like it and you'd have fun."},
                     {"class":"l_gameOver", "var":"Game Over"},
                       {"class":"l_sc", "var":"Score"},
                       {"class":"l_easy", "var":"Easy"},
@@ -425,13 +425,13 @@ function setL10n(next) {
               {"class":"l_cred", "var":"Créditos"},
                 {"class":"l_programmer", "var":"Creadores y Promotores"},
                 {"class":"l_langProg", "var":"Lengua"},
-                  {"class":"l_thanks", "var":""},
+                  {"class":"l_thanks", "var":"Agradecimientos"},
                   {"class":"l_bodyThanks", "var":""},
                     {"class":"l_gameOver", "var":"Game Over"},
                     {"class":"l_sc", "var":"Puntuación"},
-                      {"class":"l_easy", "var":""},
-                      {"class":"l_normal", "var":""},
-                        {"class":"l_hard", "var":""},
+                      {"class":"l_easy", "var":"Fácil"},
+                      {"class":"l_normal", "var":"Normal"},
+                        {"class":"l_hard", "var":"Duro"},
                         {"class":"l_dante", "var":"Dante must die"}
     ],
 
@@ -451,13 +451,13 @@ function setL10n(next) {
               {"class":"l_cred", "var":"Crédits"},
                 {"class":"l_programmer", "var":"Créateurs et Développeurs"},
                 {"class":"l_langProg", "var":"Langue"},
-                  {"class":"l_thanks", "var":""},
+                  {"class":"l_thanks", "var":"Remerciements"},
                   {"class":"l_bodyThanks", "var":"Merci de part de nous progammateurs pour votre contribut pour le downolad de BlueBlock, nous ésperons vivement que vous l'avez aimé et que vous vous etes amousé beaucoup."},
                     {"class":"l_gameOver", "var":"Game Over"},
                     {"class":"l_sc", "var":"Score"},
-                      {"class":"l_easy", "var":""},
-                      {"class":"l_normal", "var":""},
-                        {"class":"l_hard", "var":""},
+                      {"class":"l_easy", "var":"Simple"},
+                      {"class":"l_normal", "var":"Normal"},
+                        {"class":"l_hard", "var":"Dur"},
                         {"class":"l_dante", "var":"Dante must die"}
     ],
   "l10n_jp":[
@@ -707,7 +707,7 @@ function addFnMarquee() {
     };
 }
 
-//Eliminates 300ms click delay on mobile 
+//Eliminates 300ms click delay on mobile
 function removeClickDelay() {
   window.addEventListener('load', function() {
     new FastClick(document.body);
