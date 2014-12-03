@@ -1,4 +1,4 @@
-//var a = new Array();
+﻿//var a = new Array();
 //for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/15))] * 800))}
 //black square &#9632;
 //empty square &#9633;
@@ -669,7 +669,7 @@ function addFnMarquee() {
 
 		start: function() {
 			var el = this;
-			var pixelsPerSecond = 100;
+			var pixelsPerSecond = 60;
 			var firstChild = this.children(':first');
 			var contentHeight = $(".content:visible").height();
 			var marqueeHeight = this.height();// - firstChild.css("margin-top");
