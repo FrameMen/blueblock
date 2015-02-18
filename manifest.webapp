@@ -1,7 +1,7 @@
 {
   "name": "blueblock",
     "description": "Small game written in HTML5",
-    "package_path" : "http://localhost:1337/package.zip",
+    "package_path" : "http://blueblock.sparber.net/package.zip"
     "version": "1",
     "launch_path": "/index.html",
     "icons": {
