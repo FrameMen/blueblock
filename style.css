@@ -230,6 +230,11 @@ h1 {
 	padding: 1em;
 }
 
+.l_titleAbout{
+	line-height: 30px;
+	font-size: 20px;
+}
+
 @media(max-width: 350px) {
 	.view{
 		width: auto;

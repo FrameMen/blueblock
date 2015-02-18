@@ -1,4 +1,4 @@
-//var a = new Array();
+﻿//var a = new Array();
 //for (var x = 0; x <=60; x++) {a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/15))] * 800))}
 //black square &#9632;
 //empty square &#9633;
@@ -342,9 +342,11 @@ function setL10n(next) {
                 {"class":"l_cred", "var":"Credits"},
                 {"class":"l_programmer", "var":"Creators and Developers"},
                   {"class":"l_langProg", "var":"Languages"},
-                  {"class":"l_thanks", "var":""},
-                    {"class":"l_bodyThanks", "var":""},
-                    {"class":"l_gameOver", "var":"Game Over"},
+                  {"class":"l_thanks", "var":"Thanks "},
+                    {"class":"l_bodyThanks", "var":"Thank you for plaiying and downloading BlueBlock, we really hope you had like it and you had fun."},
+                    {"class":"l_titleAbout","var":"About"},
+                    {"class":"l_About","var":"This application is Free Software, released under the terms of the GNU Affero GPL. Get the source on Github."},
+		                  {"class":"l_gameOver", "var":"Game Over"},
                       {"class":"l_sc", "var":"Score"},
                       {"class":"l_easy", "var":"Easy"},
                         {"class":"l_normal", "var":"Normal"},
@@ -374,7 +376,9 @@ function setL10n(next) {
                       "del vostro contributo per il download di "+
                         "BlueBlock, speriamo vivamente che vi sia "+
                         "piaciuto e vi siate divertiti."},
-                    {"class":"l_gameOver", "var":"Game Over"},
+                    {"class":"l_titleAbout","var":"About"},
+                    {"class":"l_About","var":"This application is Free Software, released under the terms of the GNU Affero GPL. Get the source on Github."},
+		     {"class":"l_gameOver", "var":"Game Over"},
                       {"class":"l_sc", "var":"Punteggio"},
                       {"class":"l_easy", "var":"Facile"},
                         {"class":"l_normal", "var":"Normale"},
@@ -400,8 +404,10 @@ function setL10n(next) {
                 {"class":"l_programmer", "var":"Kreative und Entwickler"},
                   {"class":"l_langProg", "var":"Programmier Sprachen"},
                   {"class":"l_thanks", "var":"Danksagungen"},
-                    {"class":"l_bodyThanks", "var":""},
-                    {"class":"l_gameOver", "var":"Game Over"},
+                    {"class":"l_bodyThanks", "var":"Wir danken Ihnen für den Download und wünschen Ihnen viel Spaß beim Spielen."},
+                    {"class":"l_titleAbout","var":"About"},
+                    {"class":"l_About","var":"This application is Free Software, released under the terms of the GNU Affero GPL. Get the source on Github."},
+		      {"class":"l_gameOver", "var":"Game Over"},
                       {"class":"l_sc", "var":"Punkte"},
                       {"class":"l_easy", "var":"Einfach"},
                         {"class":"l_normal", "var":"Normal"},
@@ -425,13 +431,15 @@ function setL10n(next) {
               {"class":"l_cred", "var":"Créditos"},
                 {"class":"l_programmer", "var":"Creadores y Promotores"},
                 {"class":"l_langProg", "var":"Lengua"},
-                  {"class":"l_thanks", "var":""},
-                  {"class":"l_bodyThanks", "var":""},
-                    {"class":"l_gameOver", "var":"Game Over"},
+                  {"class":"l_thanks", "var":"Agradecimientos"},
+                  {"class":"l_bodyThanks", "var":"Un agradecimiento de nosotros los programadores de su contribución para la descarga BlueBlock , tenemos grandes esperanzas de que has disfrutado y nos divertimos."},
+                  {"class":"l_titleAbout","var":"About"},
+                  {"class":"l_About","var":"This application is Free Software, released under the terms of the GNU Affero GPL. Get the source on Github."},
+		  {"class":"l_gameOver", "var":"Game Over"},
                     {"class":"l_sc", "var":"Puntuación"},
-                      {"class":"l_easy", "var":""},
-                      {"class":"l_normal", "var":""},
-                        {"class":"l_hard", "var":""},
+                      {"class":"l_easy", "var":"Fácil"},
+                      {"class":"l_normal", "var":"Normal"},
+                        {"class":"l_hard", "var":"Duro"},
                         {"class":"l_dante", "var":"Dante must die"}
     ],
 
@@ -451,13 +459,15 @@ function setL10n(next) {
               {"class":"l_cred", "var":"Crédits"},
                 {"class":"l_programmer", "var":"Créateurs et Développeurs"},
                 {"class":"l_langProg", "var":"Langue"},
-                  {"class":"l_thanks", "var":""},
+                  {"class":"l_thanks", "var":"Remerciements"},
                   {"class":"l_bodyThanks", "var":"Merci de part de nous progammateurs pour votre contribut pour le downolad de BlueBlock, nous ésperons vivement que vous l'avez aimé et que vous vous etes amousé beaucoup."},
-                    {"class":"l_gameOver", "var":"Game Over"},
+                  {"class":"l_titleAbout","var":"About"},
+                  {"class":"l_About","var":"This application is Free Software, released under the terms of the GNU Affero GPL. Get the source on Github."},
+		    {"class":"l_gameOver", "var":"Game Over"},
                     {"class":"l_sc", "var":"Score"},
-                      {"class":"l_easy", "var":""},
-                      {"class":"l_normal", "var":""},
-                        {"class":"l_hard", "var":""},
+                      {"class":"l_easy", "var":"Simple"},
+                      {"class":"l_normal", "var":"Normal"},
+                        {"class":"l_hard", "var":"Dur"},
                         {"class":"l_dante", "var":"Dante must die"}
     ],
   "l10n_jp":[
@@ -480,6 +490,8 @@ function setL10n(next) {
                   {"class":"l_thanks", "var":"お礼"},
                     {"class":"l_bodyThanks", "var":"BlueBlock をダウンロードしたので、ありがとうございました。 "+
                       "楽しんでいただけましたら幸いです。 "},
+                      {"class":"l_titleAbout","var":"About"},
+                      {"class":"l_About","var":"This application is Free Software, released under the terms of the GNU Affero GPL. Get the source on Github."},
                     {"class":"l_gameOver", "var":"ゲームセット"},
                       {"class":"l_sc", "var":"Punteggio"},　
                       {"class":"l_easy", "var":"やさしい"},
@@ -669,7 +681,7 @@ function addFnMarquee() {
 
 		start: function() {
 			var el = this;
-			var pixelsPerSecond = 100;
+			var pixelsPerSecond = 60;
 			var firstChild = this.children(':first');
 			var contentHeight = $(".content:visible").height();
 			var marqueeHeight = this.height();// - firstChild.css("margin-top");
@@ -707,7 +719,7 @@ function addFnMarquee() {
     };
 }
 
-//Eliminates 300ms click delay on mobile 
+//Eliminates 300ms click delay on mobile
 function removeClickDelay() {
   window.addEventListener('load', function() {
     new FastClick(document.body);
