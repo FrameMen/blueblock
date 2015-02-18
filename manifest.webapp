@@ -1,14 +1,15 @@
 {
   "name": "blueblock",
-  "description": "Small game written in HTML5",
-  "launch_path": "/index.html",
-  "icons": {
-    "128": "/img/touch-icon-128-precomposed.png",
-    "144": "/img/touch-icon-144-precomposed.png"
-  },
-  "developer": {
-    "name": "FrameMen",
-    "url": "https://github.com/FrameMen"
-  },
-  "default_locale": "en"
+    "description": "Small game written in HTML5",
+    "package_path" : "http://localhost:1337/package.zip",
+    "version": "1",
+    "launch_path": "/index.html",
+    "icons": {
+      "128": "/img/touch-icon-128-precomposed.png",
+      "144": "/img/touch-icon-144-precomposed.png"
+    },
+    "developer": {
+      "name": "FrameMen",
+      "url": "https://github.com/FrameMen"
+    }
 }
