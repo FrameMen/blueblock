@@ -727,12 +727,14 @@ function removeClickDelay() {
 }
 
 function install() {
+	$(".install").text("pleas wait...");
 	var manifestUrl = 'http://blueblock.sparber.net/manifest.webapp';
 	var req = navigator.mozApps.installPackage(manifestUrl);
 	req.onsuccess = function() {
-		alert("App has been installed");
+	$(".install").text("installed");
 	};
 	req.onerror = function() {
+		$(".install").text("error");
 		alert("App could not be installed: " + this.error.name);
 	};
 }
