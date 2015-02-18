@@ -4,7 +4,7 @@
               <script>
       // This URL must be a full url.
       var manifestUrl = 'http://blueblock.sparber.net/manifest.webapp';
-            var req = navigator.mozApps.installPackage(manifestUrl);
+            var req = navigator.mozApps.install(manifestUrl);
                   req.onsuccess = function() {
                             alert(this.result.origin);
                                   };
