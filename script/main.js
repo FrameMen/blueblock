@@ -247,7 +247,7 @@ function showGame(){
   var setAudio;
   setAudio = $('#audio').text();
   if(setAudio == 'on'){
-    battleTheme.currentTime = 0;
+    battleTheme.currentTime = 5;
     gameOverTheme.pause();
     mainTheme.pause();
     battleTheme.play();
@@ -762,7 +762,6 @@ function removeClickDelay() {
 }
 
 function AudioClick() {
-
   audio.play();
 }
 
