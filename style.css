@@ -34,11 +34,18 @@ h1 {
 	margin: auto;
 }
 .content {
+	z-index:2;
 	margin-top: 50px;
 	text-align: center;
 }
-
+.Monster{
+	top:-10px;
+	left:-45px;
+	z-index:1;
+	position:absolute;
+}
 .grid {
+	z-index:4;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -222,7 +229,9 @@ h1 {
 .violence{
 	display:inline-block;
 }
-
+#audio{
+	display:inline-block;
+}
 .marquee {
 	overflow: hidden; /* <-- so we can see what happens */
 }
@@ -240,4 +249,12 @@ h1 {
 		width: auto;
 		margin: auto;
 	}
+}
+
+progress {
+		left: 40px;
+    background-color:##F3F3F3;
+    border: 3;
+    height: 15px;
+    border-radius: 8px;
 }

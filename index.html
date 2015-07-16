@@ -21,23 +21,27 @@
       </div>
 
       <section class="content">
-        <div class="menu start menuEl" onclick="falling(showGame)"> <span class="js-square">&#9633;</span><span class="l_play">play</span></div>
-        <div class="menu howTo menuEl" onclick="falling(howTo)"> <span class="js-square">&#9633;</span><span class="l_howTo">how-to</span></div>
-        <div class="menu js-menu-score menuEl" onclick="falling(showScore)"> <span class="js-square">&#9633;</span><span class="l_score">score</span></div>
-        <div class="menu option menuEl" onclick="falling(option)"> <span class="js-square">&#9633;</span><span class="l_option">option</span></div>
-        <div class="menu credits menuEl" onclick="falling(credits)"> <span class="js-square">&#9633;</span><span class="l_credits">credits</span></div>
+        <div class="menu start menuEl" onclick="AudioClick(),falling(showGame)"> <span class="js-square">&#9633;</span><span class="l_play">play</span></div>
+        <div class="menu howTo menuEl" onclick="AudioClick(),falling(howTo)"> <span class="js-square">&#9633;</span><span class="l_howTo">how-to</span></div>
+        <div class="menu js-menu-score menuEl" onclick="AudioClick(),falling(showScore)"> <span class="js-square">&#9633;</span><span class="l_score">score</span></div>
+        <div class="menu option menuEl" onclick="AudioClick(),falling(option)"> <span class="js-square">&#9633;</span><span class="l_option">option</span></div>
+        <div class="menu credits menuEl" onclick="AudioClick(),falling(credits)"> <span class="js-square">&#9633;</span><span class="l_credits">credits</span></div>
       </section>
 
     </section>
 
     <section class="view-game view">
-      <div onclick="backBtn()" class="viewTitle">
+      <div onclick="AudioClick(),backBtn()" class="viewTitle">
         <div class="back"></div>
         <div class="title l_game">Game</div>
       </div>
       <section class="content">
-        <h1 class="js-time time l_time">Time:</h1>
 
+        <h1 class="js-time time l_time">HP:</h1>
+        <div class="Monster">
+          <img src="monster.jpg" alt="Mountain View" style="width:150px;height:125px;">
+        </div>
+        <progress id="HpBar" value="45" max="45"></progress>
         <div class="grid">
           <div class="grid_row">
             <div class="grid_tile" onclick="select(this)"></div>
@@ -122,7 +126,7 @@
     </section>
 
     <section class="view-option view">
-      <div onclick="backBtn()" class="viewTitle">
+      <div onclick="AudioClick(),backBtn()" class="viewTitle">
         <div class="back"></div>
         <h1 class="title l_opt">Option</h1>
       </div>
@@ -139,6 +143,11 @@
         <div class="violence js-violence"></div>
         <div class="forwardback" onclick="setViolence(1)"></div>
         <p></p>
+        <div class="cmd-option l_audio"> Audio:</div>
+        <div class="backforward" onclick="setAudio()"></div>
+        <div id="audio">off</div>
+        <div class="forwardback" onclick="setAudio()"></div>
+        <p></p>
         <div class="reset" onclick="reset()"> Reset Game </div>
 
         <div class="cmd-option"> </div>
@@ -146,7 +155,7 @@
     </section>
 
     <section class="view-credits view">
-      <div onclick="backBtn()" class="viewTitle">
+      <div onclick="AudioClick(),backBtn()" class="viewTitle">
         <div class="back"></div>
         <h1 class="title l_cred">Credits</h1>
 			</div>
@@ -172,7 +181,7 @@
 		</section>
 
 		<section class="view-gameover view">
-			<div onclick="backBtnGameOver()" class="viewTitle">
+			<div onclick="AudioClick(),backBtnGameOver()" class="viewTitle">
 				<div class="back"></div>
         <h1 class="title l_gameOver">Game Over</h1>
       </div>

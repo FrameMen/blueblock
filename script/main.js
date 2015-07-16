@@ -7,11 +7,19 @@ var mul;
 var mulTimeout;
 var time;
 var timeover;
-
-
+var HpBar = $('#HpBar');
 addFnMarquee();
 removeClickDelay();
 init();
+var audio = new Audio('button-15.wav');
+var mainTheme = new Audio('Introduction.m4a');
+mainTheme.loop = true;
+var battleTheme = new Audio('The Maze Of Mayonnaise.mp3');
+battleTheme.loop = true;
+var gameOverTheme = new Audio('Wadanohara GraySnow.mp3');
+gameOverTheme.loop = true;
+
+
 
 function init() {
   //center conntent
@@ -61,6 +69,7 @@ function addTime() {
         gameOver("timeout");
       }
       else {
+        HpBar.val(time);
         printStat();
         time--;
 
@@ -74,6 +83,7 @@ function addTime() {
       clearInterval(tileTimer);
       clearInterval(timeInterval);
     }
+
   }, 1000);
 }
 
@@ -116,6 +126,14 @@ function setTileInterval(timeout) {
 
 
 function gameOver(e) {
+  var setAudio;
+  setAudio = $('#audio').text();
+  if(setAudio == 'on'){
+    gameOverTheme.currentTime = 0;
+    battleTheme.pause();
+    mainTheme.pause();
+    gameOverTheme.play();
+}
   printStat();
   timeover = true;
   $(".js-OverScore").text(score);
@@ -144,6 +162,7 @@ function addTile(index, el) {
 }
 
 function start() {
+  HpBar.val(45);
   score = 0;
   timeover = false;
   time = 45;
@@ -157,7 +176,7 @@ function start() {
 
 function printStat() {
   $(".js-score").text("Score: " + score);
-  $(".js-time").text("Time: " + time);
+  $(".js-time").text("HP: " + time);
   $(".js-mul").text("x" + mul);
 }
 
@@ -211,12 +230,28 @@ function randomTile() {
 }
 
 function showStart(){
+  var setAudio;
+  setAudio = $('#audio').text();
+  if(setAudio == 'on'){
+    mainTheme.currentTime = 0;
+    battleTheme.pause();
+    gameOverTheme.pause();
+    mainTheme.play();
+}
   $(".view").hide();
   $(".view-start").show();
   centerContent();
 }
 
 function showGame(){
+  var setAudio;
+  setAudio = $('#audio').text();
+  if(setAudio == 'on'){
+    battleTheme.currentTime = 0;
+    gameOverTheme.pause();
+    mainTheme.pause();
+    battleTheme.play();
+}
   $(".view").hide();
   $(".view-game").show();
   centerContent();
@@ -724,4 +759,22 @@ function removeClickDelay() {
   window.addEventListener('load', function() {
     new FastClick(document.body);
   }, false);
+}
+
+function AudioClick() {
+
+  audio.play();
+}
+
+function setAudio(){
+  var setAudio;
+  setAudio = $('#audio').text();
+  if(setAudio == 'off'){
+$("#audio").text('on');
+}
+  if(setAudio == 'on'){
+    mainTheme.currentTime = 0;
+$('#audio').text('off');
+mainTheme.pause();
+}
 }
