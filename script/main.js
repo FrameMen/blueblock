@@ -61,44 +61,6 @@ function addTime() {
   }, 1000);
 }
 
-function gameRunning() {
-  if ($(".view-game").is(":visible") && timeover === false)
-    return true;
-  return false;
-}
-
-function calcLUT() {
-  var diffValue = [675, 775, 875, 975];
-  var index = diffValue[localStorage.difficult];
-  var a = new Array();
-  for (var x = 0; x <=45; x++) {
-    a[x] = Math.round (1000 - ([1- Math.pow(2.7, (-x/5))] * index))
-  }
-  return a;
-}
-
-function setTileInterval(timeout) {
-  return window.setInterval(function(){
-    if (isGridFull() === false) {
-      var rand = Math.floor(Math.random()*50);
-      if (rand === 13 || rand === 29 || rand === 26) {
-        addTile(randomTile(), "greenTile");
-      }
-      else if (rand < 7){
-        addTile(randomTile(), "redTile");
-      }
-      else{
-        addTile(randomTile(), "blueTile");
-      }
-    }
-    else {
-      gameOver("full");
-      timeover = true;
-    }
-  }, timeout);
-}
-
-
 function gameOver(e) {
   var setAudio;
   setAudio = $('#audio').text();
@@ -173,18 +135,6 @@ function writeScore(el, i, diff, rank) {
     }
 }
 
-function changeSquareToBlue(el){
-  //black square &#9632;
-  //empty square &#9633;
-  $(el).find(".js-square").html("&#9632;").css('color', 'blue');
-}
-
-function changeSquareToEmty(el){
-  //black square &#9632;
-  //empty square &#9633;
-  $(el).find(".js-square").html("&#9633;").css('color', 'blue');
-}
-
 function addEvents(){
   $(".menu").mouseleave(function (el) {
     changeSquareToEmty(this)
@@ -246,87 +196,6 @@ function centerContent() {
   if (top < 20)
     top = 20;
   $(".content:visible").css({'margin-top': top + "px"});
-}
-
-
-function maxMarquee(space) {
-	space -= 20;
-  	$(".marquee:visible").css({'height': space + "px"})
-}
-
-
-function addMarquee (el) {
-	el = $(el);
-	el.marquee("init");
-  el.on("click", function() {stopClickMarquee(el)});
-}
-
-function stopClickMarquee(el) {
-	$(el).unbind('click');
-  el.marquee('stop');
-  el.on("click", function() {startClickMarquee(el)});
-}
-
-function startClickMarquee(el) {
-	$(el).unbind('click');
-  el.marquee('start');
-  el.on("click", function() {stopClickMarquee(el)});
-}
-
-function removeMarquee (el) {
-	$(el).unbind('mouseenter mouseleave');
-	$(".marquee:eq(0)").marquee("stop");
-	$(".marquee:eq(1)").marquee("stop");
-}
-
-//add marquee function to jquery
-function addFnMarquee() {
-	var methods = {
-
-		init: function() {
-			$(".marquee").css('margin-top', 20);
-			this.children(":first").css('margin-top', this.height());
-			this.marquee('start');
-		},
-
-		start: function() {
-			var el = this;
-			var pixelsPerSecond = 60;
-			var firstChild = this.children(':first');
-			var contentHeight = $(".content:visible").height();
-			var marqueeHeight = this.height();// - firstChild.css("margin-top");
-			var currentPoint = parseFloat(firstChild.css("margin-top"), 10);
-
-			// The duration of the animation needed to get the correct speed:
-			var duration = ((contentHeight + currentPoint) / pixelsPerSecond) * 1000;
-
-			// Animate the first child's margin-top to -1 * totalHeight:
-			firstChild.animate(
-					{ 'margin-top': -1 * contentHeight },
-					duration,
-					'linear',
-					function() {
-						// Restart whole process... :)
-						el.marquee('init');
-					}
-			);
-		},
-		stop: function() {
-			this.children(':first').stop();
-		}
-	};
-
-	$.fn.marquee = function(method) {
-        // Method calling logic
-        if (methods[method]) {
-            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-        } else if (typeof method === 'object' || !method) {
-            return methods.init.apply(this, arguments);
-        } else {
-            $.error('Method ' + method + ' does not exist on jQuery.marquee');
-        }
-
-    };
 }
 
 //Eliminates 300ms click delay on mobile
