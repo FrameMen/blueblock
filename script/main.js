@@ -188,16 +188,6 @@ function reset(){
   location.reload();
 }
 
-function centerContent() {
-  var head = ($(".header").height() > 0) ? $(".header").height() : $(".viewTitle:visible").height();
-  var space =  $(window).height() - head - 20;
-  maxMarquee(space);
-  var top = (space - $(".content:visible").height()) / 2;
-  if (top < 20)
-    top = 20;
-  $(".content:visible").css({'margin-top': top + "px"});
-}
-
 //Eliminates 300ms click delay on mobile
 function removeClickDelay() {
   window.addEventListener('load', function() {
